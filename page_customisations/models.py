@@ -116,8 +116,6 @@ class HeaderCustomisation(models.Model):
                 pass
         super(HeaderCustomisation, self).save(*args, **kwargs)
         
-        
-    
     def __str__(self):
         return self.header_styling
     
@@ -214,6 +212,42 @@ class AboutPageCustomisation(models.Model):
 
 
     
+    def __str__(self):
+        return self.styling_name
+
+class FooterCustomisation(models.Model):
+    styling_name = models.CharField(blank=False, null=False, max_length=55, default="Default")
+    background_color = ColorField(format='hex', default='#333333')
+    text_color = ColorField(format='hex', default='#FFFFFF')
+
+    twitter_link = models.URLField(max_length=200, blank=True, null=True, default='https://twitter.com/')
+    linkedin_link = models.URLField(max_length=200, blank=True, null=True, default='https://linkedin.com/')
+    facebook_link = models.URLField(max_length=200, blank=True, null=True, default='https://facebook.com/')
+    instagram_link = models.URLField(max_length=200, blank=True, null=True, default='https://instagram.com/')
+
+    social_media_icon_colors = ColorField(format='hex', default='FFFFFF')
+
+    do_not_display = models.BooleanField(verbose_name='Do not display',
+                            default=False,
+                            help_text='**Check this box to hide this specific styling.')
+
+
+    class Meta:
+        verbose_name_plural = 'Footer'
+        
+    
+    def save(self, *args, **kwargs):
+        if self.do_not_display == False:
+            try:
+                temp = FooterCustomisation.objects.get(do_not_display=False)
+                if self != temp:
+                    temp.do_not_display = True
+                    temp.save()
+            except FooterCustomisation.DoesNotExist:
+                pass
+        super(FooterCustomisation, self).save(*args, **kwargs)
+
+
     def __str__(self):
         return self.styling_name
 

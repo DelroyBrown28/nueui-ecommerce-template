@@ -3,7 +3,7 @@ from .models import (HomePageCustomisation,
                      HeaderCustomisation,
                      ProductsPageCustomisation,
                      GlobalSiteStyling,
-                     AboutPageCustomisation)
+                     FooterCustomisation)
 
 
 def header_customisation(request):
@@ -23,6 +23,14 @@ def products_page_customisation(request):
         'products_page_customisation' : products_page_customisation,
     }
     return render(request, 'products/products.html', context)
+
+def footer_customisation(request):
+    """Customisation for products page"""
+    footer_customisation = FooterCustomisation.objects.all()
+    context = {
+        'footer_customisation' : footer_customisation,
+    }
+    return render(request, 'products/footer.html', context)
 
 
 def global_site_styles(request):

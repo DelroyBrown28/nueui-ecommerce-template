@@ -8,8 +8,7 @@ environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'VvaiPndWPNY9forzEEu4ldJKPZe5zZs4oxIY8iKAxmLvn8C9BW1w6t0a3IFs')
 
 DEBUG = True
 
@@ -133,6 +132,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'context_processors.context_processors.header_customisation_processor',
+                'context_processors.context_processors.footer_customisation_processor',
                 'context_processors.context_processors.products_page_customisation_processor',
                 'context_processors.context_processors.global_styles_processor',
                 'bag.contexts.bag_contents',

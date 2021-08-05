@@ -1,5 +1,27 @@
-<footer class="footer mt-5 py-3">
-    <div class="container text-center">
-      <span class="">NueStore &copy; 2021</span>
-    </div>
-  </footer>
+{% for x in footer_customisation %}
+
+<footer class="{% if y.do_not_display or x.do_not_display %}
+        do-not-display {% else %} footer mt-5 py-3 {% endif %}"
+        style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">
+  <div class="container text-center">
+    <span class="">FOLLOW US ONLINE:</span>
+    {% if x.twitter_link %}
+    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="Twitter"><i class="fab fa-twitter"></i></a>
+    {% endif %}
+    {% if x.linkedin_link %}
+    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    {% endif %}
+    {% if x.facebook_link %}
+    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    {% endif %}
+    {% if x.instagram_link %}
+    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
+    {% endif %}
+  </div>
+</footer>
+
+{% endfor %}

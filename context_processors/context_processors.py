@@ -2,7 +2,7 @@ from page_customisations.models import ProductsPageCustomisation
 from page_customisations.views import (HeaderCustomisation,
                                        ProductsPageCustomisation,
                                        GlobalSiteStyling,
-                                       AboutPageCustomisation)
+                                       FooterCustomisation)
 
 
 def global_styles_processor(request):
@@ -15,6 +15,12 @@ def global_styles_processor(request):
 def header_customisation_processor(request):
     return {
        'header_customisation': HeaderCustomisation.objects.all(),
+
+    }
+
+def footer_customisation_processor(request):
+    return {
+       'footer_customisation': FooterCustomisation.objects.all(),
 
     }
     
