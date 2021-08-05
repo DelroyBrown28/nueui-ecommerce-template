@@ -82,19 +82,17 @@ body {
     min-width: 260px;
 }
 
+.btn {
+    transition: 0.3s ease-in-out;
+}
+
 .btn-black {
     background: black;
     color: white;
 }
 
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
-.btn-black:hover,
-.btn-black:active,
-.btn-black:focus {
-    background: #222;
-    color: white;
+.btn:hover {
+    opacity: 0.5;
 }
 
 .text-black {
