@@ -36,8 +36,8 @@ body {
 
 .homepage-bg-image {
     position: absolute;
-    /* height: calc(100vh - 164px); */
-    height: 100%;
+    height: calc(100vh - 218px);
+    /* height: 100%; */
     background: no-repeat center center fixed;
     background-size: cover !important;
     transform: translateY(-5px);
@@ -384,8 +384,13 @@ CONTACT PAGE
 
 
 .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: block;
     background-color: #333;
     color: #fff;
+    z-index: 1000;
 }
 
 
