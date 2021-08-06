@@ -69,6 +69,7 @@ do-not-display {% else %} d-flex justify-content-center about-blurb-wrap {% endi
 <div id="getInTouch" class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} container d-flex justify-content-center {% endif %}"
     style="color: {{ y.base_font_color }} !important;">
+
     <div class="{% if x.do_not_display or y.do_not_display %}
     do-not-display {% else %} card contact-card {{ x.contact_card_border }} {% endif %}"
         style="width: 45rem; background-color: {{ x.contact_card_background_color }} !important; border: 1px solid {{ x.border_color }}; !important;">
@@ -94,6 +95,7 @@ do-not-display {% else %} container d-flex justify-content-center {% endif %}"
                 data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
+    
 </div>
 {% endfor %}
 {% endfor %}
