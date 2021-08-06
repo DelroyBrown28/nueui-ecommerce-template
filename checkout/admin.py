@@ -19,6 +19,7 @@ class OrderAdmin(admin.ModelAdmin):
             'classes': ('fieldset_titles',),
             'fields': (
                 'full_name',
+                'user_profile',
                 'email',
                 'phone_number',
             )
