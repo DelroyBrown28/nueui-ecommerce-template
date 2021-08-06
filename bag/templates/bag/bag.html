@@ -53,7 +53,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     <tr class="{% if y.do_not_display %}
                     do-not-display {% else %} {% endif %}" style="color: {{ y.base_font_color }} !important;">
                         <td class="p-3 w-25">
-                            {% if item.product.image %}
+                            {% if item.product.main_product_image %}
                             <img class="img-fluid rounded" src="{{ item.product.main_product_image.url }}"
                                 alt="{{ item.product.name }}">
                             {% else %}
