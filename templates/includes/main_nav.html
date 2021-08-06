@@ -4,15 +4,41 @@
 
     <ul class="navbar-nav w-auto max-auto">
 
-        {% for x in header_customisation  %}
-        {% for y in global_styles  %}
+        {% for x in header_customisation %}
+        {% for y in global_styles %}
         <a class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} logo-font font-weight-bold nav-link text-black {% endif %}"
+        do-not-display {% else %} logo-font font-weight-bold nav-link {% endif %}"
             style="color: {{ y.base_font_color }} !important;" href="/">
             <i class="{% if y.do_not_display %}
             do-not-display {% else %} fas fa-home mr-2 {% endif %}" style="color: {{ y.all_icon_colors }};"></i>
             Home
         </a>
+
+        <li class="nav-item dropdown">
+            <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none {% if x.do_not_display %}
+    do-not-display {% else %} text-black {% endif %}" href="{% url 'view_bag' %}">
+                <div class="d-flex">
+                    <div class="flexed">
+                        {% for y in global_styles %}
+                        <i class="{% if y.do_not_display %}
+                do-not-display {% else %} fas fa-shopping-bag fa-lg {% endif %}"
+                            style="color: {{ y.all_icon_colors }}!important; font-size: 16px;">
+                        </i>
+                        {% endfor %}
+                        {% for y in global_styles %}
+                        <p class="{% if y.do_not_display %}
+                do-not-display {% else %} m-0 ml-3 {% endif %}" style="color: {{ y.base_font_color }}!important;">
+                            {% if grand_total %}
+                            £{{ grand_total|floatformat:2 }}
+                            {% else %}
+                            £0.00
+                            {% endif %}
+                        </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+        </li>
 
         <li class="nav-item dropdown">
             <a class="{% if y.do_not_display or x.do_not_display %}
@@ -107,18 +133,24 @@
                 style="background-color: {{ y.dropdown_menu_background_color }} !important;"
                 aria-labelledby="specials-link">
                 <a href="{% url 'products' %}?category=new_arrivals" class="{% if y.do_not_display %}
-                    do-not-display {% else %} dropdown-item {% endif %}" style="color: {{ y.dropdown_menu_text_color }};">New Arrivals</a>
+                    do-not-display {% else %} dropdown-item {% endif %}"
+                    style="color: {{ y.dropdown_menu_text_color }};">New Arrivals</a>
                 <a href="{% url 'products' %}?category=deals" class="{% if y.do_not_display %}
-                    do-not-display {% else %} dropdown-item {% endif %}" style="color: {{ y.dropdown_menu_text_color }};">Deals</a>
+                    do-not-display {% else %} dropdown-item {% endif %}"
+                    style="color: {{ y.dropdown_menu_text_color }};">Deals</a>
                 <a href="{% url 'products' %}?category=clearance" class="{% if y.do_not_display %}
-                    do-not-display {% else %} dropdown-item {% endif %}" style="color: {{ y.dropdown_menu_text_color }};">Clearance</a>
+                    do-not-display {% else %} dropdown-item {% endif %}"
+                    style="color: {{ y.dropdown_menu_text_color }};">Clearance</a>
                 <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="{% if y.do_not_display %}
-                    do-not-display {% else %} dropdown-item {% endif %}" style="color: {{ y.dropdown_menu_text_color }};">All
+                    do-not-display {% else %} dropdown-item {% endif %}"
+                    style="color: {{ y.dropdown_menu_text_color }};">All
                     Specials</a>
             </div>
             {% endfor %}
             {% endfor %}
         </li>
+
+      
 
     </ul>
 </div>
