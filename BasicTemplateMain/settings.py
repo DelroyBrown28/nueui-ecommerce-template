@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'colorfield',
+    'django_social_share',
     # Allauth Stuff
     'allauth',
     'allauth.account',
@@ -131,6 +132,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'django.template.context_processors.request',
                 'context_processors.context_processors.header_customisation_processor',
                 'context_processors.context_processors.footer_customisation_processor',
                 'context_processors.context_processors.products_page_customisation_processor',

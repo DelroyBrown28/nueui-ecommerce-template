@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static social_share %}
 
 
 {% block page_header %}
@@ -13,7 +13,7 @@
 
 
 {% block content %}
-{% for y in global_styles  %}
+{% for y in global_styles %}
 <div class="{% if y.do_not_display %}
 do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.base_background_color }} !important;">
 </div>
@@ -87,11 +87,43 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 do-not-display {% else %} mt-3 {% endif %}" style="color: {{ y.base_font_color }};">
                     {{ product.description }}
                 </p>
+                <hr>
+                <div class="socials d-flex">
+                    <div class="socials-inner flexed">
+                        <p class="{% if y.do_not_display %}
+                        do-not-display {% else %} m-0 p-0 {% endif %}"
+                            style="font-weight: 600; color: {{ y.base_font_color }} !important;">Show a friend:</p>
+                        <div class="ml-4" data-toggle="tooltip" data-placement="bottom" title="Facebook">
+                            {% post_to_facebook object_or_url "<i class='fab fa-facebook-f'></i>" %}
+                        </div>
+                        <div class="ml-4" data-toggle="tooltip" data-placement="bottom" title="Twitter">
+                            {% post_to_twitter "" object_or_url "<i class='fab fa-twitter'></i>" %}
+                        </div>
+                        <div class="ml-4" data-toggle="tooltip" data-placement="bottom" title="Pinterest">
+                            <a style="cursor: pointer;" class="pinterest-this " target="_blank">
+                                <span class="PIN_1626091531472_button_pin PIN_1626091531472_save"
+                                    data-pin-log="button_pinit_bookmarklet"><i class="{% if y.do_not_display %}
+                                    do-not-display {% else %} fab fa-pinterest {% endif %}"
+                                        style="color: {{ y.all_icon_colors }} !important;"></i></span>
+                            </a>
+                        </div>
+                        <div class="ml-4" data-toggle="tooltip" data-placement="bottom" title="Reddit">
+                            {% post_to_reddit "" object_or_url "<i class='fab fa-reddit'></i>" %}
+                        </div>
+                        <div class="ml-4" data-toggle="tooltip" data-placement="bottom" title="Whatsapp">
+                            {% post_to_whatsapp object_or_url "<i class='fab fa-whatsapp'></i>" %}
+                        </div>
+                    </div>
+                </div>
+                {% add_pinterest_script %}
+
+                <hr>
+
                 {% endfor global_styles %}
                 <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">
-                        {% with product.has_sizes as s  %}
+                        {% with product.has_sizes as s %}
                         {% if s %}
                         <div class="col-12">
                             <p><strong>Size:</strong></p>
@@ -109,8 +141,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                         <div class="col-12">
                             {% for y in global_styles %}
                             <p class="{% if y.do_not_display %}
-                            do-not-display {% else %} mt-3 {% endif %}"
-                                style="color: {{ y.base_font_color }};">
+                            do-not-display {% else %} mt-3 {% endif %}" style="color: {{ y.base_font_color }};">
                                 <strong>Quantity:</strong>
                             </p>
                             {% endfor %}

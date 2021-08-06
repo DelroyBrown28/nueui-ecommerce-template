@@ -469,6 +469,10 @@ body > div:nth-child(12) > em > div > p {
     border-radius: 0.25rem;
   }
 
+  .socials-inner {
+      align-items: flex-start !important;
+  }
+
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
