@@ -15,6 +15,14 @@ class OrderAdmin(admin.ModelAdmin):
                 'order_number',
             )
         }),
+        ('Customer Details', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'full_name',
+                'email',
+                'phone_number',
+            )
+        }),
         ('Delivey Address', {
             'classes': ('fieldset_titles',),
             'fields': (
@@ -24,14 +32,6 @@ class OrderAdmin(admin.ModelAdmin):
                 'town_or_city',
                 'county',
                 'postcode',
-            )
-        }),
-        ('Customer Details', {
-            'classes': ('fieldset_titles',),
-            'fields': (
-                'full_name',
-                'email',
-                'phone_number',
             )
         }),
         ('Order Details', {
