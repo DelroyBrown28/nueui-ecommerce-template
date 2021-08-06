@@ -26,7 +26,9 @@ class Product(models.Model):
     rating = models.DecimalField(
         max_digits=6, decimal_places=2, null=True, blank=True)
     image_url = models.URLField(max_length=1024, blank=True, null=True)
-    image = models.ImageField(null=True, blank=True, upload_to='product_images')
+    main_product_image = models.ImageField(null=True, blank=True, upload_to='product_images')
+    small_image_1 = models.ImageField(null=True, blank=True, upload_to='product_images')
+    small_image_2 = models.ImageField(null=True, blank=True, upload_to='product_images')
     
     def __str__(self):
         return self.name

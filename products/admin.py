@@ -5,13 +5,23 @@ from .models import Product, Category
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = (
-        'name',
-        'sku',
-        'category',
-        'price',
-        'rating',
-        'image',
+    fieldsets = (
+        (None, {
+            "fields": (
+                'name',
+                'category',
+                'price',
+                'has_sizes',
+                'rating',)
+        }),
+        ('Product Images', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'main_product_image',
+                'small_image_1',
+                'small_image_2',)
+
+        }),
     )
     search_fields = [
         'name',
@@ -22,7 +32,6 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'category',
     )
-
     ordering = ('name',)
 
 class CategoryAdmin(admin.ModelAdmin):

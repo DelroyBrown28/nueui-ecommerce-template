@@ -19,19 +19,40 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 </div>
 {% endfor global_styles %}
 
-<div class="container-fluid">
+<div class="container-fluid product-display-container">
     <div class="row">
-        <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-2 d-flex">
             <div class="image-container my-5">
-                {% if product.image %}
-                <a href="{{ product.image.url }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% if product.main_product_image %}
+                <a href="{{ product.main_product_image.url }}" target="_blank">
+                    <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}"
+                        alt="{{ product.name }}">
                 </a>
                 {% else %}
                 <a href="">
                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                 </a>
                 {% endif %}
+                <hr>
+                <div class="mt-2 col-md-12 p-0 extra-product-images flexed">
+                    {% if product.small_image_1 %}
+                    <div class="col-md-6 p-0 m-0">
+                        <a href="{{ product.main_product_image.url }}" target="_blank">
+                            <img class="extra-images img-fluid p-0" src="{{ product.small_image_1.url }}"
+                                alt="{{ product.name }}">
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% if product.small_image_2 %}
+                    <div class="col-md-6 p-0 m-0">
+                        <a href="{{ product.main_product_image.url }}" target="_blank">
+                            <img class="extra-images img-fluid px-3" src="{{ product.small_image_2.url }}"
+                                alt="{{ product.name }}">
+                        </a>
+                    </div>
+                    {% endif %}
+
+                </div>
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">

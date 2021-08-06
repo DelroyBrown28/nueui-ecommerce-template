@@ -101,9 +101,9 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     <div class="{% if x.do_not_display %}
                         do-not-display {% else %} card h-100 {{ x.add_card_border }} {% endif %}"
                         style="border: 1px solid {{ x.border_color }}; background-color: {{ x.product_card_background_color }} !important">
-                        {% if product.image %}
+                        {% if product.main_product_image %}
                         <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}" alt="{{ product.name }}">
                         </a>
                         {% else %}
                         <a href="{% url 'product_detail' product.id %}">

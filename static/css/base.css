@@ -376,7 +376,8 @@ CONTACT PAGE
     font-size: 30px;
 }
 
-.contact-card, .card-footer {
+.contact-card,
+.card-footer {
     background-color: transparent;
     border: none;
 }
@@ -404,7 +405,7 @@ ABOUT PAGE
     margin-bottom: 0;
 }
 
-.about-page-blurb  {
+.about-page-blurb {
     font-size: 30px;
     font-weight: 300;
     width: 40%;
@@ -419,7 +420,7 @@ ABOUT PAGE
     padding: 0px 15px;
 }
 
-body > div:nth-child(12) > em > div > p {
+body>div:nth-child(12)>em>div>p {
     font-size: 30px;
     font-weight: 400;
     text-align: center;
@@ -467,11 +468,25 @@ body > div:nth-child(12) > em > div > p {
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
-  }
+}
 
-  .socials-inner {
-      align-items: flex-start !important;
-  }
+.socials-inner {
+    align-items: flex-start !important;
+}
+
+
+
+.extra-product-images {
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.extra-images {
+    height: auto;
+    width: auto;
+    object-fit: fill;
+
+}
 
 @media (max-width: 991px) {
     .header-container {
@@ -489,5 +504,15 @@ body > div:nth-child(12) > em > div > p {
 
     .left-image {
         display: none !important;
+    }
+
+    .product-display-container {
+        margin-top: 48px;
+    }
+
+    .extra-product-images {
+        height: 100px;
+        flex-flow: row;
+        justify-content: space-between;
     }
 }
