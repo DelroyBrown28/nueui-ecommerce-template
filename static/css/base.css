@@ -39,11 +39,62 @@ body {
 
 .homepage-bg-image {
     position: absolute;
-    /* height: 100%; */
     background: no-repeat center center fixed;
     background-size: cover !important;
     transform: translateY(-5px);
+    
+}
 
+.gradient-bg-image {
+    position: absolute;
+    background: linear-gradient(9deg, #7693a6, #a8bdbf, #c7d9d2, #659aa6);
+    background-size: 500% 500%;
+
+    -webkit-animation: AnimationName 15s ease-in-out infinite;
+    -moz-animation: AnimationName 15s ease-in-out infinite;
+    animation: AnimationName 15s ease-in-out infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 53% 0%
+    }
+
+    50% {
+        background-position: 48% 100%
+    }
+
+    100% {
+        background-position: 53% 0%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 53% 0%
+    }
+
+    50% {
+        background-position: 48% 100%
+    }
+
+    100% {
+        background-position: 53% 0%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 53% 0%
+    }
+
+    50% {
+        background-position: 48% 100%
+    }
+
+    100% {
+        background-position: 53% 0%
+    }
 }
 
 .do-not-display {
@@ -520,5 +571,5 @@ body>div:nth-child(12)>em>div>p {
         justify-content: space-between;
     }
 
- 
+
 }
