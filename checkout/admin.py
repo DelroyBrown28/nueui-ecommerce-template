@@ -61,6 +61,7 @@ class OrderAdmin(admin.ModelAdmin):
         'phone_number',
         'date',
         'order_total',
+        'user_profile',
         'delivery_cost',
         'grand_total',
         'order_number',
