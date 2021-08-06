@@ -9,32 +9,43 @@ class OrderLineItemAdminInline(admin.TabularInline):
 
 class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderLineItemAdminInline,)
-    readonly_fields = (
-        'order_number',
-        'date',
-        'delivery_cost',
-        'order_total',
-        'grand_total',
-        'stripe_pid',
+    fieldsets = (
+        (None, {
+            "fields": (
+                'order_number',
+            )
+        }),
+        ('Delivey Address', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'country',
+                'street_address1',
+                'street_address2',
+                'town_or_city',
+                'county',
+                'postcode',
+            )
+        }),
+        ('Customer Details', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'full_name',
+                'email',
+                'phone_number',
+            )
+        }),
+        ('Order Details', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'date',
+                'delivery_cost',
+                'order_total',
+                'grand_total',
+                'stripe_pid',
+            )
+        }),
     )
-    fields = (
-        'full_name',
-        'user_profile',
-        'order_number',
-        'date',
-        'email',
-        'phone_number',
-        'country',
-        'postcode',
-        'town_or_city',
-        'street_address1',
-        'street_address2',
-        'county',
-        'delivery_cost',
-        'order_total',
-        'grand_total',
-        'stripe_pid',
-    )
+
     list_display = (
         'full_name',
         'date',
@@ -43,15 +54,30 @@ class OrderAdmin(admin.ModelAdmin):
         'grand_total',
         'order_number',
     )
+    readonly_fields = (
+        'full_name',
+        'email',
+        'phone_number',
+        'date',
+        'order_total',
+        'delivery_cost',
+        'grand_total',
+        'order_number',
+        'country',
+        'street_address1',
+        'street_address2',
+        'town_or_city',
+        'county',
+        'postcode',
+    )
     search_fields = [
         'full_name',
         'date',
         'order_number',
+        'email',
+        'phone_number',
     ]
     ordering = ('-date',)
-    
-    
-    
-    
+
+
 admin.site.register(Order, OrderAdmin)
-    
