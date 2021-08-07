@@ -1,7 +1,7 @@
 {% for x in footer_customisation %}
 
 <footer class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} footer {% if request.get_full_path == '/' %} absolute-footer m-0 py-3 {% else %} mt-5 py-3 {% endif %}{% endif %}"
+        do-not-display {% else %} footer {% if request.get_full_path == '/' or 'products/' %} absolute-footer m-0 py-3 {% else %} mt-5 py-3 {% endif %}{% endif %}"
         style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">
   <div class="container text-center">
     <span class="">FOLLOW US ONLINE:</span>

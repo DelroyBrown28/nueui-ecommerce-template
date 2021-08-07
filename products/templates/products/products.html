@@ -13,27 +13,28 @@
 
 
 {% block content %}
-{% for y in global_styles  %}
+{% for y in global_styles %}
 <div class="{% if y.do_not_display %}
 do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.base_background_color }} !important;">
 </div>
 {% endfor global_styles %}
 
-{% for x in products_page_customisation  %}
-{% for y in global_styles  %}
+{% for x in products_page_customisation %}
+{% for y in global_styles %}
 <div class="container-fluid">
 
     <div class="row">
         <div class="col text-center mt-3">
+            {% if products|length > 0 %}
             <h2 class="{% if y.do_not_display %}
                 do-not-display {% else %} logo-font mt-5 mb-5 {% endif %}"
                 style="color: {{ y.base_font_color }} !important;">Products
             </h2>
-            {% for c in current_categories  %}
+            {% for c in current_categories %}
             <a class="category-badge text-decoration-none mr-2" href=" {% url 'products' %}?category={{c.name}}">
                 {% for x in products_page_customisation %}
                 <span class="{% if x.do_not_display %}
-                    do-not-display {% else %} p-2 mt-2 badge rounded-0 {% endif %}"
+                do-not-display {% else %} p-2 mt-2 badge rounded-0 {% endif %}"
                     style="border: 1px solid {{ x.category_tag_border_color }}; color: {{ x.category_tag_text_color }}">
                     {{c.friendly_name}}
                 </span>
@@ -44,6 +45,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
             <hr class="w-50 mb-1">
         </div>
     </div>
+
     <div class="row">
         <div class="product-container offset-1 col-10">
             <div class="row mt-1 mb-2">
@@ -71,8 +73,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                 (Z-A)</option>
                             <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>
                                 Category (A-Z)</option>
-                            <option value="category_desc"
-                                {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)
+                            <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>
+                                Category (Z-A)
                             </option>
                         </select>
                     </div>
@@ -93,8 +95,9 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                 </div>
             </div>
+            {% endif %}
             <div class="row">
-                {% for product in products  %}
+                {% for product in products %}
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
                     {% for x in products_page_customisation %}
@@ -103,7 +106,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                         style="border: 1px solid {{ x.border_color }}; background-color: {{ x.product_card_background_color }} !important">
                         {% if product.main_product_image %}
                         <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}" alt="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}"
+                                alt="{{ product.name }}">
                         </a>
                         {% else %}
                         <a href="{% url 'product_detail' product.id %}">
@@ -137,7 +141,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                             style="color: {{ x.product_card_font_color }}B3 !important;"
                                             href="{% url 'products' %}?category={{ product.category.name }}">
                                             <i class="fas fa-tag mr-1"
-                                                style="color: {{ x.product_card_icon_color }} !important;"></i>{{ product.category.friendly_name }}
+                                                style="color: {{ x.product_card_icon_color }} !important;"></i>{{
+                                            product.category.friendly_name }}
                                         </a>
                                     </p>
                                     {% endif %}
@@ -161,7 +166,9 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                             </div>
                         </div>
                     </div>
+
                     {% endfor %}
+
 
                 </div>
 
@@ -186,6 +193,29 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     <hr>
                 </div>
                 {% endif %}
+                {% empty %}
+                <div class="no-products-overlay flexed py-5">
+                    <div class="col-md-12 text-center py-5" style="height: 100%;">
+                        <h1 class="{% if y.do_not_display %}
+                            do-not-display {% else %} m-0 text-uppercase {% endif %}"
+                            style="color: {{ y.base_font_color }} !important">You have no products added
+                        </h1>
+                        <p class="my-5">You can easily add your first product by clicking the link below.<br>
+                            Once finished, you can add <a class="{% if y.do_not_display %}
+                            do-not-display {% else %} styling-link {% endif %}"
+                                style="color: {{ y.all_icon_colors }} !important;"
+                                href="/superadmin/page_customisations/globalsitestyling/" target="_blank">styling</a> to
+                            your pages to
+                            complete your brands look</p>
+                        <a class="{% if y.do_not_display %}
+                        do-not-display {% else %} py-2 px-3 go-to-products-link {% endif %}"
+                            style="background-color: {{ y.secondary_button_base_color }} !important;
+                            color: {{ y.secondary_button_text_color }} !important" href="/admin/products/product/" target="_blank">Click
+                            here to add
+                            your first product
+                        </a>
+                    </div>
+                </div>
                 {% endfor %}
             </div>
         </div>
