@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # My Stuff
+    # Site Stuff
     'context_processors',
     'page_customisations',
     'home',
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'checkout',
     'profiles',
     'about',
+    'testimonials',
     # Other
     'crispy_forms',
     'storages',

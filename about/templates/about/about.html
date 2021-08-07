@@ -4,7 +4,7 @@
 
 {% block content %}
 <!-- TOP IMAGE -->
-{% for y in global_styles  %}
+{% for y in global_styles %}
 
 <div class="{% if y.do_not_display %}
 do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.base_background_color }};"></div>
@@ -13,8 +13,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
 <!-- CONTENTS -->
 
-{% for x in about_page_customisation  %}
-{% for y in global_styles  %}
+{% for x in about_page_customisation %}
+{% for y in global_styles %}
 <h1 class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} about-page-title text-center {% endif %}" style="color: {{y.base_font_color}};">
     {{ x.about_section_title }}
@@ -25,11 +25,20 @@ do-not-display {% else %} d-flex justify-content-center about-blurb-wrap {% endi
     <p class="about-page-blurb text-center my-5"><em>"{{ x.about_section_blurb }}"</em></p>
 </div>
 
-<div class="{% if x.do_not_display or y.do_not_display %}
-do-not-display {% else %} container text-center mb-5 {% endif %}" style="color: {{ y.all_icon_colors }};">
-    <a style="color: inherit;" href="#getInTouch" data-bs-toggle="tooltip" data-bs-placement="top"
-        title="Get In Touch"><i class="fas fa-phone-alt"></i></a>
+<div class="container flexed">
+    <div class="{% if x.do_not_display or y.do_not_display %}
+do-not-display {% else %} text-center mr-3 mb-5 {% endif %}" style="color: {{ y.all_icon_colors }};">
+        <a style="color: inherit;" href="#getInTouch" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="Get In Touch"><i class="fas fa-phone-alt"></i></a>
+    </div>
+    <div class="{% if x.do_not_display or y.do_not_display %}
+do-not-display {% else %} text-center ml-3 mb-5 {% endif %}" style="color: {{ y.all_icon_colors }};">
+        <a style="color: inherit;" href="{% url 'testimonials' %}" data-bs-toggle="tooltip" data-bs-placement="top"
+            title="Testimonials"><i class="fas fa-comments"></i></a>
+    </div>  
 </div>
+
+
 <div class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} container {% endif %}">
     <hr style="background-color: #333;">
@@ -95,7 +104,7 @@ do-not-display {% else %} container d-flex justify-content-center {% endif %}"
                 data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
-    
+
 </div>
 {% endfor %}
 {% endfor %}
@@ -104,5 +113,7 @@ do-not-display {% else %} container d-flex justify-content-center {% endif %}"
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new bootstrap.Tooltip(tooltipTriggerEl)
     })
+
+
 </script>
 {% endblock content %}
