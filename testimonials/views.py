@@ -1,14 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
-# from page_customisations.models import HomePageCustomisation
+from page_customisations.models import TestimonialsPageCustomisation
 
 
 def testimonials(request):
     """Returns the Testimonials page."""
-    # home_page_customisation = HomePageCustomisation.objects.all()
-    # context = {
-    #     'home_page_customisation' : home_page_customisation,
-    # }
-    return render(request, 'testimonials/testimonials.html') #TODO: Add 'context'
-
+    testimonials = TestimonialsPageCustomisation.objects.all()
+    context = {
+        'testimonials' : testimonials,
+    }
+    return render(request, 'testimonials/testimonials.html', context)
 

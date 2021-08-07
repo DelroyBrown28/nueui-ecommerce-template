@@ -1,5 +1,5 @@
 {% for x in footer_customisation %}
-{% if request.get_full_path == '/' or products|length_is:"0" %}
+{% if request.get_full_path == '/' or 'testimonials' or products|length_is:"0" %}
 <footer class="{% if y.do_not_display or x.do_not_display %}
         do-not-display {% else %} footer absolute-footer m-0 py-3  {% endif %}"
         style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">

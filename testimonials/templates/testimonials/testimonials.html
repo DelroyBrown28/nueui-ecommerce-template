@@ -1,2 +1,101 @@
 {% extends 'base.html' %}
 
+{% block content %}
+
+<body class="testimonials-body">
+    <div class="overlay"></div>
+    <div class="container-fluid" style="height: 100%;">
+        <div class="gtco-testimonials">
+            <div class="owl-carousel owl-carousel1 owl-theme">
+
+                {% for x in testimonials_customisation %}
+                <div>
+                    <div class="card text-center">
+                        <img class="card-img-top"
+                            src="https://images.unsplash.com/photo-1572561300743-2dd367ed0c9a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=50&w=300"
+                            alt="">
+                        <div class="card-body">
+                            <h5>{{ x.recipients_name }} <br />
+                                <span class="my-4">
+                                    {% if x.twitter_link %}
+                                    <a class="testimonials-social-media-icons mx-2"
+                                        style="color: {{ x.social_media_icon_colors }} !important;"
+                                        href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    {% endif %}
+                                    {% if x.linkedin_link %}
+                                    <a class="testimonials-social-media-icons mx-2"
+                                        style="color: {{ x.social_media_icon_colors }} !important;"
+                                        href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    {% endif %}
+                                    {% if x.facebook_link %}
+                                    <a class="testimonials-social-media-icons mx-2"
+                                        style="color: {{ x.social_media_icon_colors }} !important;"
+                                        href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    {% endif %}
+                                    {% if x.instagram_link %}
+                                    <a class="testimonials-social-media-icons mx-2"
+                                        style="color: {{ x.social_media_icon_colors }} !important;"
+                                        href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
+                                        data-bs-placement="top" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    {% endif %}
+                                </span>
+                            </h5>
+                            <p class="card-text"><em>“ {{ x.testimonial|safe }} ”</em></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<script>
+    (function () {
+        "use strict";
+
+        var carousels = function () {
+            $(".owl-carousel1").owlCarousel({
+                loop: true,
+                center: true,
+                dots: false,
+                margin: 0,
+                responsiveClass: true,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: false
+                    },
+                    680: {
+                        items: 2,
+                        nav: false,
+                        loop: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true
+                    }
+                }
+            });
+        };
+
+        (function ($) {
+            carousels();
+        })(jQuery);
+    })();
+
+</script>
+{% endblock content %}

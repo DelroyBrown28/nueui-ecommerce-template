@@ -135,6 +135,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.request',
                 'context_processors.context_processors.header_customisation_processor',
+                'context_processors.context_processors.testimonials_customisation_processor',
                 'context_processors.context_processors.footer_customisation_processor',
                 'context_processors.context_processors.products_page_customisation_processor',
                 'context_processors.context_processors.global_styles_processor',

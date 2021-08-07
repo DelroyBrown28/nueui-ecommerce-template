@@ -5,7 +5,8 @@ from page_customisations.models import (HomePageCustomisation,
                                         ProductsPageCustomisation,
                                         GlobalSiteStyling,
                                         AboutPageCustomisation,
-                                        FooterCustomisation)
+                                        FooterCustomisation,
+                                        TestimonialsPageCustomisation)
 from BasicTemplateMain.admin import superadmin
 
 
@@ -259,9 +260,9 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
             'fields': (
                 ('twitter_link',
                  'linkedin_link'),
-                 ('facebook_link',
+                ('facebook_link',
                  'instagram_link'),
-                 'social_media_icon_colors',),
+                'social_media_icon_colors',),
 
         }),
     )
@@ -275,11 +276,39 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
     )
 
 
+class TestimonialsCustomisationAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                'recipients_name',)
+        }),
+        ('Socials Media Link(s)', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'twitter_link',
+                'linkedin_link',
+                'facebook_link',
+                'instagram_link',)
+
+        }),
+        ('The Testimonial', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'testimonial',),
+        }),
+    )
+    list_display = (
+        'recipients_name',
+    )
+
+
+
 """
 superadmin.register() to register for superuser admin
 """
 
 superadmin.register(HomePageCustomisation, HomePageCustomisationAdmin)
+superadmin.register(TestimonialsPageCustomisation, TestimonialsCustomisationAdmin)
 superadmin.register(FooterCustomisation, FooterCustomisationAdmin)
 superadmin.register(HeaderCustomisation, HeaderCustomisationAdmin)
 superadmin.register(ProductsPageCustomisation, ProductsPageCustomisationAdmin)
