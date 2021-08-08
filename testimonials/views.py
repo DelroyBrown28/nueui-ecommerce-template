@@ -5,6 +5,7 @@ from page_customisations.models import TestimonialsPageCustomisation
 
 def testimonials(request):
     """Returns the Testimonials page."""
+
     testimonials = TestimonialsPageCustomisation.objects.all()
     context = {
         'testimonials' : testimonials,
