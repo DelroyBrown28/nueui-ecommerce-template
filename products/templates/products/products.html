@@ -233,7 +233,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
 {% for x in footer_customisation %}
 <footer class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} footer mt-5 py-3  {% endif %}"
+        do-not-display {% else %} footer absolute-footer mt-5 py-3  {% endif %}"
         style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">
   <div class="container text-center">
     <span class="">FOLLOW US ONLINE:</span>
@@ -255,8 +255,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
     {% endif %}
   </div>
 </footer>
-
 {% endfor %}
+
 {% endblock content %}
 {% block postloadjs %}
 {{ block.super }}
