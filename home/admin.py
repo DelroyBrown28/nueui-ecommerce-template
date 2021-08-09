@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, Group
 # from taggit.admin import Tag
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from products.models import Product, Category
+from product_reviews.models import Comment
 from checkout.models import Order, OrderLineItem
 from BasicTemplateMain.admin import superadmin
 
@@ -101,6 +102,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 # admin.site.unregister(User)
+admin.site.register(Comment)
 admin.site.unregister(Group)
 admin.site.unregister(Site)
 admin.site.unregister(SocialToken)
