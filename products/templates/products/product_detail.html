@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% load static social_share %}
+{% load static social_share ratings %}
+
 
 
 {% block page_header %}
@@ -13,6 +14,14 @@
 
 
 {% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+</head>
+
+
+
 {% for y in global_styles %}
 <div class="{% if y.do_not_display %}
 do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.base_background_color }} !important;">
@@ -73,12 +82,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 {% for y in global_styles %}
                 <p class="{% if y.do_not_display %}
             do-not-display {% else %} small mt-1 mb-0 {% endif %}">
-                    <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}"
+                    <a class="text-muted" href="{% url 'products' %}?category={{ product.category.url_name }}"
                         style="color: {{ y.base_font_color }} !important;">
                         <i class="{% if y.do_not_display %}
                         do-not-display {% else %} fas fa-tag mr-1 {% endif %}" style="color: {{ y.all_icon_colors }};">
                         </i>
-                        {{ product.category.friendly_name }}
+                        {{ product.category.category_name }}
                     </a>
                 </p>
                 {% endfor global_styles %}
@@ -219,6 +228,11 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                 style="background-color: {{ y.secondary_button_base_color }} !important; color: {{ y.secondary_button_text_color }}"
                                 value="Add to Bag">
                             {% endfor global_styles %}
+                            {% for item in object_list %}
+
+                            {{ item.name }} and {{ item.ratings }}
+
+                            {% endfor %}
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         {% endwith %}

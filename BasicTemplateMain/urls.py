@@ -14,13 +14,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('superadmin/', superadmin.urls),
     path('djrichtextfield/', include('djrichtextfield.urls')),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
     # Website URLs
     path('accounts/', include('allauth.urls')),
-    path('', include('home.urls')),  
-    path('products/', include('products.urls')),  
-    path('bag/', include('bag.urls')),  
-    path('checkout/', include('checkout.urls')),  
-    path('profile/', include('profiles.urls')),  
-    path('about/', include('about.urls')),  
-    path('testimonials/', include('testimonials.urls')),  
+    path('', include('home.urls')),
+    path('products/', include('products.urls')),
+    path('bag/', include('bag.urls')),
+    path('checkout/', include('checkout.urls')),
+    path('profile/', include('profiles.urls')),
+    path('about/', include('about.urls')),
+    path('testimonials/', include('testimonials.urls')),
+  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

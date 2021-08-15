@@ -7,17 +7,17 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Categories'
     
-    name = models.CharField(max_length=254)
-    friendly_name = models.CharField(max_length=254, blank=False, null=False)
+    category_name = models.CharField(max_length=254, blank=False, null=False)
+    url_name = models.CharField(max_length=254)
     
     def __str__(self):
-        return self.name
+        return self.url_name
     
-    def get_friendly_name(self):
-        return self.friendly_name
+    def get_category_name(self):
+        return self.category_name
         
 class Product(models.Model):
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.CASCADE)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
@@ -32,6 +32,4 @@ class Product(models.Model):
     
     def __str__(self):
         return self.name
-    
-    
     

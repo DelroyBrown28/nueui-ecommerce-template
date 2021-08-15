@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'colorfield',
     'django_social_share',
+    'star_ratings',
     # Allauth Stuff
     'allauth',
     'allauth.account',
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'profiles',
     'about',
     'testimonials',
-    'product_reviews',
     # Other
     'crispy_forms',
     'storages',
@@ -135,6 +135,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
                 'django.template.context_processors.request',
+                'context_processors.context_processors.categories_processor',
                 'context_processors.context_processors.header_customisation_processor',
                 'context_processors.context_processors.testimonials_customisation_processor',
                 'context_processors.context_processors.footer_customisation_processor',

@@ -3,8 +3,6 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.models import User, Group 
 # from taggit.admin import Tag
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
-from products.models import Product, Category
-from product_reviews.models import Comment
 from checkout.models import Order, OrderLineItem
 from BasicTemplateMain.admin import superadmin
 
@@ -92,17 +90,16 @@ class ProductAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
-        'friendly_name',
+        'category_name',
         'name',
     )
     list_display_links = ('name',)
     list_editable = (
-        'friendly_name',
+        'category_name',
     )
 
 
 # admin.site.unregister(User)
-admin.site.register(Comment)
 admin.site.unregister(Group)
 admin.site.unregister(Site)
 admin.site.unregister(SocialToken)

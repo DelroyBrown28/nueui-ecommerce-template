@@ -36,13 +36,11 @@ class ProductAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
-        'friendly_name',
-        'name',
+        'category_name',
+        'url_name',
     )
-    list_display_links = ('name',)
-    list_editable = (
-        'friendly_name',
-    )
+    list_display_links = ('category_name',)
+    prepopulated_fields = {"url_name": ["category_name"]}
     
         
 
