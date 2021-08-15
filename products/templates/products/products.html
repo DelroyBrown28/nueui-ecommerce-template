@@ -31,7 +31,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 style="color: {{ y.base_font_color }} !important;">Products
             </h2>
             {% for c in current_categories %}
-            <a class="category-badge text-decoration-none mr-2" href=" {% url 'products' %}?category={{c.name}}">
+            <a class="category-badge text-decoration-none mr-2" href=" {% url 'products' %}?category={{c.url_name}}">
                 {% for x in products_page_customisation %}
                 <span class="{% if x.do_not_display %}
                 do-not-display {% else %} p-2 mt-2 badge rounded-0 {% endif %}"

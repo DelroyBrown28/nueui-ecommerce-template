@@ -20,7 +20,7 @@
         {% for c in categories_processor|slice:":5" %}
         <a class="{% if y.do_not_display or x.do_not_display %}
         do-not-display {% else %} logo-font nav-link text-black {% endif %}"
-            href="{% url 'products' %}?category={{ c.name }}" style="color: {{ y.base_font_color }} !important;">
+            href="{% url 'products' %}?category={{ c.url_name }}" style="color: {{ y.base_font_color }} !important;">
             {{ c.category_name }}
         </a>
         {% endfor %}

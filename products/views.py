@@ -36,8 +36,8 @@ def all_products(request):
         # Handles categories        
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
-            products = products.filter(category__name__in=categories)
-            categories = Category.objects.filter(name__in=categories)
+            products = products.filter(category__url_name__in=categories)
+            categories = Category.objects.filter(url_name__in=categories)
         
         # Handles Searches
         if 'q' in request.GET:
