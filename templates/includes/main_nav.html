@@ -13,9 +13,9 @@
 
 
         <a href="{% url 'products' %}" class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} logo-font nav-link text-black {% endif %}"
+        do-not-display {% else %} logo-font nav-link {% endif %}"
             style="color: {{ y.base_font_color }} !important;">
-            All Products
+            All Products <span class="mx-2">|</span>
         </a>
         {% for c in categories_processor|slice:":5" %}
         <a class="{% if y.do_not_display or x.do_not_display %}

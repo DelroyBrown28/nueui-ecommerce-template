@@ -580,6 +580,13 @@ CONTACT PAGE
     z-index: 1000;
 }
 
+.footer-link-boxes {
+    height: 150px;
+    flex-flow: column;
+    align-items: flex-start;
+    justify-content: space-between !important
+}
+
 
 /* 
 ==========
@@ -674,11 +681,12 @@ body>div:nth-child(12)>em>div>p {
 }
 
 .extra-images {
-    height: auto;
+    height: 500px;
     width: auto;
-    object-fit: fill;
+    /* object-fit: fill; */
 
 }
+
 
 .no-products-overlay {
     width: 100%;
@@ -687,7 +695,7 @@ body>div:nth-child(12)>em>div>p {
 
 .add-product-cards {
     color: #000 !important;
-    
+
 }
 
 .go-to-products-link {
@@ -732,5 +740,12 @@ body>div:nth-child(12)>em>div>p {
         justify-content: space-between;
     }
 
+    .footer-container footer {
+        flex-flow: column;
+    }
+
+    .footer-container footer div {
+        margin-top: 25px;
+    }
 
 }

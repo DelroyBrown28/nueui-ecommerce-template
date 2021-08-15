@@ -200,22 +200,25 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                             do-not-display {% else %} m-0 text-uppercase {% endif %}"
                             style="color: {{ y.base_font_color }} !important">You have no products added
                         </h1>
-                        <p class="my-5" style="text-transform: uppercase;">You can easily add your first product by following the simple steps below.</p>
+                        <p class="my-5" style="text-transform: uppercase;">You can easily add your first product by
+                            following the simple steps below.</p>
                         <div class="container">
                             <div class="row flexed">
-                                    <div class="card mx-3" style="width: 18rem;">
-                                        <a href="/admin/products/product/" target="_blank" class="card-body add-product-cards">
-                                            <i class="fas fa-3x fa-plus mb-3"></i>
-                                            <p>1. ADD PRODUCT</p>
-                                        </a>
-                                    </div>
-                                    <div class="card mx-3" style="width: 18rem;">
-                                        <a href="/superadmin/page_customisations/globalsitestyling/" target="_blank" class="card-body add-product-cards">
-                                            <i class="fas fa-3x fa-palette mb-3"></i>
-                                            <p>2. ADD STYLING</p>
-                                        </a>
-                                    </div>
-                             
+                                <div class="card mx-3" style="width: 18rem;">
+                                    <a href="/admin/products/product/" target="_blank"
+                                        class="card-body add-product-cards">
+                                        <i class="fas fa-3x fa-plus mb-3"></i>
+                                        <p>1. ADD PRODUCT</p>
+                                    </a>
+                                </div>
+                                <div class="card mx-3" style="width: 18rem;">
+                                    <a href="/superadmin/page_customisations/globalsitestyling/" target="_blank"
+                                        class="card-body add-product-cards">
+                                        <i class="fas fa-3x fa-palette mb-3"></i>
+                                        <p>2. ADD STYLING</p>
+                                    </a>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -235,34 +238,65 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
     </a>
 </div>
 
+
 {% for x in footer_customisation %}
-<footer class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} footer absolute-footer mt-5 py-3  {% endif %}"
-    style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">
-    <div class="container text-center">
-        <span class="">FOLLOW US ONLINE:</span>
-        {% if x.twitter_link %}
-        <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.twitter_link }}"
-            target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><i
-                class="fab fa-twitter"></i></a>
-        {% endif %}
-        {% if x.linkedin_link %}
-        <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.linkedin_link }}"
-            target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="LinkedIn"><i
-                class="fab fa-linkedin-in"></i></a>
-        {% endif %}
-        {% if x.facebook_link %}
-        <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.facebook_link }}"
-            target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><i
-                class="fab fa-facebook-f"></i></a>
-        {% endif %}
-        {% if x.instagram_link %}
-        <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.instagram_link }}"
-            target="_blank" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><i
-                class="fab fa-instagram"></i></a>
-        {% endif %}
-    </div>
-</footer>
+<div class="mt-5 redborder footer-container">
+    <footer class="container flexed py-5 my-3 pl-0 border-top">
+        <div class="col">
+            <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                <img src="{% static 'images/nueuiblack.png' %}" alt="logo" style="height: 55px;">
+            </a>
+            <p class="text-muted">©
+                <script>document.write(new Date().getFullYear())</script>
+            </p>
+        </div>
+
+        <div class="col footer-link-boxes flexed">
+            <h5 style="font-weight: 600;">Quick Links</h5>
+            {% for c in categories_processor|slice:":3" %}
+            <ul class="nav col">
+                <li class="nav-item mb-2">
+                    <a href="{% url 'products' %}?category={{ c.url_name }}" class="nav-link p-0 text-muted">
+                        {{ c.category_name }}</a>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+
+        <div class="col footer-link-boxes flexed">
+            <h5 style="font-weight: 600;">Contact</h5>
+            <ul class="nav col">
+                <li class="nav-item mb-2">
+                    {% if x.twitter_link %}
+                    <a class="mr-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    {% endif %}
+                    {% if x.linkedin_link %}
+                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    {% endif %}
+                    {% if x.facebook_link %}
+                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    {% endif %}
+                    {% if x.instagram_link %}
+                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Instagram"><i class="fab fa-instagram"></i></a>
+                    {% endif %}
+                </li>
+            </ul>
+            <p>Email: email@yaboy.com</p>
+            <p>Phone: 07795 128316</p>
+        </div>
+
+    </footer>
+</div>
 {% endfor %}
 
 {% endblock content %}

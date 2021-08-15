@@ -15,10 +15,6 @@
 
 {% block content %}
 
-<head>
-    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
-</head>
 
 
 
@@ -32,36 +28,73 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2 d-flex">
             <div class="image-container my-5">
-                {% if product.main_product_image %}
-                <a href="{{ product.main_product_image.url }}" target="_blank">
-                    <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}"
-                        alt="{{ product.name }}">
-                </a>
-                {% else %}
-                <a href="">
-                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                </a>
-                {% endif %}
-                <hr>
-                <div class="mt-2 col-md-12 p-0 extra-product-images flexed">
-                    {% if product.small_image_1 %}
-                    <div class="col-md-6 p-0 m-0">
-                        <a href="{{ product.main_product_image.url }}" target="_blank">
-                            <img class="extra-images img-fluid p-0" src="{{ product.small_image_1.url }}"
-                                alt="{{ product.name }}">
-                        </a>
-                    </div>
-                    {% endif %}
-                    {% if product.small_image_2 %}
-                    <div class="col-md-6 p-0 m-0">
-                        <a href="{{ product.main_product_image.url }}" target="_blank">
-                            <img class="extra-images img-fluid px-3" src="{{ product.small_image_2.url }}"
-                                alt="{{ product.name }}">
-                        </a>
-                    </div>
-                    {% endif %}
 
+
+
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if product.main_product_image %}
+                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                                <img class="card-img-top img-fluid p-0" src="{{ product.main_product_image.url }}"
+                                    alt="{{ product.name }}">
+                            </a>
+                            {% else %}
+                            <a href="">
+                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
+                                    alt="{{ product.name }}">
+                            </a>
+                            {% endif %}
+                        </div>
+
+                        <div class="carousel-item">
+                            {% if product.small_image_1 %}
+                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                                <img class="card-img-top img-fluid p-0" src="{{ product.small_image_1.url }}"
+                                    alt="{{ product.name }}">
+                            </a>
+                            {% else %}
+                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                                <img class="card-img-top img-fluid p-0" src="{{ product.main_product_image.url }}"
+                                    alt="{{ product.name }}">
+                            </a>
+                            {% endif %}
+                        </div>
+
+                        <div class="carousel-item">
+                            {% if product.small_image_2 %}
+                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                                <img class="card-img-top img-fluid p-0" src="{{ product.small_image_2.url }}"
+                                    alt="{{ product.name }}">
+                            </a>
+                            {% else %}
+                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                                <img class="card-img-top img-fluid p-0" src="{{ product.main_product_image.url }}"
+                                    alt="{{ product.name }}">
+                            </a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    {% for y in global_styles %}
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <i class="{% if y.do_not_display %}
+                        do-not-display {% else %} fas fa-arrow-left {% endif %}"
+                            style="color: {{ y.all_icon_colors }} !important"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <i class="{% if y.do_not_display %}
+                        do-not-display {% else %} fas fa-arrow-right {% endif %}"
+                            style="color: {{ y.all_icon_colors }} !important"></i>
+                    </a>
+                    {% endfor %}
                 </div>
+
             </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
@@ -82,12 +115,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 {% for y in global_styles %}
                 <p class="{% if y.do_not_display %}
             do-not-display {% else %} small mt-1 mb-0 {% endif %}">
-                    <a class="text-muted" href="{% url 'products' %}?category={{ product.category.url_name }}"
+                    <a class="text-muted" href="{% url 'products' %}?category={{ product.category.name }}"
                         style="color: {{ y.base_font_color }} !important;">
                         <i class="{% if y.do_not_display %}
                         do-not-display {% else %} fas fa-tag mr-1 {% endif %}" style="color: {{ y.all_icon_colors }};">
                         </i>
-                        {{ product.category.category_name }}
+                        {{ product.category.friendly_name }}
                     </a>
                 </p>
                 {% endfor global_styles %}
@@ -244,7 +277,75 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
     </div>
 
 </div>
+
+{% for x in footer_customisation %}
+<div class="mt-5 redborder footer-container">
+    <footer class="container flexed py-5 my-3 pl-0 border-top">
+        <div class="col">
+            <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                <img src="{% static 'images/nueuiblack.png' %}" alt="logo" style="height: 55px;">
+            </a>
+            <p class="text-muted">©
+                <script>document.write(new Date().getFullYear())</script>
+            </p>
+        </div>
+
+        <div class="col footer-link-boxes flexed">
+            <h5 style="font-weight: 600;">Quick Links</h5>
+            {% for c in categories_processor|slice:":5" %}
+            <ul class="nav col">
+                <li class="nav-item mb-2">
+                    <a href="{% url 'products' %}?category={{ c.url_name }}" class="nav-link p-0 text-muted">
+                        {{ c.category_name }}</a>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+
+        <div class="col footer-link-boxes flexed">
+            <h5 style="font-weight: 600;">Contact</h5>
+            <ul class="nav col">
+                <li class="nav-item mb-2">
+                    {% if x.twitter_link %}
+                    <a class="mr-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    {% endif %}
+                    {% if x.linkedin_link %}
+                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    {% endif %}
+                    {% if x.facebook_link %}
+                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    {% endif %}
+                    {% if x.instagram_link %}
+                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                        href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Instagram"><i class="fab fa-instagram"></i></a>
+                    {% endif %}
+                </li>
+            </ul>
+            <p>Email: email@yaboy.com</p>
+            <p>Phone: 07795 128316</p>
+        </div>
+
+    </footer>
+</div>
+{% endfor %}
 {% endblock content %}
+
+<script>
+    $('.carousel').carousel({
+        interval: 5000,
+        ride: false,
+        touch: true,
+    })
+</script>
 
 
 {% block postloadjs %}
