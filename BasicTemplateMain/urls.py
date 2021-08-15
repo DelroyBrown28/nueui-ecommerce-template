@@ -14,7 +14,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('superadmin/', superadmin.urls),
     path('djrichtextfield/', include('djrichtextfield.urls')),
-    path('ratings/', include('star_ratings.urls', namespace='ratings')),
     # Website URLs
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
