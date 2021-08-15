@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'colorfield',
     'django_social_share',
-    'star_ratings',
     # Allauth Stuff
     'allauth',
     'allauth.account',
