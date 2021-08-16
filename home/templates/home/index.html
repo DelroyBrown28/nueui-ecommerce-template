@@ -89,7 +89,7 @@
 
             {% if x.cta_card_1 %}
             <div class="{% if x.do_not_display or y.do_not_display %}
-                 do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
+                 do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in" style="">
                 <img src="{{x.cta_card_1.image.url}}" class="card-img-top" alt="...">
 
                 <div class="card-body text-center cta-card-title">
@@ -103,9 +103,11 @@
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
                do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
-                    <a href="products/?category={{ x.cta_card_1.button_url_choice }}" class="cta-btn-1" target="_blank"
-                        style=" background-color: black; color: white;">{{ x.cta_card_1.button_label }}</a>
-
+                    <a href="products/?category={{ x.cta_card_1.button_url_choice }}"
+                        class="cta-btn-1 flexed {{ x.cta_card_1.add_button_border }}" target="_blank" style="color: {{ x.cta_card_1.button_label_color }} !important;
+                        background-color: {{ x.cta_card_1.button_background_color }} !important;
+                        border: 2px solid {{ x.cta_card_1.border_color }} !important;">
+                        {{ x.cta_card_1.button_label }}</a>
                 </div>
             </div>
             {% endif %}
@@ -126,8 +128,11 @@
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
                do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
-                    <a href="products/?category={{ x.cta_card_2.button_url_choice }}" class="cta-btn-1" target="_blank"
-                        style=" background-color: black; color: white;">{{ x.cta_card_2.button_label }}
+                    <a href="products/?category={{ x.cta_card_2.button_url_choice }}"
+                        class="cta-btn-1 flexed {{ x.cta_card_2.add_button_border }}" target="_blank" style="color: {{ x.cta_card_2.button_label_color }} !important;
+                    background-color: {{ x.cta_card_2.button_background_color }} !important;
+                    border: 2px solid {{ x.cta_card_1.border_color }} !important;"">
+                        {{ x.cta_card_2.button_label }}
                     </a>
 
                 </div>
@@ -141,20 +146,27 @@
     </section>
 
 
-    <section class="cta-banner-section flexed" style="align-items:flex-end;">
-        <div class="jumbotron jumbotron-fluid cta-banner">
-            <div class="container flexed" style="flex-flow: column;">
-                {% for x in home_page_customisation  %}
-                <h1 class="display-5">{{ x.cta_banner_title|safe }}</h1>
-                <p class="lead">
-                    <a href="{{ x.cta_button_url }}" class="secondary-btn" target="_blank"
-                        style=" background-color: black; color: white;">
-                        {{ x.cta_button_label }}
-                    </a>
-                </p>
-                {% endfor %}
-            </div>
-        </div>
+    <section class=" cta-banner-section flexed" style="align-items:flex-end;">
+
+                        {% for x in home_page_customisation %}
+                        {% if x.cta_banner %}
+                        <div class="{% if x.do_not_display or y.do_not_display %}
+                        do-not-display {% else %} jumbotron jumbotron-fluid cta-banner {% endif %}"
+                            style="background-color: {{ x.cta_banner.banner_background_color }} !important;">
+                            <div class="container flexed" style="flex-flow: column;">
+
+                                <h1 class="display-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
+                                <p class="lead">
+                                    <a href="{{ x.cta_banner.cta_button_url }}" class="secondary-btn {{ x.cta_banner.add_button_border }}" target="_blank"
+                                    style="background-color: {{ x.cta_banner.button_background_color }} !important;
+                                            color: {{ x.cta_banner.label_color }} !important;">
+                                        {{ x.cta_banner.cta_button_label }}
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
     </section>
 
     <section class="footer-section">

@@ -1,4 +1,4 @@
-from page_customisations.models import ProductsPageCustomisation, CTACard
+from page_customisations.models import ProductsPageCustomisation, CTACard, CTABanner
 from products.models import Category, Product
 from page_customisations.views import (HeaderCustomisation,
                                        ProductsPageCustomisation,
@@ -23,6 +23,13 @@ def header_customisation_processor(request):
 def cta_processor(request):
     return {
         'cta_customisation': CTACard.objects.all(),
+
+    }
+
+
+def cta_banner_processor(request):
+    return {
+        'cta_banner_customisation': CTABanner.objects.all(),
 
     }
 

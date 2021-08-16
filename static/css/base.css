@@ -45,10 +45,12 @@ body {
     height: 100%;
     width: 100%;
 }
+
 .products-homepage-section {
     margin-top: 65px;
     margin-bottom: 65px;
 }
+
 .top-homepage-section {
     height: calc(100vh - 168px);
 }
@@ -59,6 +61,7 @@ body {
 
 .cta-banner {
     width: 100%;
+    flex-flow: column;
 }
 
 .footer-section {
@@ -97,16 +100,43 @@ body {
 
 .cta-btn-1,
 .cta-btn-2 {
-    padding: 20px 45px;
-    font-size: 1rem;
-    text-transform: uppercase;
+    display: inline-block;
+    min-width: 184px;
+    min-height: 44px;
+    padding: 9px 14px;
+    margin: 12px 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 39px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -moz-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -o-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -ms-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
 }
 
 .secondary-btn {
-    padding: 10px 85px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
+    display: inline-block;
+    min-width: 184px;
+    min-height: 44px;
+    padding: 9px 14px;
+    margin: 12px 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 39px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -moz-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -o-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -ms-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
 }
 
 /* 
@@ -802,7 +832,9 @@ body>div:nth-child(12)>em>div>p {
         justify-content: space-between;
     }
 
-
+    .cta-card {
+        margin: 20px 0px;
+    }
 
     .footer-container footer {
         flex-flow: column;

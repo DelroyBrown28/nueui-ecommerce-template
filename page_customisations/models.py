@@ -47,15 +47,50 @@ class GlobalSiteStyling(models.Model):
 
 
 class CTACard(models.Model):
+    ADD_BUTTON_BORDER = (
+        ('add-border', 'Add Border'),
+        ('no-border', 'Remove Border'),
+    )
     image = models.ImageField(null=False, blank=False,
                               upload_to='cta_card_images')
-    cta_title = models.CharField(blank=False, null=False, max_length=100, default="Default")
+    cta_title = models.CharField(
+        blank=False, null=False, max_length=100, default="Default")
+    cta_title_text_color = ColorField(format='hexa', default='#000000')
     cta_text = RichTextField()
-    button_url_choice = models.ForeignKey('products.Category', null=True, blank=True, related_name='button_url', on_delete=models.CASCADE)
+    button_url_choice = models.ForeignKey('products.Category', null=True, blank=True, related_name='button_url',
+                                          on_delete=models.CASCADE, help_text="Connect to one of your categories")
     button_label = models.CharField(max_length=25, blank=False, null=False)
+    button_background_color = ColorField(format='hexa', default='#000000')
+    button_label_color = ColorField(format='hexa', default='#FFFFFF')
+    add_button_border = models.TextField(choices=ADD_BUTTON_BORDER,
+                                         blank=False,
+                                         null=False,
+                                         default="no-border")
+    border_color = ColorField(format='hexa', default='#000000')
 
     def __str__(self):
         return self.cta_title
+
+
+class CTABanner(models.Model):
+    ADD_BUTTON_BORDER = (
+        ('add-border', 'Add Border'),
+        ('no-border', 'Remove Border'),
+    )
+    banner_title = models.CharField(max_length=25, blank=False, null=False, default='default', help_text='Banner Name')
+    cta_banner_title = RichTextField(default="")
+    cta_button_label = models.CharField(
+        max_length=25, null=False, blank=False, default="")
+    label_color = ColorField(format='hexa', default='#FFFFFF')
+    add_button_border = models.TextField(
+        choices=ADD_BUTTON_BORDER, blank=False, null=False, default='no-border')
+    border_color = ColorField(format='hexa', default='#000000')
+    button_background_color = ColorField(format='hexa', default='#000000')
+    cta_button_url = models.URLField(max_length=500, blank=True, null=True)
+    banner_background_color = ColorField(format='hexa', default='#000000')
+
+    def __str__(self):
+        return self.banner_title
 
 
 class HomePageCustomisation(models.Model):
@@ -83,11 +118,12 @@ class HomePageCustomisation(models.Model):
     button_background_color = ColorField(format='hexa')
     main_page_button_alignment = models.TextField(
         choices=BUTTON_ALIGNMENT_CHOICES, blank=False, null=False, default='text-align__left')
-    cta_card_1 = models.ForeignKey('CTACard', null=True, blank=True, related_name='cta_card_1', on_delete=models.CASCADE)
-    cta_card_2 = models.ForeignKey('CTACard', null=True, blank=True, related_name='cta_card_2', on_delete=models.CASCADE)
-    cta_banner_title = RichTextField(default="")
-    cta_button_label = models.CharField(max_length=25, null=False, blank=False, default="")
-    cta_button_url = models.URLField(max_length=500, blank=True, null=True)
+    cta_card_1 = models.ForeignKey(
+        'CTACard', null=True, blank=True, related_name='cta_card_1', on_delete=models.CASCADE)
+    cta_card_2 = models.ForeignKey(
+        'CTACard', null=True, blank=True, related_name='cta_card_2', on_delete=models.CASCADE)
+    cta_banner = models.ForeignKey(
+        'CTABanner', null=True, blank=True, related_name='cta_banner', on_delete=models.CASCADE)
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='CHECK THIS BOX TO HIDE THIS SPECIFIC STYLING.')

@@ -7,7 +7,8 @@ from page_customisations.models import (HomePageCustomisation,
                                         AboutPageCustomisation,
                                         FooterCustomisation,
                                         TestimonialsPageCustomisation,
-                                        CTACard)
+                                        CTACard,
+                                        CTABanner)
 from BasicTemplateMain.admin import superadmin
 
 
@@ -99,18 +100,16 @@ class HomePageCustomisationAdmin(admin.ModelAdmin):
         ('Choose/Create your Call To Action Card', {
             'classes': ('fieldset_titles',),
             'fields': (
-                ('cta_card_1',
-                'cta_card_2',),)
+                'cta_card_1',
+                'cta_card_2',),
 
         }),
-        ('CTA Banner', {
+        ('Choose/Create your Call To Action Banner', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'cta_banner_title',
-                'cta_button_label',
-                'cta_button_url',),
-
+                'cta_banner',),
         }),
+
         ('Tick this box to HIDE these styles', {
             'classes': ('fieldset_titles',),
             'fields': (
@@ -319,9 +318,59 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
 
 
 class CTACardAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                'image',)
+        }),
+        ('CTA Title & Text', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'cta_title',
+                'cta_title_text_color',
+                'cta_text',)
+
+        }),
+        ('CTA Button', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'button_label',
+                ('button_background_color',
+                 'button_label_color',),
+                'add_button_border',
+                'border_color',
+                'button_url_choice',)
+        }),
+    )
+    radio_fields = {'add_button_border': admin.HORIZONTAL}
     list_display = (
         'cta_title',
-        'cta_text',
+    )
+
+
+class CTABannerAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                'banner_title',
+                'cta_banner_title',
+                'banner_background_color',)
+        }),
+        ('CTA Banner Button', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'cta_button_label',
+                ('label_color',
+                 'button_background_color',),
+                'add_button_border',
+                'border_color',
+                'cta_button_url',)
+        }),
+
+    )
+    radio_fields = {'add_button_border': admin.HORIZONTAL}
+    list_display = (
+        'banner_title',
     )
 
 
@@ -329,6 +378,7 @@ class CTACardAdmin(admin.ModelAdmin):
 superadmin.register() to register for superuser admin
 """
 
+superadmin.register(CTABanner, CTABannerAdmin)
 superadmin.register(CTACard, CTACardAdmin)
 superadmin.register(HomePageCustomisation, HomePageCustomisationAdmin)
 superadmin.register(TestimonialsPageCustomisation,
