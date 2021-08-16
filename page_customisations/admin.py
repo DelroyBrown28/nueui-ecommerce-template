@@ -6,7 +6,8 @@ from page_customisations.models import (HomePageCustomisation,
                                         GlobalSiteStyling,
                                         AboutPageCustomisation,
                                         FooterCustomisation,
-                                        TestimonialsPageCustomisation)
+                                        TestimonialsPageCustomisation,
+                                        CTACard)
 from BasicTemplateMain.admin import superadmin
 
 
@@ -93,6 +94,21 @@ class HomePageCustomisationAdmin(admin.ModelAdmin):
                 'button_text_color',
                 'button_background_color',
                 'main_page_button_alignment',),
+
+        }),
+        ('Choose/Create your Call To Action Card', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                ('cta_card_1',
+                'cta_card_2',),)
+
+        }),
+        ('CTA Banner', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'cta_banner_title',
+                'cta_button_label',
+                'cta_button_url',),
 
         }),
         ('Tick this box to HIDE these styles', {
@@ -302,13 +318,21 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
     )
 
 
+class CTACardAdmin(admin.ModelAdmin):
+    list_display = (
+        'cta_title',
+        'cta_text',
+    )
+
 
 """
 superadmin.register() to register for superuser admin
 """
 
+superadmin.register(CTACard, CTACardAdmin)
 superadmin.register(HomePageCustomisation, HomePageCustomisationAdmin)
-superadmin.register(TestimonialsPageCustomisation, TestimonialsCustomisationAdmin)
+superadmin.register(TestimonialsPageCustomisation,
+                    TestimonialsCustomisationAdmin)
 superadmin.register(FooterCustomisation, FooterCustomisationAdmin)
 superadmin.register(HeaderCustomisation, HeaderCustomisationAdmin)
 superadmin.register(ProductsPageCustomisation, ProductsPageCustomisationAdmin)

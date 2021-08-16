@@ -16,81 +16,208 @@
 
 {% block content %}
 
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+        integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+        integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        AOS.init({
+            once: false,
+            anchorPlacement: 'bottom',
+            duration: 1000,
+        });
+    </script>
+</head>
+
 <body class="home-body">
 
-    {% for x in home_page_customisation %}
-    {% if x.image %}
-    <div class="{% if x.do_not_display %}
-    do-not-display {% else %} homepage-bg-image h-100 w-100 img-fluid {% endif %}"
-        style="background: url({{x.image.url}});">
-    </div>
-    {% else %}
-    <div class="{% if x.do_not_display %}
+    <section class="flexed top-homepage-section">
+        {% for x in home_page_customisation %}
+        {% if x.image %}
+        <div class="{% if x.do_not_display %}
+    do-not-display {% else %} homepage-bg-image w-100 img-fluid {% endif %}" style="background: url({{x.image.url}});">
+        </div>
+        {% else %}
+        <div class="{% if x.do_not_display %}
     do-not-display {% else %} gradient-bg-image h-100 w-100 img-fluid {% endif %}">
-    </div>
-    {% endif %}
-    {% endfor %}
+        </div>
+        {% endif %}
+        {% endfor %}
 
-    <div class=" container h-100" style="height: calc(100% - 162px) !important; margin-top: 100px !important;">
-        <div class="row h-100">
-            <div class="col-12 col-md-12 my-auto">
+        <div class="container h-100" style="height: calc(100% - 162px) !important; margin-top: 100px !important;">
+            <div class="row h-100">
+                <div class="col-12 col-md-12 my-auto">
 
-                {% for x in home_page_customisation %}
-                <h1 class="{% if x.do_not_display %}
+                    {% for x in home_page_customisation %}
+                    <h1 class="{% if x.do_not_display %}
                 do-not-display {% else %} display-4 logo-font main-page-text {{ x.main_page_text_alignment }} {% endif %}"
-                    style="color: {{ x.main_page_text_color }};">
-                    {{ x.main_page_text|safe }}</h1>
-                {% endfor %}
+                        style="color: {{ x.main_page_text_color }};">
+                        {{ x.main_page_text|safe }}</h1>
+                    {% endfor %}
 
-                {% for x in home_page_customisation %}
-                <div class="{% if x.do_not_display %}
+                    {% for x in home_page_customisation %}
+                    <div class="{% if x.do_not_display %}
                 do-not-display {% else %} my-5 {{ x.main_page_button_alignment }} {% endif %}">
-                    <h4>
-                        {% for x in home_page_customisation %}
-                        <a href="{% url 'products' %}" class="{% if x.do_not_display %}
+                        <h4>
+                            {% for x in home_page_customisation %}
+                            <a href="{% url 'products' %}" class="{% if x.do_not_display %}
                         do-not-display {% else %} shop-now-button btn btn-lg rounded-0 text-uppercase py-3 {% endif %}"
-                            style="background-color: {{ x.button_background_color }};">
+                                style="background-color: {{ x.button_background_color }};">
 
-                            <p class="{% if x.do_not_display %}
+                                <p class="{% if x.do_not_display %}
                             do-not-display {% endif %}" style="color: {{ x.button_text_color }}; margin: 0 !important">
-                                {{ x.button_text }}
-                            </p>
-                        </a>
-                        {% endfor %}
-                    </h4>
-                </div>
-                {% endfor %}
+                                    {{ x.button_text }}
+                                </p>
+                            </a>
+                            {% endfor %}
+                        </h4>
+                    </div>
+                    {% endfor %}
 
+                </div>
             </div>
         </div>
-    </div>
-    {% for x in footer_customisation %}
-{% if request.get_full_path == '/' %}
-<footer class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} footer mt-5 py-3 absolute-footer  {% endif %}"
-        style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">
-  <div class="container text-center">
-    <span class="">FOLLOW US ONLINE:</span>
-    {% if x.twitter_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Twitter"><i class="fab fa-twitter"></i></a>
-    {% endif %}
-    {% if x.linkedin_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    {% endif %}
-    {% if x.facebook_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    {% endif %}
-    {% if x.instagram_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
-    {% endif %}
-  </div>
-</footer>
-{% endif %}
-{% endfor %} 
+    </section>
+
+    <section class="products-homepage-section container">
+        <div class="row flexed">
+
+            {% for x in home_page_customisation %}
+
+            {% if x.cta_card_1 %}
+            <div class="{% if x.do_not_display or y.do_not_display %}
+                 do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
+                <img src="{{x.cta_card_1.image.url}}" class="card-img-top" alt="...">
+
+                <div class="card-body text-center cta-card-title">
+
+                    <p class="{% if x.do_not_display or y.do_not_display %}
+                  do-not-display {% else %} cta-title {% endif %}"
+                        style="color: {{ x.contact_card_text_color }} !important;">
+                        {{ x.cta_card_1.cta_text|safe }}
+                    </p>
+
+                </div>
+                <div class="{% if x.do_not_display or y.do_not_display %}
+               do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
+                    <a href="products/?category={{ x.cta_card_1.button_url_choice }}" class="cta-btn-1" target="_blank"
+                        style=" background-color: black; color: white;">{{ x.cta_card_1.button_label }}</a>
+
+                </div>
+            </div>
+            {% endif %}
+
+            {% if x.cta_card_2 %}
+            <div class="{% if x.do_not_display or y.do_not_display %}
+                 do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
+                <img src="{{x.cta_card_2.image.url}}" class="card-img-top" alt="...">
+
+                <div class="card-body text-center cta-card-title">
+
+                    <p class="{% if x.do_not_display or y.do_not_display %}
+                  do-not-display {% else %} cta-title {% endif %}"
+                        style="color: {{ x.contact_card_text_color }} !important;">
+                        {{ x.cta_card_2.cta_text|safe }}
+                    </p>
+
+                </div>
+                <div class="{% if x.do_not_display or y.do_not_display %}
+               do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
+                    <a href="products/?category={{ x.cta_card_2.button_url_choice }}" class="cta-btn-1" target="_blank"
+                        style=" background-color: black; color: white;">{{ x.cta_card_2.button_label }}
+                    </a>
+
+                </div>
+            </div>
+            {% endif %}
+
+
+
+            {% endfor %}
+        </div>
+    </section>
+
+
+    <section class="cta-banner-section flexed" style="align-items:flex-end;">
+        <div class="jumbotron jumbotron-fluid cta-banner">
+            <div class="container flexed" style="flex-flow: column;">
+                {% for x in home_page_customisation  %}
+                <h1 class="display-5">{{ x.cta_banner_title|safe }}</h1>
+                <p class="lead">
+                    <a href="{{ x.cta_button_url }}" class="secondary-btn" target="_blank"
+                        style=" background-color: black; color: white;">
+                        {{ x.cta_button_label }}
+                    </a>
+                </p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <section class="footer-section">
+        {% for x in footer_customisation %}
+        <div style="margin-top: 150px !important;" class="mt-5 footer-container">
+            <footer class="container flexed py-5 my-3 pl-0 border-top">
+                <div class="col">
+                    <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                        <img src="{% static 'images/nueuiblack.png' %}" alt="logo" style="height: 55px;">
+                    </a>
+                    <p class="text-muted">©
+                        <script>document.write(new Date().getFullYear())</script>
+                    </p>
+                </div>
+
+                <div class="col footer-link-boxes flexed">
+                    <h5 style="font-weight: 600;">Quick Links</h5>
+                    {% for c in categories_processor|slice:":5" %}
+                    <ul class="nav col">
+                        <li class="nav-item mb-2">
+                            <a href="{% url 'products' %}?category={{ c.url_name }}" class="nav-link p-0 text-muted">
+                                {{ c.category_name }}</a>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+
+                <div class="col footer-link-boxes flexed">
+                    <h5 style="font-weight: 600;">Contact</h5>
+                    <ul class="nav col">
+                        <li class="nav-item mb-2">
+                            {% if x.twitter_link %}
+                            <a class="mr-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            {% endif %}
+                            {% if x.linkedin_link %}
+                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            {% endif %}
+                            {% if x.facebook_link %}
+                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            {% endif %}
+                            {% if x.instagram_link %}
+                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                    <p>Email: email@yaboy.com</p>
+                    <p>Phone: 07795 128316</p>
+                </div>
+
+            </footer>
+        </div>
+        {% endfor %}
+    </section>
 </body>
 
 

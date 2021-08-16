@@ -240,7 +240,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
 
 {% for x in footer_customisation %}
-<div class="mt-5 redborder footer-container">
+<div class="mt-5 footer-container">
     <footer class="container flexed py-5 my-3 pl-0 border-top">
         <div class="col">
             <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
@@ -253,7 +253,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
         <div class="col footer-link-boxes flexed">
             <h5 style="font-weight: 600;">Quick Links</h5>
-            {% for c in categories_processor|slice:":3" %}
+            {% for c in categories_processor|slice:":5" %}
             <ul class="nav col">
                 <li class="nav-item mb-2">
                     <a href="{% url 'products' %}?category={{ c.url_name }}" class="nav-link p-0 text-muted">

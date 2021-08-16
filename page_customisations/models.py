@@ -1,4 +1,5 @@
 from django.db import models
+from products.models import Category
 from djrichtextfield.models import RichTextField
 from colorfield.fields import ColorField
 
@@ -45,6 +46,18 @@ class GlobalSiteStyling(models.Model):
         return self.global_site_styles
 
 
+class CTACard(models.Model):
+    image = models.ImageField(null=False, blank=False,
+                              upload_to='cta_card_images')
+    cta_title = models.CharField(blank=False, null=False, max_length=100, default="Default")
+    cta_text = RichTextField()
+    button_url_choice = models.ForeignKey('products.Category', null=True, blank=True, related_name='button_url', on_delete=models.CASCADE)
+    button_label = models.CharField(max_length=25, blank=False, null=False)
+
+    def __str__(self):
+        return self.cta_title
+
+
 class HomePageCustomisation(models.Model):
     TEXT_ALIGNMENT_CHOICES = {
         ('text-align__right', 'Right'),
@@ -57,7 +70,7 @@ class HomePageCustomisation(models.Model):
         ('text-align__center', 'Center'),
     }
     home_page_styling = models.CharField(
-        blank=False, null=False, max_length=35, default="Name This Styling...")
+        blank=False, null=False, max_length=35, default="Default")
     image = models.ImageField(null=True, blank=True,
                               upload_to='home_page_images')
     main_page_text = RichTextField()
@@ -70,6 +83,11 @@ class HomePageCustomisation(models.Model):
     button_background_color = ColorField(format='hexa')
     main_page_button_alignment = models.TextField(
         choices=BUTTON_ALIGNMENT_CHOICES, blank=False, null=False, default='text-align__left')
+    cta_card_1 = models.ForeignKey('CTACard', null=True, blank=True, related_name='cta_card_1', on_delete=models.CASCADE)
+    cta_card_2 = models.ForeignKey('CTACard', null=True, blank=True, related_name='cta_card_2', on_delete=models.CASCADE)
+    cta_banner_title = RichTextField(default="")
+    cta_button_label = models.CharField(max_length=25, null=False, blank=False, default="")
+    cta_button_url = models.URLField(max_length=500, blank=True, null=True)
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='CHECK THIS BOX TO HIDE THIS SPECIFIC STYLING.')

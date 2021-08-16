@@ -26,22 +26,52 @@ body {
 }
 
 .home-body {
-    height: calc(100% - 164px);
-    overflow: hidden;
-
+    height: fit-content;
+    /* overflow: hidden; */
 
 }
+
+
 
 .absolute-footer {
     position: absolute !important;
     bottom: 0 !important;
 }
 
+.top-homepage-section,
+.products-homepage-section,
+.cta-banner-section {
+    position: relative !important;
+    height: 100%;
+    width: 100%;
+}
+.products-homepage-section {
+    margin-top: 65px;
+    margin-bottom: 65px;
+}
+.top-homepage-section {
+    height: calc(100vh - 168px);
+}
+
+.cta-banner-section {
+    padding: 0;
+}
+
+.cta-banner {
+    width: 100%;
+}
+
+.footer-section {
+    position: relative;
+}
+
 .homepage-bg-image {
     position: absolute;
+    height: 100%;
     background: no-repeat center center fixed;
     background-size: cover !important;
     transform: translateY(-5px);
+
 
 }
 
@@ -53,6 +83,30 @@ body {
     -webkit-animation: AnimationName 15s ease-in-out infinite;
     -moz-animation: AnimationName 15s ease-in-out infinite;
     animation: AnimationName 15s ease-in-out infinite;
+}
+
+.cta-card {
+    border: none !important;
+    box-shadow: none;
+}
+
+.cta-card-title p {
+    margin: 0 !important;
+    font-size: 1.3rem;
+}
+
+.cta-btn-1,
+.cta-btn-2 {
+    padding: 20px 45px;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.secondary-btn {
+    padding: 10px 85px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 
 /* 
@@ -712,6 +766,10 @@ body>div:nth-child(12)>em>div>p {
     opacity: 0.3;
 }
 
+.footer-container {
+    position: relative !important;
+}
+
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
@@ -739,6 +797,8 @@ body>div:nth-child(12)>em>div>p {
         flex-flow: row;
         justify-content: space-between;
     }
+
+
 
     .footer-container footer {
         flex-flow: column;

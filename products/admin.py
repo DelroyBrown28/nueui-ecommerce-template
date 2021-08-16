@@ -11,6 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
                 'name',
                 'category',
                 'price',
+                'description',
                 'has_sizes',
                 'rating',)
         }),
