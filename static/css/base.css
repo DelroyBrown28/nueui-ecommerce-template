@@ -517,6 +517,10 @@ category-badge span {
     border: 1px solid #333;
 }
 
+.free-delivery-box {
+    flex-flow: column;
+}
+
 
 
 /* -------------------------------- Media Queries */

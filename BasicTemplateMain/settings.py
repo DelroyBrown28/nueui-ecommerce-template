@@ -63,8 +63,8 @@ DJRICHTEXTFIELD_CONFIG = {
     'init_template': 'djrichtextfield/init/tinymce.js',
     'settings': {
         'menubar': False,
-        'plugins': 'link image',
-        'toolbar': 'bold italic | link image | removeformat',
+        'plugins': 'link image textcolor',
+        'toolbar': 'bold italic | link image | removeformat | forecolor backcolor',
         'width': 700
     }
 }

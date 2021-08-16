@@ -120,25 +120,21 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                         <i class="{% if y.do_not_display %}
                         do-not-display {% else %} fas fa-tag mr-1 {% endif %}" style="color: {{ y.all_icon_colors }};">
                         </i>
-                        {{ product.category.friendly_name }}
+                        {{ product.category.category_name }}
                     </a>
                 </p>
+                  
+                {% if free_delivery_delta > 0 %}
+
+                <div class="{% if y.do_not_display %}
+                do-not-display {% else %} free-delivery-box col-md-4 p-2 flexed my-3 redborder {% endif %}"
+                    style="border: 1px solid {{ y.all_icon_colors }} !important; color: {{ y.base_font_color }} !important">
+                    <p style="margin: 0;">Free delivery on all orders over £{{ free_delivery_threshold }}!</p>
+                </div>
+                {% endif %}
                 {% endfor global_styles %}
                 {% endif %}
 
-                {% if product.rating %}
-                {% for y in global_styles %}
-                <small class="{% if y.do_not_display %}
-                do-not-display {% else %} test-muted {% endif %}" style="color: {{ y.base_font_color }} !important;">
-                    <i class="{% if y.do_not_display %}
-                    do-not-display {% else %} fa fa-star mr-1 {% endif %}" style="color: {{ y.all_icon_colors }};">
-                    </i>
-                    {{ product.rating }} / 5
-                </small>
-                {% endfor global_styles %}
-                {% else %}
-                <small class="test-muted">NO RATING</small>
-                {% endif %}
                 {% if request.user.is_superuser %}
                 <small class="ml-3">
                     <a href="{% url 'edit_product' product.id %}">Edit</a> |
@@ -147,8 +143,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 {% endif %}
                 {% for y in global_styles %}
                 <p class="{% if y.do_not_display %}
-                do-not-display {% else %} mt-3 {% endif %}" style="color: {{ y.base_font_color }};">
-                    {{ product.description }}
+                do-not-display {% else %} mt-3 {% endif %}" style="color: {{ y.base_font_color }} !important;">
+                    {{ product.description|safe }}
                 </p>
                 <hr>
                 <div class="socials d-flex">
@@ -241,6 +237,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="col{% if s %}-12 mt-2 {% endif %}">
                             {% for y in global_styles %}
@@ -279,7 +276,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 </div>
 
 {% for x in footer_customisation %}
-<div class="mt-5 redborder footer-container">
+<div class="mt-5 footer-container">
     <footer class="container flexed py-5 my-3 pl-0 border-top">
         <div class="col">
             <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">

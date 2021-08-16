@@ -141,8 +141,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                             style="color: {{ x.product_card_font_color }}B3 !important;"
                                             href="{% url 'products' %}?category={{ product.category.url_name }}">
                                             <i class="fas fa-tag mr-1"
-                                                style="color: {{ x.product_card_icon_color }} !important;"></i>{{
-                                            product.category.category_name }}
+                                                style="color: {{ x.product_card_icon_color }} !important;"></i>
+                                                {{ product.category.category_name }}
                                         </a>
                                     </p>
                                     {% endif %}
