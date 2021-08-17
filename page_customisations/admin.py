@@ -74,14 +74,14 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
 
 class HomePageCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('None', {
             "fields": (
                 'home_page_styling',
                 'image',)
         }),
 
         ('Main Text', {
-            'classes': ('fieldset_titles',),
+            'classes': ('fieldset_titles', 'collapse in',),
             'fields': (
                 'main_page_text',
                 'main_page_text_alignment',
@@ -290,10 +290,11 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
             'classes': ('fieldset_titles',),
             'fields': (
                 ('background_color',
-                 'text_color'),)
+                 'text_color'),
+                 'footer_top_border_color'),
 
         }),
-        ('Background and text colors', {
+        ('Footer Logo', {
             'classes': ('fieldset_titles',),
             'fields': (
                 'footer_logo',),

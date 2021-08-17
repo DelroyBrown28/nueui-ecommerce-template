@@ -334,6 +334,7 @@ class FooterCustomisation(models.Model):
     text_color = ColorField(format='hex', default='#FFFFFF')
     footer_logo = models.ImageField(
         null=True, blank=True, upload_to='footer_logo_images')
+    footer_top_border_color = ColorField(format='hex', default='#000000')
 
     twitter_link = models.URLField(
         max_length=200, blank=True, null=True, default='https://twitter.com/')

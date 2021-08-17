@@ -194,7 +194,7 @@
     {% for x in header_customisation %}
 
     <div class="{% if x.do_not_display %}
-     do-not-display {% else %} row text-center flexed small-banner-wrap {% endif %}"
+     do-not-display {% else %} row text-center flexed small-banner-wrap {% endif %}" data-aos="fade-in" data-aos-delay="1000"
         style="background-color: {{ x.small_banner_background_color }};">
         <a href="{{ x.banner_button_url_link_1 }}" target="_blank" class="{% if x.do_not_display %}
         do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}"
