@@ -280,7 +280,7 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
             'classes': ('fieldset_titles',),
             'fields': (
                 ('email',
-                'contact_number',),)
+                 'contact_number',),)
 
         }),
         ('Social Media Links', {
@@ -302,6 +302,7 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
 
     )
+
 
 
 class TestimonialsCustomisationAdmin(admin.ModelAdmin):

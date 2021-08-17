@@ -2,10 +2,10 @@ from django.db import models
 from django.db.models.fields import EmailField
 from django.db.models.fields.json import HasKeyLookup
 from products.models import Category
+from django.utils.html import mark_safe
 from djrichtextfield.models import RichTextField
 from colorfield.fields import ColorField
 from phonenumber_field.modelfields import PhoneNumberField
-
 
 
 class GlobalSiteStyling(models.Model):
@@ -338,7 +338,6 @@ class FooterCustomisation(models.Model):
                                          default=False,
                                          help_text='**Check this box to hide this specific styling.')
 
-
     class Meta:
         verbose_name_plural = ' Footer'
 
@@ -352,6 +351,7 @@ class FooterCustomisation(models.Model):
             except FooterCustomisation.DoesNotExist:
                 pass
         super(FooterCustomisation, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.styling_name

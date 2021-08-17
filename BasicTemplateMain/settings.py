@@ -8,7 +8,8 @@ environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY', 'VvaiPndWPNY9forzEEu4ldJKPZe5zZs4oxIY8iKAxmLvn8C9BW1w6t0a3IFs')
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', 'VvaiPndWPNY9forzEEu4ldJKPZe5zZs4oxIY8iKAxmLvn8C9BW1w6t0a3IFs')
 
 DEBUG = True
 
@@ -16,9 +17,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['nueui-basictemplate.herokuapp.com', 'localhost', '*']
 
 
-
 INSTALLED_APPS = [
-    #Jet Stuff
+    # Jet Stuff
     'jet.dashboard',
     'jet',
     # Django Stuff
@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'colorfield',
     'django_social_share',
     'phonenumber_field',
+
     # Allauth Stuff
     'allauth',
     'allauth.account',
@@ -71,17 +72,16 @@ DJRICHTEXTFIELD_CONFIG = {
 }
 
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
- 
+
 if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = 'nueui-ecommerce-template'
     AWS_S3_REGION_NAME = 'eu-west-2'
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-    
+
     STATICFILES_STORAGE = 'custom_storages.StaticStorage'
     STATICFILES_LOCATION = 'static/'
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
@@ -89,7 +89,6 @@ if 'USE_AWS' in os.environ:
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
-    
 
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
@@ -110,8 +109,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-
 
 
 ROOT_URLCONF = 'BasicTemplateMain.urls'
@@ -159,11 +156,10 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
-    
+
 )
 
 WSGI_APPLICATION = 'BasicTemplateMain.wsgi.application'
-
 
 
 if 'DATABASE_URL' in os.environ:
@@ -193,7 +189,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 
 LANGUAGE_CODE = 'en-us'
@@ -239,7 +234,7 @@ if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 else:
-    EMAIL_BACKEND =  'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_POST = 587
     EMAIL_HOST = 'smtp.gmail.com'
@@ -250,4 +245,3 @@ else:
 
 TINYMCE_JS_URL = 'https://cdn.tiny.cloud/1/ejfej7wzcg1hib8eew1onmh8d577qbpz8zcxwbb9ldzpk69m/tinymce/5/tinymce.min.js'
 TINYMCE_COMPRESSOR = False
-
