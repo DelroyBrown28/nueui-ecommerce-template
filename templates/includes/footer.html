@@ -1,51 +1,63 @@
-{% comment %} {% for x in footer_customisation %}
-{% if request.get_full_path == '/' or 'testimonials' or products|length_is:"0" %}
-<footer class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} footer absolute-footer m-0 py-3  {% endif %}"
-        style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">
-  <div class="container text-center">
-    <span class="">FOLLOW US ONLINE:</span>
-    {% if x.twitter_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Twitter"><i class="fab fa-twitter"></i></a>
-    {% endif %}
-    {% if x.linkedin_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    {% endif %}
-    {% if x.facebook_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    {% endif %}
-    {% if x.instagram_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
-    {% endif %}
-  </div>
-</footer>
-{% else %}
-<footer class="{% if y.do_not_display or x.do_not_display %}
-        do-not-display {% else %} footer mt-5 py-3  {% endif %}"
-        style="background-color: {{ x.background_color }} !important; color: {{ x.text_color }}">
-  <div class="container text-center">
-    <span class="">FOLLOW US ONLINE:</span>
-    {% if x.twitter_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Twitter"><i class="fab fa-twitter"></i></a>
-    {% endif %}
-    {% if x.linkedin_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    {% endif %}
-    {% if x.facebook_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-    {% endif %}
-    {% if x.instagram_link %}
-    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;" href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
-        data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
-    {% endif %}
-  </div>
-</footer>
-{% endif %}
-{% endfor %} {% endcomment %}
+ {% load static %}
+ 
+ <section class="footer-section">
+        {% for x in footer_customisation %}
+        <div style="margin-top: 150px !important;" class="mt-5 footer-container">
+            <footer class="container flexed py-5 my-3 pl-0 border-top">
+                <div class="col">
+                    <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+                        <img src="{% static 'images/nueuiblack.png' %}" alt="logo" style="height: 55px;">
+                    </a>
+                    <p class="text-muted">©
+                        <script>document.write(new Date().getFullYear())</script>
+                    </p>
+                </div>
+
+                <div class="col footer-link-boxes flexed">
+                    <h5 style="font-weight: 600;">Quick Links</h5>
+                    {% for c in categories_processor|slice:":5" %}
+                    <ul class="nav col">
+                        <li class="nav-item mb-2">
+                            <a href="{% url 'products' %}?category={{ c.url_name }}" class="nav-link p-0 text-muted">
+                                {{ c.category_name }}</a>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </div>
+
+                <div class="col footer-link-boxes flexed">
+                    <h5 style="font-weight: 600;">Contact</h5>
+                    <ul class="nav col">
+                        <li class="nav-item mb-2">
+                            {% if x.twitter_link %}
+                            <a class="mr-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            {% endif %}
+                            {% if x.linkedin_link %}
+                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            {% endif %}
+                            {% if x.facebook_link %}
+                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            {% endif %}
+                            {% if x.instagram_link %}
+                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
+                                href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                    <p>Email: {{ x.email }}</p>
+                    <p>Phone: {{ x.contact_number }}</p>
+                </div>
+
+            </footer>
+        </div>
+        {% endfor %}
+    </section>

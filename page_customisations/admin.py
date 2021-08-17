@@ -270,6 +270,19 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
                  'text_color'),)
 
         }),
+        ('Background and text colors', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'footer_logo',),
+
+        }),
+        ('Contact Information', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                ('email',
+                'contact_number',),)
+
+        }),
         ('Social Media Links', {
             'classes': ('fieldset_titles',),
             'fields': (

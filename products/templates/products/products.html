@@ -239,65 +239,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 </div>
 
 
-{% for x in footer_customisation %}
-<div class="mt-5 footer-container">
-    <footer class="container flexed py-5 my-3 pl-0 border-top">
-        <div class="col">
-            <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                <img src="{% static 'images/nueuiblack.png' %}" alt="logo" style="height: 55px;">
-            </a>
-            <p class="text-muted">©
-                <script>document.write(new Date().getFullYear())</script>
-            </p>
-        </div>
-
-        <div class="col footer-link-boxes flexed">
-            <h5 style="font-weight: 600;">Quick Links</h5>
-            {% for c in categories_processor|slice:":5" %}
-            <ul class="nav col">
-                <li class="nav-item mb-2">
-                    <a href="{% url 'products' %}?category={{ c.url_name }}" class="nav-link p-0 text-muted">
-                        {{ c.category_name }}</a>
-                </li>
-            </ul>
-            {% endfor %}
-        </div>
-
-        <div class="col footer-link-boxes flexed">
-            <h5 style="font-weight: 600;">Contact</h5>
-            <ul class="nav col">
-                <li class="nav-item mb-2">
-                    {% if x.twitter_link %}
-                    <a class="mr-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                        href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    {% endif %}
-                    {% if x.linkedin_link %}
-                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                        href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    {% endif %}
-                    {% if x.facebook_link %}
-                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                        href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    {% endif %}
-                    {% if x.instagram_link %}
-                    <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                        href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Instagram"><i class="fab fa-instagram"></i></a>
-                    {% endif %}
-                </li>
-            </ul>
-            <p>Email: email@yaboy.com</p>
-            <p>Phone: 07795 128316</p>
-        </div>
-
-    </footer>
-</div>
-{% endfor %}
+{% include "includes/footer.html" %}
 
 {% endblock content %}
 {% block postloadjs %}

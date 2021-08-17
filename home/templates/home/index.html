@@ -169,7 +169,7 @@
                         {% endfor %}
     </section>
 
-    <section class="footer-section">
+    <!-- <section class="footer-section">
         {% for x in footer_customisation %}
         <div style="margin-top: 150px !important;" class="mt-5 footer-container">
             <footer class="container flexed py-5 my-3 pl-0 border-top">
@@ -222,14 +222,16 @@
                             {% endif %}
                         </li>
                     </ul>
-                    <p>Email: email@yaboy.com</p>
-                    <p>Phone: 07795 128316</p>
+                    <p>Email: {{ x.email }}</p>
+                    <p>Phone: {{ x.contact_number }}</p>
                 </div>
 
             </footer>
         </div>
         {% endfor %}
-    </section>
+    </section> -->
+
+    {% include "includes/footer.html" %}
 </body>
 
 

@@ -1,7 +1,11 @@
 from django.db import models
+from django.db.models.fields import EmailField
+from django.db.models.fields.json import HasKeyLookup
 from products.models import Category
 from djrichtextfield.models import RichTextField
 from colorfield.fields import ColorField
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 
 class GlobalSiteStyling(models.Model):
@@ -77,7 +81,8 @@ class CTABanner(models.Model):
         ('add-border', 'Add Border'),
         ('no-border', 'Remove Border'),
     )
-    banner_title = models.CharField(max_length=25, blank=False, null=False, default='default', help_text='Banner Name')
+    banner_title = models.CharField(
+        max_length=25, blank=False, null=False, default='default', help_text='Banner Name')
     cta_banner_title = RichTextField(default="")
     cta_button_label = models.CharField(
         max_length=25, null=False, blank=False, default="")
@@ -312,6 +317,8 @@ class FooterCustomisation(models.Model):
         blank=False, null=False, max_length=55, default="Default")
     background_color = ColorField(format='hex', default='#333333')
     text_color = ColorField(format='hex', default='#FFFFFF')
+    footer_logo = models.ImageField(
+        null=True, blank=True, upload_to='footer_logo_images')
 
     twitter_link = models.URLField(
         max_length=200, blank=True, null=True, default='https://twitter.com/')
@@ -323,10 +330,14 @@ class FooterCustomisation(models.Model):
         max_length=200, blank=True, null=True, default='https://instagram.com/')
 
     social_media_icon_colors = ColorField(format='hex', default='FFFFFF')
+    email = models.EmailField(
+        null=True, blank=True, help_text='Enter your email to display in the footer.')
+    contact_number = PhoneNumberField(null=True, blank=True)
 
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='**Check this box to hide this specific styling.')
+
 
     class Meta:
         verbose_name_plural = ' Footer'

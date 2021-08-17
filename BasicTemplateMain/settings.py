@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'colorfield',
     'django_social_share',
+    'phonenumber_field',
     # Allauth Stuff
     'allauth',
     'allauth.account',
