@@ -802,6 +802,7 @@ body>div:nth-child(12)>em>div>p {
 
 .footer-container {
     position: relative !important;
+    margin-top: 150px !important;
 }
 
 @media (max-width: 991px) {
