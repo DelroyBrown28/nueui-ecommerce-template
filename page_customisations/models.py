@@ -152,16 +152,31 @@ class HomePageCustomisation(models.Model):
 
 
 class HeaderCustomisation(models.Model):
+    ADD_BUTTON_BORDER = (
+        ('add-border', 'Add Border'),
+        ('no-border', 'Remove Border'),
+    )
     header_styling = models.CharField(
         blank=False, null=False, max_length=55, default="Default Styling")
     header_logo = models.ImageField(null=True, blank=True, upload_to='media')
     header_background_color = ColorField(format='hexa')
     search_icon_color = ColorField(format='hexa')
     search_icon_background_color = ColorField(format='hexa')
-    small_banner_text = models.CharField(
-        blank=False, null=False, max_length=100, default="Welcome")
+    small_banner_text = RichTextField()
     small_banner_background_color = ColorField(format='hexa')
     small_banner_text_color = ColorField(format='hexa')
+    banner_button_label_1 = models.CharField(default='', blank=False, null=False, max_length=25)
+    banner_button_url_link_1 = models.URLField(blank=True, null=True, max_length=250)
+    banner_button_label_2 = models.CharField(default='', blank=False, null=False, max_length=25)
+    banner_button_url_link_2 = models.URLField(blank=True, null=True, max_length=250)
+    banner_button_background_color = ColorField(format='hexa', default='#FFFFFF')
+    banner_button_label_color = ColorField(format='hexa', default='#000000')
+    button_border = models.TextField(choices=ADD_BUTTON_BORDER, null=True, blank=True, default='no-border')
+    button_border_color = ColorField(format='hexa', default='#000000')
+    mobile_banner_button_background_color = ColorField(format='hexa', default='#FFFFFF')
+    mobile_banner_button_label_color = ColorField(format='hexa', default='#000000')
+    mobile_button_border = models.TextField(choices=ADD_BUTTON_BORDER, null=True, blank=True, default='no-border')
+    mobile_button_border_color = ColorField(format='hexa', default='#000000')
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='CHECK THIS BOX TO HIDE THIS SPECIFIC STYLING.')

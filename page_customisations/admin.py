@@ -201,6 +201,28 @@ class HeaderCustomisationAdmin(admin.ModelAdmin):
                  'small_banner_text_color',),)
 
         }),
+        ('Small Banner Buttons', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'banner_button_label_1',
+                'banner_button_url_link_1',
+                'banner_button_label_2',
+                'banner_button_url_link_2',
+                'banner_button_background_color',
+                'banner_button_label_color',
+                'button_border',
+                'button_border_color',),
+
+        }),
+        ('Small Banner Buttons (MOBILE)', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'mobile_banner_button_background_color',
+                'mobile_banner_button_label_color',
+                'mobile_button_border',
+                'mobile_button_border_color',),
+
+        }),
 
         ('Tick this box to HIDE these styles', {
             'classes': ('fieldset_titles',),
@@ -208,6 +230,7 @@ class HeaderCustomisationAdmin(admin.ModelAdmin):
                 'do_not_display',),
         }),
     )
+    radio_fields = {'button_border': admin.HORIZONTAL}
     list_display = (
         'header_styling',
         'do_not_display',
@@ -302,7 +325,6 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
 
     )
-
 
 
 class TestimonialsCustomisationAdmin(admin.ModelAdmin):
