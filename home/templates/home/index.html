@@ -103,11 +103,14 @@
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
                do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
+
                     <a href="products/?category={{ x.cta_card_1.button_url_choice }}"
                         class="cta-btn-1 flexed {{ x.cta_card_1.add_button_border }}" target="_blank" style="color: {{ x.cta_card_1.button_label_color }} !important;
                         background-color: {{ x.cta_card_1.button_background_color }} !important;
-                        border: 2px solid {{ x.cta_card_1.border_color }} !important;">
-                        {{ x.cta_card_1.button_label }}</a>
+                        border: 2px solid {{ x.cta_card_1.border_color }};">
+                        {{ x.cta_card_1.button_label }}
+                    </a>
+
                 </div>
             </div>
             {% endif %}
@@ -131,7 +134,7 @@
                     <a href="products/?category={{ x.cta_card_2.button_url_choice }}"
                         class="cta-btn-1 flexed {{ x.cta_card_2.add_button_border }}" target="_blank" style="color: {{ x.cta_card_2.button_label_color }} !important;
                     background-color: {{ x.cta_card_2.button_background_color }} !important;
-                    border: 2px solid {{ x.cta_card_2.border_color }} !important;"">
+                    border: 2px solid {{ x.cta_card_1.border_color }};">
                         {{ x.cta_card_2.button_label }}
                     </a>
 
