@@ -15,7 +15,7 @@
 }
 
 .nav-up {
-    top: -170px;
+    top: -300px;
 }
 
 header {
@@ -37,6 +37,10 @@ body {
     scroll-behavior: smooth;
     font-family: 'Lato', sans-serif;
     scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .home-body {
