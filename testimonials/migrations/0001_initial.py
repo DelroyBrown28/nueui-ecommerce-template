@@ -21,7 +21,6 @@ class Migration(migrations.Migration):
                 ('linkedin_link', models.URLField(blank=True, default='https://linkedin.com/', null=True)),
                 ('facebook_link', models.URLField(blank=True, default='https://facebook.com/', null=True)),
                 ('instagram_link', models.URLField(blank=True, default='https://instagram.com/', null=True)),
-                ('date_received', models.DateTimeField(blank=True, default='datetime.date.today', null=True)),
             ],
         ),
     ]
