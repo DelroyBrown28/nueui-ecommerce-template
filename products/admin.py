@@ -19,8 +19,8 @@ class ProductAdmin(admin.ModelAdmin):
             'classes': ('fieldset_titles',),
             'fields': (
                 'main_product_image',
-                'small_image_1',
-                'small_image_2',)
+                'alternative_image_1',
+                'alternative_image_2',)
 
         }),
     )

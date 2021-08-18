@@ -31,9 +31,9 @@ class Product(models.Model):
     image_url = models.URLField(max_length=1024, blank=True, null=True)
     main_product_image = models.ImageField(
         null=True, blank=True, upload_to='product_images')
-    small_image_1 = models.ImageField(
+    alternative_image_1 = models.ImageField(
         null=True, blank=True, upload_to='product_images')
-    small_image_2 = models.ImageField(
+    alternative_image_2 = models.ImageField(
         null=True, blank=True, upload_to='product_images')
 
     def __str__(self):
