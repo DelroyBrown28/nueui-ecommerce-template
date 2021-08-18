@@ -131,7 +131,7 @@
                     <a href="products/?category={{ x.cta_card_2.button_url_choice }}"
                         class="cta-btn-1 flexed {{ x.cta_card_2.add_button_border }}" target="_blank" style="color: {{ x.cta_card_2.button_label_color }} !important;
                     background-color: {{ x.cta_card_2.button_background_color }} !important;
-                    border: 2px solid {{ x.cta_card_1.border_color }} !important;"">
+                    border: 2px solid {{ x.cta_card_2.border_color }} !important;"">
                         {{ x.cta_card_2.button_label }}
                     </a>
 
@@ -145,8 +145,7 @@
         </div>
     </section>
 
-
-    <section class="cta-banner-section flexed" style="align-items:flex-end;">
+    <section class=" cta-banner-section flexed" style="align-items:flex-end;">
 
                         {% for x in home_page_customisation %}
                         {% if x.cta_banner %}
@@ -157,8 +156,9 @@
 
                                 <h1 class="display-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
                                 <p class="lead">
-                                    <a href="{{ x.cta_banner.cta_button_url }}" class="secondary-btn {{ x.cta_banner.add_button_border }}" target="_blank"
-                                    style="background-color: {{ x.cta_banner.button_background_color }} !important;
+                                    <a href="{{ x.cta_banner.cta_button_url }}"
+                                        class="secondary-btn {{ x.cta_banner.add_button_border }}" target="_blank"
+                                        style="background-color: {{ x.cta_banner.button_background_color }} !important;
                                             color: {{ x.cta_banner.label_color }} !important;">
                                         {{ x.cta_banner.cta_button_label }}
                                     </a>
@@ -169,70 +169,9 @@
                         {% endfor %}
     </section>
 
-    <!-- <section class="footer-section">
-        {% for x in footer_customisation %}
-        <div style="margin-top: 150px !important;" class="mt-5 footer-container">
-            <footer class="container flexed py-5 my-3 pl-0 border-top">
-                <div class="col">
-                    <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                        <img src="{% static 'images/nueuiblack.png' %}" alt="logo" style="height: 55px;">
-                    </a>
-                    <p class="text-muted">©
-                        <script>document.write(new Date().getFullYear())</script>
-                    </p>
-                </div>
-
-                <div class="col footer-link-boxes flexed">
-                    <h5 style="font-weight: 600;">Quick Links</h5>
-                    {% for c in categories_processor|slice:":5" %}
-                    <ul class="nav col">
-                        <li class="nav-item mb-2">
-                            <a href="{% url 'products' %}?category={{ c.url_name }}" class="nav-link p-0 text-muted">
-                                {{ c.category_name }}</a>
-                        </li>
-                    </ul>
-                    {% endfor %}
-                </div>
-
-                <div class="col footer-link-boxes flexed">
-                    <h5 style="font-weight: 600;">Contact</h5>
-                    <ul class="nav col">
-                        <li class="nav-item mb-2">
-                            {% if x.twitter_link %}
-                            <a class="mr-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                                href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            {% endif %}
-                            {% if x.linkedin_link %}
-                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                                href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                            {% endif %}
-                            {% if x.facebook_link %}
-                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                                href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                            {% endif %}
-                            {% if x.instagram_link %}
-                            <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                                href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
-                            {% endif %}
-                        </li>
-                    </ul>
-                    <p>Email: {{ x.email }}</p>
-                    <p>Phone: {{ x.contact_number }}</p>
-                </div>
-
-            </footer>
-        </div>
-        {% endfor %}
-    </section> -->
-
     {% include "includes/footer.html" %}
 </body>
+
 
 
 {% endblock content %}
