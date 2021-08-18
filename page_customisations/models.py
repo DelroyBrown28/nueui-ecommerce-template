@@ -165,17 +165,26 @@ class HeaderCustomisation(models.Model):
     small_banner_text = RichTextField()
     small_banner_background_color = ColorField(format='hexa')
     small_banner_text_color = ColorField(format='hexa')
-    banner_button_label_1 = models.CharField(default='', blank=False, null=False, max_length=25)
-    banner_button_url_link_1 = models.URLField(blank=True, null=True, max_length=250)
-    banner_button_label_2 = models.CharField(default='', blank=False, null=False, max_length=25)
-    banner_button_url_link_2 = models.URLField(blank=True, null=True, max_length=250)
-    banner_button_background_color = ColorField(format='hexa', default='#FFFFFF')
+    banner_button_label_1 = models.CharField(
+        default='', blank=False, null=False, max_length=25)
+    banner_button_url_link_1 = models.URLField(
+        blank=True, null=True, max_length=250)
+    banner_button_label_2 = models.CharField(
+        default='', blank=False, null=False, max_length=25)
+    banner_button_url_link_2 = models.URLField(
+        blank=True, null=True, max_length=250)
+    banner_button_background_color = ColorField(
+        format='hexa', default='#FFFFFF')
     banner_button_label_color = ColorField(format='hexa', default='#000000')
-    button_border = models.TextField(choices=ADD_BUTTON_BORDER, null=True, blank=True, default='no-border')
+    button_border = models.TextField(
+        choices=ADD_BUTTON_BORDER, null=True, blank=True, default='no-border')
     button_border_color = ColorField(format='hexa', default='#000000')
-    mobile_banner_button_background_color = ColorField(format='hexa', default='#FFFFFF')
-    mobile_banner_button_label_color = ColorField(format='hexa', default='#000000')
-    mobile_button_border = models.TextField(choices=ADD_BUTTON_BORDER, null=True, blank=True, default='no-border')
+    mobile_banner_button_background_color = ColorField(
+        format='hexa', default='#FFFFFF')
+    mobile_banner_button_label_color = ColorField(
+        format='hexa', default='#000000')
+    mobile_button_border = models.TextField(
+        choices=ADD_BUTTON_BORDER, null=True, blank=True, default='no-border')
     mobile_button_border_color = ColorField(format='hexa', default='#000000')
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
@@ -276,13 +285,13 @@ class AboutPageCustomisation(models.Model):
     border_color = ColorField(format='hexa')
 
     twitter_link = models.URLField(
-        max_length=200, default='https://twitter.com/')
+        max_length=200, null=True, blank=True, default='https://twitter.com/')
     linkedin_link = models.URLField(
-        max_length=200, default='https://linkedin.com/')
+        max_length=200, null=True, blank=True, default='https://linkedin.com/')
     facebook_link = models.URLField(
-        max_length=200, default='https://facebook.com/')
+        max_length=200, null=True, blank=True, default='https://facebook.com/')
     instagram_link = models.URLField(
-        max_length=200, default='https://instagram.com/')
+        max_length=200, null=True, blank=True, default='https://instagram.com/')
 
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
@@ -367,7 +376,6 @@ class FooterCustomisation(models.Model):
             except FooterCustomisation.DoesNotExist:
                 pass
         super(FooterCustomisation, self).save(*args, **kwargs)
-
 
     def __str__(self):
         return self.styling_name

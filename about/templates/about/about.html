@@ -94,14 +94,22 @@ do-not-display {% else %} container d-flex justify-content-center {% endif %}"
         <div class="{% if x.do_not_display or y.do_not_display %}
         do-not-display {% else %} card-footer px-5 d-flex justify-content-between {% endif %}"
             style="color: {{ y.all_icon_colors }};">
+            {% if x.twitter_link %}
             <a style="color: inherit;" href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip"
                 data-bs-placement="top" title="Twitter"><i class="fab fa-twitter"></i></a>
+            {% endif %}
+            {% if x.linkedin_link %}
             <a style="color: inherit;" href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
                 data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
+            {% if x.facebook_link %}
             <a style="color: inherit;" href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
                 data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+            {% if x.instagram_link %}
             <a style="color: inherit;" href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
                 data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
+            {% endif %}
         </div>
     </div>
 
