@@ -4,20 +4,10 @@ from django.contrib.auth.models import User, Group
 # from taggit.admin import Tag
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from checkout.models import Order, OrderLineItem
+from testimonials.models import Testimonial
 from BasicTemplateMain.admin import superadmin
 
     
-class HeaderCustomisationAdmin(admin.ModelAdmin):
-   list_display = (
-        'name_these_changes',
-        'do_not_display',
-    )
-   list_editable = (
-        'do_not_display',
-       
-   )
-   
-
 
 # Store owners admin models     
 class OrderLineItemAdminInline(admin.TabularInline):
@@ -98,8 +88,21 @@ class CategoryAdmin(admin.ModelAdmin):
         'category_name',
     )
 
+class CustomerTestimonialsAdmin(admin.ModelAdmin):
+    list_display = (
+        'full_name',
+        'your_thoughts',
+        'twitter_link',
+        'linkedin_link',
+        'facebook_link',
+        'instagram_link',
+        'other_social_media_link',
+    )
+
+
 
 # admin.site.unregister(User)
+admin.site.register(Testimonial, CustomerTestimonialsAdmin)
 admin.site.unregister(Group)
 admin.site.unregister(Site)
 admin.site.unregister(SocialToken)

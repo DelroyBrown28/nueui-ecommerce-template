@@ -61,7 +61,18 @@
         </div>
 
         <div class="col text-center">
-         *PUT TESTIMONIAL FORM HERE*
+
+            {% if submitted %}
+            we received your message
+            {% else %}
+
+            <form action='' method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit">
+            </form>
+            {% endif %}
+
         </div>
     </div>
 </body>
