@@ -5,12 +5,11 @@ from page_customisations.models import TestimonialsPageCustomisation
 from .forms import CustomerTestimonialForm
 
 
-
 def testimonials(request):
     """Returns the Testimonials page."""
 
     testimonials = TestimonialsPageCustomisation.objects.all()
-    
+
     submitted = False
     if request.method == 'POST':
         form = CustomerTestimonialForm(request.POST, request.FILES)
@@ -22,11 +21,8 @@ def testimonials(request):
         if 'submitted' in request.GET:
             submitted = True
 
-    context = {
+    return render(request, 'testimonials/testimonials.html', {
         'testimonials': testimonials,
-        'form' : form,
-        'submitted' : submitted,
-    }
-    return render(request, 'testimonials/testimonials.html', context)
-
-
+        'form': form,
+        'submitted': submitted,
+    })
