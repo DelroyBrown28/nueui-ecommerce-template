@@ -94,22 +94,15 @@ class CategoryAdmin(admin.ModelAdmin):
 class CustomerTestimonialsAdmin(admin.ModelAdmin):
     list_display = (
         'name',
-        'your_thoughts',
-        'twitter_link',
-        'linkedin_link',
-        'facebook_link',
-        'instagram_link',
-        'other_social_media_link',
-        # 'upload_image',
+        'date_received',
     )
     readonly_fields = (
         'name',
+        'date_received',
         'your_thoughts',
-        'twitter_link',
-        'linkedin_link',
-        'facebook_link',
-        'instagram_link',
         'other_social_media_link',
+        'upload_image',
+        'image_preview',
 
     )
 

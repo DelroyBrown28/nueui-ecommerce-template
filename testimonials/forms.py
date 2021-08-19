@@ -13,25 +13,23 @@ class CustomerTestimonialForm(ModelForm):
             'name' : '',
             'email' : '',
             'your_thoughts' : '',
-            # 'upload_image' : '',
+            'upload_image' : '',
             'twitter_link' : '',
             'linkedin_link' : '',
             'facebook_link' : '',
             'instagram_link' : '',
             'other_social_media_link' : '',
-            # 'upload_image' : 'Upload Your Image',
         }
         fields = (
             'name',
             'email',
             'your_thoughts',
-            # 'upload_image',
             'twitter_link',
             'linkedin_link',
             'facebook_link',
             'instagram_link',
             'other_social_media_link',
-            # 'upload_image',
+            'upload_image',
         )
         widgets = {
             'name' : forms.TextInput(attrs={'class' : 'form-control col-md-6', 'placeholder' : 'Name'}),

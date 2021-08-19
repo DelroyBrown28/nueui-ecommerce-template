@@ -336,6 +336,27 @@ TESTIMONIALS PAGE
     }
 }
 
+.open-testimonial-form-btn {
+    display: inline-block;
+    min-width: 184px;
+    min-height: 44px;
+    padding: 9px 14px;
+    margin: 12px 6px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    font-size: 16px;
+    line-height: 39px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -moz-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -o-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -ms-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+}
+
 .do-not-display {
     display: none !important;
 }
@@ -851,7 +872,7 @@ body>div:nth-child(12)>em>div>p {
     position: relative !important;
     margin-top: 150px !important;
 
-    
+
 }
 
 @media (max-width: 991px) {
@@ -896,7 +917,7 @@ body>div:nth-child(12)>em>div>p {
 
     .small-banner-btns {
         display: none !important;
-    } 
+    }
 
     .small-banner-btn-wrap__mobile {
         flex-flow: column;
