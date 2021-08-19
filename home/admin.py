@@ -1,18 +1,18 @@
 from django.contrib import admin
 from django.contrib.sites.models import Site
-from django.contrib.auth.models import User, Group 
+from django.contrib.auth.models import User, Group
 # from taggit.admin import Tag
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from checkout.models import Order, OrderLineItem
 from testimonials.models import Testimonial
 from BasicTemplateMain.admin import superadmin
 
-    
 
-# Store owners admin models     
+# Store owners admin models
 class OrderLineItemAdminInline(admin.TabularInline):
     model = OrderLineItem
     readonly_fields = ('lineitem_total',)
+
 
 class OrderAdmin(admin.ModelAdmin):
     inlines = (OrderLineItemAdminInline,)
@@ -56,7 +56,8 @@ class OrderAdmin(admin.ModelAdmin):
         'order_number',
     ]
     ordering = ('-date',)
-    
+
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',
@@ -76,7 +77,8 @@ class ProductAdmin(admin.ModelAdmin):
         'category',
     )
 
-    ordering = ('name',)    
+    ordering = ('name',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -88,17 +90,28 @@ class CategoryAdmin(admin.ModelAdmin):
         'category_name',
     )
 
+
 class CustomerTestimonialsAdmin(admin.ModelAdmin):
     list_display = (
-        'full_name',
+        'name',
         'your_thoughts',
         'twitter_link',
         'linkedin_link',
         'facebook_link',
         'instagram_link',
         'other_social_media_link',
+        # 'upload_image',
     )
+    readonly_fields = (
+        'name',
+        'your_thoughts',
+        'twitter_link',
+        'linkedin_link',
+        'facebook_link',
+        'instagram_link',
+        'other_social_media_link',
 
+    )
 
 
 # admin.site.unregister(User)
@@ -108,4 +121,3 @@ admin.site.unregister(Site)
 admin.site.unregister(SocialToken)
 admin.site.unregister(SocialAccount)
 admin.site.unregister(SocialApp)
-

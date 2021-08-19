@@ -66,9 +66,36 @@
             we received your message
             {% else %}
 
-            <form action='' method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
+            <form action="/testimonials/" method="POST" class="col-md-6 ">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="9sLVrmg628MGzCk39IM1DNxDPFBx4Mjz2pnMTSfbZaoicn2GYJ8GYqXoDrQWsfHV">
+                <div class=" col-md-12">
+                    <h4 class="text-left my-3">Let us know who you are</h4>
+                    <input type="text" name="name" class="form-control col-md-3 my-3" placeholder="Name" maxlength="100"
+                        required="" id="id_name">
+                    <input type="email" name="email" class="form-control col-md-3 my-3" placeholder="Email"
+                        maxlength="100" id="id_email">
+                </div>
+                <div class=" col-md-12">
+                    <h4 class="text-left my-3">Leave your review (Be nice!)</h4>
+                    <input type="text" style="height: 200px;" name="your_thoughts" class="form-control my-3 col-md-6"
+                        placeholder="Your Thoughts?" maxlength="1000" required="" id="id_your_thoughts">
+                </div>
+                <div class=" col-md-12">
+                    <h4 class="text-left my-3">Leave a link to your preferred social media</h4>
+                    <input type="text" name="twitter_link" class="form-control col-md-6 my-3" placeholder="twitter_link"
+                        maxlength="200" id="id_twitter_link">
+                    <input type="text" name="linkedin_link" class="form-control col-md-6 my-3" placeholder="linkedin_link"
+                        maxlength="200" id="id_linkedin_link">
+                    <input type="text" name="facebook_link" class="form-control col-md-6 my-3" placeholder="facebook_link"
+                        maxlength="200" id="id_facebook_link">
+                    <input type="text" name="instagram_link" class="form-control col-md-6" placeholder="instagram_link"
+                        maxlength="200" id="id_instagram_link">
+                    <input type="text" name="other_social_media_link" class="form-control col-md-6 my-3"
+                        placeholder="other_social_media_link" maxlength="200" id="id_other_social_media_link">
+                </div>
+
+                    
                 <input type="submit" value="Submit">
             </form>
             {% endif %}
