@@ -1,4 +1,3 @@
-from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, TemplateView
@@ -6,7 +5,7 @@ from page_customisations.models import TestimonialsPageCustomisation
 from .forms import CustomerTestimonialForm
 
 
-@csrf_protect
+
 def testimonials(request):
     """Returns the Testimonials page."""
 

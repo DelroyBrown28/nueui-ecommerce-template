@@ -66,7 +66,8 @@
         <!-- Button trigger modal -->
         <div class="row">
             <div class="col-md-12 text-center">
-                <a type="button" class="open-testimonial-form-btn" data-toggle="modal" data-target="#exampleModalCenter">
+                <a type="button" class="open-testimonial-form-btn" data-toggle="modal"
+                    data-target="#exampleModalCenter">
                     <small> <i class="far fa-comments"></i> LEAVE A TESTIMONIAL <i class="far fa-comments"></i></small>
                 </a>
             </div>
@@ -78,38 +79,31 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="p-5">
-                        {{ form_media }}
                         {% csrf_token %}
-                        <input type="hidden" name="csrfmiddlewaretoken"
-                            value="cNe2aMPVVfTc2Pdf8UeZhLQr3263dOYPxQFsvnKQdY4NmM1FlGoWmwr4wOycdDJI">
+                            <input type="hidden" name="csrfmiddlewaretoken"
+                                value="4LkJEcynDsXtI1FYJ6PirC5wiBuGqyZc32xRR59n26Wauxd4WSXZHTJVyoHghAIi">
 
-                        <small class="">LET US KNOW WHO YOU ARE</small>
-                        <p> <input type="text" name="name" class="form-control col-md-12 " placeholder="Name"
-                                maxlength="100" required="" id="id_name"></p>
-                        <p> <input type="text" name="email" class="form-control col-md-12 " placeholder="Email"
-                                maxlength="100" id="id_email"></p>
-
-                        <small class="">YOUR REVIEW (BE NICE!)</small>
-                        <p> <textarea name="your_thoughts" cols="40" rows="10" class="form-control col-md-12 "
-                                placeholder="Your Thoughts?" maxlength="1000" required=""
-                                id="id_your_thoughts"></textarea></p>
-
-                        <small>SEND US AN IMAGE OF YOUR PRODUCT</small>
-                        <p> <input type="text" name="twitter_link" class="form-control col-md-12 "
-                                placeholder="twitter_link" maxlength="200" id="id_twitter_link"></p>
-                        <p> <input type="text" name="linkedin_link" class="form-control col-md-12 "
-                                placeholder="linkedin_link" maxlength="200" id="id_linkedin_link"></p>
-                        <p> <input type="text" name="facebook_link" class="form-control col-md-12 "
-                                placeholder="facebook_link" maxlength="200" id="id_facebook_link"></p>
-                        <p> <input type="text" name="instagram_link" class="form-control col-md-12 "
-                                placeholder="instagram_link" maxlength="200" id="id_instagram_link"></p>
-                        <p> <input type="text" name="other_social_media_link" class="form-control col-md-12 "
-                                placeholder="other_social_media_link" maxlength="200" id="id_other_social_media_link">
-                        </p>
-                        <p> <input type="file" name="upload_image" accept="image/*" id="id_upload_image"> <span
-                                class="helptext">Show us
-                                an image of your purchased product</span></p>
-                        <input type="submit" value="Submit">
+                            <p> <input type="text" name="name" class="form-control col-md-12" placeholder="Name"
+                                    maxlength="100" required="" id="id_name"></p>
+                            <p> <input type="text" name="email" class="form-control col-md-12" placeholder="Email"
+                                    maxlength="100" id="id_email"></p>
+                            <p> <textarea name="your_thoughts" cols="40" rows="10" class="form-control col-md-12"
+                                    placeholder="Your Thoughts?" maxlength="1000" required=""
+                                    id="id_your_thoughts"></textarea></p>
+                            <p> <input type="text" name="twitter_link" class="form-control col-md-12"
+                                    placeholder="twitter_link" maxlength="200" id="id_twitter_link"></p>
+                            <p> <input type="text" name="linkedin_link" class="form-control col-md-12"
+                                    placeholder="linkedin_link" maxlength="200" id="id_linkedin_link"></p>
+                            <p> <input type="text" name="facebook_link" class="form-control col-md-12"
+                                    placeholder="facebook_link" maxlength="200" id="id_facebook_link"></p>
+                            <p> <input type="text" name="instagram_link" class="form-control col-md-12"
+                                    placeholder="instagram_link" maxlength="200" id="id_instagram_link"></p>
+                            <p> <input type="text" name="other_social_media_link" class="form-control col-md-12"
+                                    placeholder="other_social_media_link" maxlength="200"
+                                    id="id_other_social_media_link"></p>
+                            <p> <input type="file" name="upload_image" accept="image/*" id="id_upload_image"> <span
+                                    class="helptext">Show us an image of your purchased product</span></p>
+                            <input type="submit" value="Submit">
                     </form>
                 </div>
             </div>
