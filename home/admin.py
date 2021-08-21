@@ -100,9 +100,6 @@ class CustomerTestimonialsAdmin(admin.ModelAdmin):
         'name',
         'date_received',
         'your_thoughts',
-        'other_social_media_link',
-        'upload_image',
-        'image_preview',
 
     )
 

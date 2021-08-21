@@ -106,9 +106,6 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                         do-not-display {% else %} card h-100 {{ x.add_card_border }} {% endif %}"
                         style="border: 1px solid {{ x.border_color }}; background-color: {{ x.product_card_background_color }} !important">
 
-
-
-
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -118,7 +115,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
                                     {% if product.main_product_image %}
-                                    <a href="{% url 'product_detail' product.id %}" target="_blank">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <img class="card-img-top img-fluid p-0"
                                             src="{{ product.main_product_image.url }}" alt="{{ product.name }}">
                                     </a>
@@ -132,12 +129,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                                 <div class="carousel-item">
                                     {% if product.alternative_image_1 %}
-                                    <a href="{% url 'product_detail' product.id %}" target="_blank">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <img class="card-img-top img-fluid p-0"
                                             src="{{ product.alternative_image_1.url }}" alt="{{ product.name }}">
                                     </a>
                                     {% else %}
-                                    <a href="{% url 'product_detail' product.id %}" target="_blank">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <img class="card-img-top img-fluid p-0" src="{{ MEDIA_URL }}noimage.png"
                                             alt="{{ product.name }}">
                                     </a>
@@ -146,12 +143,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                                 <div class="carousel-item">
                                     {% if product.alternative_image_2 %}
-                                    <a href="{{ product.main_product_image.url }}" target="_blank">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <img class="card-img-top img-fluid p-0"
                                             src="{{ product.alternative_image_2.url }}" alt="{{ product.name }}">
                                     </a>
                                     {% else %}
-                                    <a href="{{ product.main_product_image.url }}" target="_blank">
+                                    <a href="{% url 'product_detail' product.id %}">
                                         <img class="card-img-top img-fluid p-0" src="{{ MEDIA_URL }}noimage.png"
                                             alt="{{ product.name }}">
                                     </a>
@@ -159,6 +156,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                 </div>
 
                             </div>
+                            
                             {% for y in global_styles %}
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                 data-slide="prev">
@@ -174,9 +172,6 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                             </a>
                             {% endfor %}
                         </div>
-
-
-
 
 
                         {% comment %} <a href="{% url 'product_detail' product.id %}">
@@ -317,6 +312,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
 {% include "includes/footer.html" %}
 
+
 {% endblock content %}
 {% block postloadjs %}
 {{ block.super }}
@@ -347,5 +343,6 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
     $('.btt-link').click(function (e) {
         window.scrollTo(0, 0)
     })
+
 </script>
 {% endblock postloadjs %}

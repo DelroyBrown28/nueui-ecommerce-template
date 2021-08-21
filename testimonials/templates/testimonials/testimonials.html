@@ -63,36 +63,38 @@
         </div>
 
 
-        <!-- Button trigger modal -->
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <a type="button" class="open-testimonial-form-btn" data-toggle="modal" data-target="#exampleModalCenter">
-                    <small> <i class="far fa-comments"></i> LEAVE A TESTIMONIAL <i class="far fa-comments"></i></small>
-                </a>
-            </div>
-        </div>
-
-        <!-- Testimonial Form Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="p-5">
-                        {% csrf_token %}
-                        {{ form_media }}
-                        {{ form.as_p }}
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        {% if submitted %}
-        we received your message
-        {% endif %}
-
-
     </div>
+
+    {% if submitted %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h3>THANKS FOR SHARING WITH US</h3>
+            <p>CHECK OUT WHAT OTHER PRODUCTS WE HAVE IN STORE</p>
+            <a href="{% url 'products' %}" class="testimonial-sent-btn">PRODUCTS</a>
+
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="#testimonialForm" type="button" class="open-testimonial-form-btn">
+                <small> <i class="far fa-comments"></i> LEAVE A TESTIMONIAL <i class="far fa-comments"></i></small>
+            </a>
+        </div>
+    </div>
+    <div class="testimonial-form-wrap col-md-12 flexed">
+        <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="p-5 col-md-6"
+            id="testimonialForm">
+            {% csrf_token %}
+            {{ form_media }}
+            {{ form.as_p }}
+            <input class="testimonial-form-submit-btn" type="submit" value="Submit">
+        </form>
+    </div>
+    {% endif %}
+
+
+    {% include "includes/footer.html" %}
 </body>
 
 <script>
@@ -130,15 +132,11 @@
         })(jQuery);
     })();
 
-
-
     $(document).ready(function () {
         $('#myModal').modal({
             show: false,
         })
     })
-
-
 
 </script>
 {% endblock content %}
