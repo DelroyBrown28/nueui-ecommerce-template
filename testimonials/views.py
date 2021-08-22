@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, TemplateView
 from page_customisations.models import TestimonialsPageCustomisation
 from .forms import CustomerTestimonialForm
 
@@ -21,6 +20,7 @@ def testimonials(request):
         if 'submitted' in request.GET:
             submitted = True
 
+    
     return render(request, 'testimonials/testimonials.html', {
         'testimonials': testimonials,
         'form': form,
