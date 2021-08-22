@@ -322,9 +322,18 @@ class TestimonialsPageCustomisation(models.Model):
     """
     This model is to ADD testimonials to the page
     """
+    TESTIMONIAL_CARD_BORDER = (
+        ('add-border', 'Add Border'),
+        ('no-border', 'No Border'),
+    )
     recipients_name = models.CharField(max_length=100, blank=False, null=False)
     testimonial = RichTextField(blank=False, null=False, max_length=500)
     customers_rating = models.CharField(max_length=1, blank=True, null=True)
+    card_background_color = ColorField(format='hexa', blank=True, null=True, default='#FFFFFF')
+    card_border = models.TextField(choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
+    card_border_color = ColorField(format='hexa', blank=True, null=True, default='#FFFFFF')
+    card_font_color = ColorField(format='hexa', blank=True, null=True, default='#000000')
+    star_rating_color = ColorField(format='hexa', blank=True, null=True, default='#FFFF00')
 
     class Meta:
             verbose_name_plural = '  Testimonials Page'

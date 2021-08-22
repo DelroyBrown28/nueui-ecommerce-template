@@ -14,76 +14,82 @@
 
                 {% for x in testimonials_customisation %}
                 <div>
-                    <div class="card text-center py-5">
+                    <div class="{% if x.do_not_display %}
+                    do-not-display {% else %} card text-center py-5 {% endif %}" style="background-color: {{ x.card_background_color }} !important;
+                        border: 2px solid {{ x.card_border_color }} !important;">
 
                         <div class="card-body">
-                            <h5>{{ x.recipients_name }} <br />
-                                <span class="my-4">
-
-                                </span>
+                            <h5 class="{% if y.do_not_display %}
+                            do-not-display {% else %} name-header {% endif %}"
+                                style="color: {{ x.card_font_color }} !important;">{{ x.recipients_name }} <br />
                             </h5>
-                            <p class="card-text my-5"><em>{{ x.testimonial|safe }}</em></p>
+                            <p class="{% if y.do_not_display %}
+                            do-not-display {% else %} card-text my-5 {% endif %}">
+                                <em class="{% if y.do_not_display %}
+                                do-not-display {% else %} em {% endif %}" style="color: {{ x.card_font_color }} !important;">{{ x.testimonial|safe }}</em>
+                            </p>
                             <div class="container mt-5">
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="color: {{ x.star_rating_color }} !important;">
 
                                     {% if x.customers_rating == '1' %}
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
                                     {% endif %}
                                     {% if x.customers_rating == '2' %}
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
-                                    
+
                                     {% endif %}
                                     {% if x.customers_rating == '3' %}
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
-                                    
+
                                     {% endif %}
                                     {% if x.customers_rating == '4' %}
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
                                     <i class="far fa-star mx-2" style="font-size:25px;"></i>
-                                    
+
                                     {% endif %}
                                     {% if x.customers_rating == '5' %}
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
-                                    <i class="fas fa-star mx-2" style="color: goldenrod; font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
+                                    <i class="fas fa-star mx-2" style="font-size:25px;"></i>
                                     {% endif %}
-                                    
+
 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 {% empty %}
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h3>THERE ARE NO CUSTOMER TESTIMONIALS YET</h3>
                         <p>ALL TETSIMONIALS WILL BE STORED IN YOUR ADMIN ONCE RECEIVED</p>
-                        <a href="/admin/testimonials/testimonial/" class="testimonial-sent-btn">CUSTOMER TESTIMONIALS</a>
-            
+                        <a href="/admin/testimonials/testimonial/" class="testimonial-sent-btn">CUSTOMER
+                            TESTIMONIALS</a>
+
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            </div>
+        </div>
     </div>
 
     {% if submitted %}
@@ -98,15 +104,14 @@
     {% else %}
     <div class="row">
         <div class="col-md-12 text-center">
-            <a href="#testimonialForm" type="button" class="open-testimonial-form-btn">
+            <a href="#testimonialForm" id="testimonialForm" type="button" class="open-testimonial-form-btn">
                 <small> <i class="far fa-comments"></i> LEAVE A TESTIMONIAL <i class="far fa-comments"></i></small>
             </a>
         </div>
     </div>
 
     <div class="testimonial-form-wrap col-md-12 flexed">
-        <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="p-5 col-md-6"
-            id="testimonialForm">
+        <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="p-5 col-md-6">
             {% csrf_token %}
             {{ form_media }}
             {{ form.as_p }}

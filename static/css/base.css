@@ -219,11 +219,9 @@ TESTIMONIALS PAGE
 }
 
 .gtco-testimonials .card {
-    background: #fff;
-    /* box-shadow: 0 8px 30px -7px #c9dff0; */
+    box-shadow: 0 8px 30px -7px #c9dff0;
     margin: 0 20px;
     padding: 0 10px;
-    border: 2px solid black;
 }
 
 .gtco-testimonials .card .card-img-top {

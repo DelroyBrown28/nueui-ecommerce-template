@@ -341,6 +341,16 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
                 'customers_rating',
             ),
         }),
+        ('Testimonial Card Styling', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'card_background_color',
+                'card_border',
+                'card_border_color',
+                'card_font_color',
+                'star_rating_color',
+            ),
+        }),
     )
     list_display = (
         'recipients_name',
