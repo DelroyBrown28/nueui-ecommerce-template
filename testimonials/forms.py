@@ -15,14 +15,19 @@ class CustomerTestimonialForm(ModelForm):
             'name': '',
             'email': '',
             'your_thoughts': '',
-            'rating': 'Out of 5',
+            'rating': '',
         }
-        fields = ('__all__')
+        fields = (
+            'name',
+            'email',
+            'your_thoughts',
+            'rating',
+        )
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control col-md-12', 'placeholder': 'Name'}),
             'email': forms.TextInput(attrs={'class': 'form-control col-md-12', 'placeholder': 'Email'}),
             'your_thoughts': forms.Textarea(attrs={'class': 'form-control col-md-12', 'placeholder': 'Your Thoughts?'}),
-            'rating' : forms.TextInput(attrs={'type' : 'number', 'class': 'form-control col-md-2', 'placeholder': 'Rating'}),
+            'rating' : forms.TextInput(attrs={'type' : 'number', 'class': 'form-control col-md-3 rating-field', 'placeholder' : 'Rate us out of 5'}),
             # 'rating': forms.TextInput(attrs={'class': 'form-control col-md-1', 'placeholder': 'Rating'}),
 
         }
