@@ -291,7 +291,7 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
             'fields': (
                 ('background_color',
                  'text_color'),
-                 'footer_top_border_color'),
+                'footer_top_border_color'),
 
         }),
         ('Footer Logo', {
@@ -334,23 +334,17 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
             "fields": (
                 'recipients_name',)
         }),
-        ('Socials Media Link(s)', {
+        ('Customers Testimonial & Rating', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'twitter_link',
-                'linkedin_link',
-                'facebook_link',
-                'instagram_link',)
-
-        }),
-        ('The Testimonial', {
-            'classes': ('fieldset_titles',),
-            'fields': (
-                'testimonial',),
+                'testimonial',
+                'customers_rating',
+            ),
         }),
     )
     list_display = (
         'recipients_name',
+        'customers_rating',
     )
 
 

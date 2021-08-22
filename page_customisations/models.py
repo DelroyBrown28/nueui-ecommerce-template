@@ -315,22 +315,19 @@ class AboutPageCustomisation(models.Model):
         return self.styling_name
 
 
+
+
+
 class TestimonialsPageCustomisation(models.Model):
+    """
+    This model is to ADD testimonials to the page
+    """
     recipients_name = models.CharField(max_length=100, blank=False, null=False)
-
-    twitter_link = models.URLField(blank=True, null=True,
-                                   max_length=200, default='https://twitter.com/')
-    linkedin_link = models.URLField(blank=True, null=True,
-                                    max_length=200, default='https://linkedin.com/')
-    facebook_link = models.URLField(blank=True, null=True,
-                                    max_length=200, default='https://facebook.com/')
-    instagram_link = models.URLField(blank=True, null=True,
-                                     max_length=200, default='https://instagram.com/')
-
-    testimonial = models.TextField(max_length=300, blank=False, null=False)
+    testimonial = RichTextField(blank=False, null=False, max_length=500)
+    customers_rating = models.CharField(max_length=1, blank=True, null=True)
 
     class Meta:
-        verbose_name_plural = '  Testimonials Page'
+            verbose_name_plural = '  Testimonials Page'
 
     def __str__(self):
         return self.recipients_name

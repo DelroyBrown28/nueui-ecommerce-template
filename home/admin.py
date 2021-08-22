@@ -92,14 +92,36 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class CustomerTestimonialsAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                'name',
+                'email',)
+        }),
+        ('Customers Testimonial & rating', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'your_thoughts',
+                'rating',),
+
+        }),
+        ('Date Received', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'date_received',),
+
+        }),
+    )
     list_display = (
         'name',
         'date_received',
     )
     readonly_fields = (
         'name',
+        'email',
         'date_received',
         'your_thoughts',
+        'rating',
 
     )
 

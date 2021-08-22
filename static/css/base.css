@@ -169,6 +169,7 @@ TESTIMONIALS PAGE
     height: calc(100vh - 400px);
 }
 
+
 .gtco-testimonials {
     position: relative;
     height: 100%;
@@ -219,11 +220,10 @@ TESTIMONIALS PAGE
 
 .gtco-testimonials .card {
     background: #fff;
-    box-shadow: 0 8px 30px -7px #c9dff0;
+    /* box-shadow: 0 8px 30px -7px #c9dff0; */
     margin: 0 20px;
     padding: 0 10px;
-    border-radius: 20px;
-    border: 0;
+    border: 2px solid black;
 }
 
 .gtco-testimonials .card .card-img-top {
@@ -533,6 +533,16 @@ category-badge span {
     top: 72px;
     right: 15px;
     z-index: 9999999;
+
+}
+
+.gtco-testimonials .card p {
+    padding: 0;
+    margin: 0;
+}
+
+.card-text {
+    padding: 0;
 
 }
 
