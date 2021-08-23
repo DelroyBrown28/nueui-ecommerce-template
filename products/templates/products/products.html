@@ -267,8 +267,9 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     <div class="col-md-12 text-center py-5" style="height: 100%;">
                         <h1 class="{% if y.do_not_display %}
                             do-not-display {% else %} m-0 text-uppercase {% endif %}"
-                            style="color: {{ y.base_font_color }} !important">You have no products added
+                            style="color: {{ y.base_font_color }} !important">NO PRODUCTS TO DISPLAY
                         </h1>
+                        {% if user.is_superuser %}
                         <p class="my-5" style="text-transform: uppercase;">You can easily add your first product by
                             following the simple steps below.</p>
                         <div class="container">
@@ -290,6 +291,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                             </div>
                         </div>
+                        {% endif %}
+
                     </div>
                 </div>
                 {% endfor %}
