@@ -87,8 +87,12 @@
                     <div class="col-md-12 text-center">
                         <h3>THERE ARE NO CUSTOMER TESTIMONIALS YET</h3>
                         <p>ALL TETSIMONIALS WILL BE STORED IN YOUR ADMIN ONCE RECEIVED</p>
-                        <a href="/admin/testimonials/testimonial/" class="testimonial-sent-btn">CUSTOMER
-                            TESTIMONIALS</a>
+                        {% if request.user.is_superuser %}
+                          
+                        <a href="/admin/testimonials/testimonial/" class="testimonial-sent-btn">
+                            CUSTOMER TESTIMONIALS
+                        </a>
+                        {% endif %}
 
                     </div>
                 </div>
