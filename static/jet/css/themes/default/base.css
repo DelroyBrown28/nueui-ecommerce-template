@@ -3579,7 +3579,8 @@ p.help,
 form p.help {
     color: 000;
     font-size: 15px;
-    font-size: 0.9rem
+    font-size: 0.9rem;
+    margin-top: 8px !important;
 }
 
 .help-tooltip {
@@ -8678,6 +8679,8 @@ form ul.inline li {
     padding-right: 0.5rem
 }
 
+
+
 .aligned label {
     display: block;
     padding: 8px 10px 0 0;
@@ -8686,7 +8689,8 @@ form ul.inline li {
     width: 160px;
     width: 11.42857rem;
     word-wrap: break-word;
-    line-height: 1
+    line-height: 1;
+    color: black;
 }
 
 @media only screen and (max-width: 960px) {

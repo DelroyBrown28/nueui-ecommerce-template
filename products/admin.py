@@ -6,15 +6,6 @@ from .models import Product, Category
 
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
-            "fields": (
-                'name',
-                'category',
-                'price',
-                'description',
-                'has_sizes',
-                'rating',)
-        }),
         ('Product Images', {
             'classes': ('fieldset_titles',),
             'fields': (
@@ -22,6 +13,14 @@ class ProductAdmin(admin.ModelAdmin):
                 'alternative_image_1',
                 'alternative_image_2',)
 
+        }),
+        ('Other', {
+            "fields": (
+                'name',
+                'category',
+                'price',
+                'description',
+                'has_sizes',)
         }),
     )
     search_fields = [

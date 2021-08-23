@@ -6,7 +6,11 @@
 
 
 <body class="testimonials-body">
-    <div class="overlay"></div>
+    {% for y in global_styles %}
+    <div class="{% if y.do_not_display %}
+do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.base_background_color }} !important;">
+    </div>
+    {% endfor global_styles %}
 
     <div class="container-fluid" style="height: 100%;">
 
@@ -14,7 +18,7 @@
             <div class="owl-carousel owl-carousel1 owl-theme">
 
                 {% for x in add_testimonial %}
-                
+
                 <div>
                     {% for y in testimonials_customisation %}
                     <div class="{% if y.do_not_display %}
@@ -88,7 +92,7 @@
                         <h3>THERE ARE NO CUSTOMER TESTIMONIALS YET</h3>
                         <p>ALL TETSIMONIALS WILL BE STORED IN YOUR ADMIN ONCE RECEIVED</p>
                         {% if request.user.is_superuser %}
-                          
+
                         <a href="/admin/testimonials/testimonial/" class="testimonial-sent-btn">
                             CUSTOMER TESTIMONIALS
                         </a>
@@ -102,7 +106,7 @@
     </div>
 
     {% if submitted %}
-    <div class="row flexed mt-5 h-100">
+    <div class="row flexed mt-5 h-100 form-sent-screen">
         <div class="col-md-12 text-center">
             <h3>THANKS FOR SHARING WITH US</h3>
             <p>CHECK OUT WHAT OTHER PRODUCTS WE HAVE IN STORE</p>
@@ -112,49 +116,72 @@
     </div>
     {% else %}
     <div class="row">
+        {% for x in testimonials_customisation %}
         <div class="col-md-12 text-center">
-            <a href="#testimonialForm" id="testimonialForm" type="button" class="open-testimonial-form-btn">
-                <small> <i class="far fa-comments"></i> LEAVE A TESTIMONIAL <i class="far fa-comments"></i></small>
+            <a href="#testimonialForm" id="testimonialForm" type="button" class="{% if x.do_not_display %}
+            do-not-display {% else %} testimonial-form-btn {{ x.view_testimonial_button_border }} {% endif %}"
+                style="background-color: {{ x.view_testimonial_button_background_color }} !important;
+                color: {{ x.view_testimonial_button_label_color }} !important;
+                border-color: {{ x.view_testimonial_button_border_color }} !important;">
+                <small> <i class="{% if x.do_not_display %}
+                    do-not-display {% else %} fas fa-arrow-down {% endif %}" style="color: {{ x.icon_color }} !important;"></i> {{ x.view_testimonial_button_label }} <i class="{% if x.do_not_display %}
+                    do-not-display {% else %} fas fa-arrow-down {% endif %}" style="color: {{ x.icon_color }} !important;"></i></small>
             </a>
         </div>
+        {% endfor %}
     </div>
 
-    <div class="testimonial-form-wrap col-md-12 flexed">
-
+    <div class="container-fluid" style="padding: 0;">
         {% for x in testimonials_customisation %}
-        <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="{% if x.do_not_display %}
-        do-not-display {% else %} p-5 col-md-6 testimonial-form {% endif %}">
-            {% csrf_token %}
+        <div class="{% if x.do_not_display %}
+            do-not-display {% else %} testimonial-form-wrap flexed col-md-12 {% endif %}"
+            style="background-color: {{ x.form_background_color }} !important;">
 
-            <p>
-                <input type="text" name="name" class="{% if x.do_not_display %}
-                do-not-display {% else %} form-control col-md-12 {% endif %}"
-                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Name"
-                    maxlength="100" required="" id="id_name">
-            </p>
-            <p>
-                <input type="text" name="email" class="{% if x.do_not_display %}
-                do-not-display {% else %} form-control col-md-12 {% endif %}"
-                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Email"
-                    maxlength="100" id="id_email">
-            </p>
-            <p>
-                <textarea name="your_thoughts" cols="40" rows="10" class="{% if x.do_not_display %}
-                do-not-display {% else %} form-control col-md-12 {% endif %}"
-                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Your Thoughts?"
-                    maxlength="1000" required="" id="id_your_thoughts" spellcheck="false"></textarea>
-            </p>
-            <p>
-                <input type="number" name="rating" class="{% if x.do_not_display %}
-                do-not-display {% else %} form-control col-md-3 rating-field {% endif %}"
-                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Rate us out of 5"
-                    maxlength="1" id="id_rating">
-            </p>
-            <input class="{% if x.do_not_display %}
-            do-not-display {% else %} testimonial-form-submit-btn text-center p-0 {% endif %}"
-                style="border: 1px solid {{ x.form_field_border_color }} !important;" type="submit" value="Submit">
-        </form>
-        {% endfor %}
+            <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="{% if x.do_not_display %}
+                do-not-display {% else %} p-5 col-md-6 testimonial-form {% endif %}">
+                {% csrf_token %}
+                <h3 class="{% if x.do_not_display %}
+                do-not-display {% else %} w-100 my-3 text-center {% endif %}"
+                    style="color: {{ x.form_font_color }} !important;">{{ x.form_title }}</h3>
+                <div class="{% if x.do_not_display %}
+                do-not-display {% else %} text-center testimonial-form-blurb {% endif %}"
+                    style="color: {{ x.form_font_color }} !important;">{{ x.testimonial_form_blurb|safe }}</div>
+
+                <p>
+                    <input type="text" name="name" class="{% if x.do_not_display %}
+                        do-not-display {% else %} form-control col-md-12 {% endif %}"
+                        style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Name"
+                        maxlength="100" required="" id="id_name">
+                </p>
+                <p>
+                    <input type="text" name="email" class="{% if x.do_not_display %}
+                        do-not-display {% else %} form-control col-md-12 {% endif %}"
+                        style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Email"
+                        maxlength="100" id="id_email">
+                </p>
+                <p>
+                    <textarea name="your_thoughts" resize="false" cols="40" rows="10" class="{% if x.do_not_display %}
+                        do-not-display {% else %} form-control col-md-12 {% endif %}"
+                        style="border: 1px solid {{ x.form_field_border_color }} !important;"
+                        placeholder="Your Thoughts?" maxlength="1000" required="" id="id_your_thoughts"
+                        spellcheck="false"></textarea>
+                </p>
+                <p>
+                    <input type="number" name="rating" class="{% if x.do_not_display %}
+                        do-not-display {% else %} form-control col-md-3 rating-field {% endif %}"
+                        style="border: 1px solid {{ x.form_field_border_color }} !important;"
+                        placeholder="Rate us out of 5" maxlength="1" id="id_rating">
+                </p>
+                <input
+                    class="{% if x.do_not_display %}
+                    do-not-display {% else %} testimonial-form-submit-btn text-center p-0 {{ x.add_button_border }} {% endif %}"
+                    style="border: 1px solid {{ x.submit_button_border_color }} !important;
+                    background-color: {{ x.submit_button_background_color }} !important;
+                    color: {{ x.submit_button_label_color }} !important;" type="submit"
+                    value="{{ x.submit_button_label }}">
+            </form>
+            {% endfor %}
+        </div>
     </div>
     {% endif %}
 

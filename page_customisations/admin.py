@@ -346,10 +346,30 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
                 'star_rating_color',
             ),
         }),
+        ('Dropdown button', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'view_testimonial_button_label',
+                'view_testimonial_button_label_color',
+                'view_testimonial_button_background_color',
+                'view_testimonial_button_border',
+                'view_testimonial_button_border_color',
+                'icon_color',
+            ),
+        }),
         ('Testimonial Form Styling', {
             'classes': ('fieldset_titles',),
             'fields': (
+                'form_title',
+                'testimonial_form_blurb',
+                'form_background_color',
+                'form_font_color',
                 'form_field_border_color',
+                'add_button_border',
+                'submit_button_border_color',
+                'submit_button_background_color',
+                'submit_button_label',
+                'submit_button_label_color',
             ),
         }),
     )

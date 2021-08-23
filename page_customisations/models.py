@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.fields import EmailField
+from django.db.models.fields import CharField, EmailField, TextField
 from django.db.models.fields.json import HasKeyLookup
 from products.models import Category
 from django.utils.html import mark_safe
@@ -335,8 +335,34 @@ class TestimonialsPageCustomisation(models.Model):
         format='hexa', blank=True, null=True, default='#000000')
     star_rating_color = ColorField(
         format='hexa', blank=True, null=True, default='#FFE231')
+    view_testimonial_button_label = models.CharField(
+        blank=False, null=False, max_length=55, default='', help_text='Button that drops you down to the Testimonials Form')
+    view_testimonial_button_label_color = ColorField(format='hexa', default='#000000')
+    view_testimonial_button_background_color = ColorField(format='hexa', default='#FFFFFF')
+    view_testimonial_button_border = models.TextField(
+        choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
+    view_testimonial_button_border_color = ColorField(format='hexa', default='#000000')
+    icon_color = ColorField(format='hexa', default='#000000')
+    form_title = models.CharField(
+        blank=False, null=False, max_length=100, default='')
+    testimonial_form_blurb = RichTextField(
+        blank=True, null=True, max_length=250, default='')
+    form_background_color = ColorField(
+        format='hexa', blank=True, null=True,  default='#FFFFFF')
+    form_font_color = ColorField(
+        format='hexa', blank=True, null=True,  default='#00000')
     form_field_border_color = ColorField(
         format='hexa', blank=True, null=True, default='#000000')
+    submit_button_border_color = ColorField(
+        format='hexa', blank=True, null=True,  default='#000000')
+    submit_button_background_color = ColorField(
+        format='hexa', blank=True, null=True,  default='#FFFFFF')
+    submit_button_label = CharField(
+        blank=False, null=False, default='', max_length=25)
+    submit_button_label_color = ColorField(
+        format='hexa', blank=True, null=True,  default='#000000')
+    add_button_border = TextField(
+        choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='**Check this box to hide this specific styling.')
@@ -344,7 +370,8 @@ class TestimonialsPageCustomisation(models.Model):
     def save(self, *args, **kwargs):
         if self.do_not_display == False:
             try:
-                temp = TestimonialsPageCustomisation.objects.get(do_not_display=False)
+                temp = TestimonialsPageCustomisation.objects.get(
+                    do_not_display=False)
                 if self != temp:
                     temp.do_not_display = True
                     temp.save()
@@ -352,10 +379,8 @@ class TestimonialsPageCustomisation(models.Model):
                 pass
         super(TestimonialsPageCustomisation, self).save(*args, **kwargs)
 
-
     class Meta:
         verbose_name_plural = '  Testimonials Page'
-
 
     def __str__(self):
         return self.style_name
