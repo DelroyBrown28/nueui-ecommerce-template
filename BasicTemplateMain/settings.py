@@ -133,6 +133,7 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.request',
                 'context_processors.context_processors.categories_processor',
+                'context_processors.context_processors.add_testimonial_processor',
                 'context_processors.context_processors.products_processor',
                 'context_processors.context_processors.header_customisation_processor',
                 'context_processors.context_processors.cta_processor',

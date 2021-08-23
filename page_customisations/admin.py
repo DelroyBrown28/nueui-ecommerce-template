@@ -7,6 +7,7 @@ from page_customisations.models import (HomePageCustomisation,
                                         AboutPageCustomisation,
                                         FooterCustomisation,
                                         TestimonialsPageCustomisation,
+                                        AddTestimonial,
                                         CTACard,
                                         CTABanner)
 from BasicTemplateMain.admin import superadmin
@@ -332,15 +333,9 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             "fields": (
-                'recipients_name',)
+                'style_name',)
         }),
-        ('Customers Testimonial & Rating', {
-            'classes': ('fieldset_titles',),
-            'fields': (
-                'testimonial',
-                'customers_rating',
-            ),
-        }),
+
         ('Testimonial Card Styling', {
             'classes': ('fieldset_titles',),
             'fields': (
@@ -349,6 +344,36 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
                 'card_border_color',
                 'card_font_color',
                 'star_rating_color',
+            ),
+        }),
+        ('Testimonial Form Styling', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'form_field_border_color',
+            ),
+        }),
+    )
+    list_display = (
+        'style_name',
+        'do_not_display',
+    )
+    list_editable = (
+        'do_not_display',
+
+    )
+
+
+class AddTestimonialAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                'recipients_name',)
+        }),
+        ('Customers Testimonial & Rating', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'testimonial',
+                'customers_rating',
             ),
         }),
     )
@@ -422,6 +447,7 @@ superadmin.register() to register for superuser admin
 superadmin.register(CTABanner, CTABannerAdmin)
 superadmin.register(CTACard, CTACardAdmin)
 superadmin.register(HomePageCustomisation, HomePageCustomisationAdmin)
+superadmin.register(AddTestimonial, AddTestimonialAdmin)
 superadmin.register(TestimonialsPageCustomisation,
                     TestimonialsCustomisationAdmin)
 superadmin.register(FooterCustomisation, FooterCustomisationAdmin)

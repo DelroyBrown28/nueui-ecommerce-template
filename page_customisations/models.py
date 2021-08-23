@@ -315,9 +315,6 @@ class AboutPageCustomisation(models.Model):
         return self.styling_name
 
 
-
-
-
 class TestimonialsPageCustomisation(models.Model):
     """
     This model is to ADD testimonials to the page
@@ -326,17 +323,51 @@ class TestimonialsPageCustomisation(models.Model):
         ('add-border', 'Add Border'),
         ('no-border', 'No Border'),
     )
+    style_name = models.CharField(
+        blank=False, null=False, max_length=100, default='Default')
+    card_background_color = ColorField(
+        format='hexa', blank=True, null=True, default='#FFFFFF')
+    card_border = models.TextField(
+        choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
+    card_border_color = ColorField(
+        format='hexa', blank=True, null=True, default='#000000')
+    card_font_color = ColorField(
+        format='hexa', blank=True, null=True, default='#000000')
+    star_rating_color = ColorField(
+        format='hexa', blank=True, null=True, default='#FFE231')
+    form_field_border_color = ColorField(
+        format='hexa', blank=True, null=True, default='#000000')
+    do_not_display = models.BooleanField(verbose_name='Do not display',
+                                         default=False,
+                                         help_text='**Check this box to hide this specific styling.')
+
+    def save(self, *args, **kwargs):
+        if self.do_not_display == False:
+            try:
+                temp = TestimonialsPageCustomisation.objects.get(do_not_display=False)
+                if self != temp:
+                    temp.do_not_display = True
+                    temp.save()
+            except TestimonialsPageCustomisation.DoesNotExist:
+                pass
+        super(TestimonialsPageCustomisation, self).save(*args, **kwargs)
+
+
+    class Meta:
+        verbose_name_plural = '  Testimonials Page'
+
+
+    def __str__(self):
+        return self.style_name
+
+
+class AddTestimonial(models.Model):
     recipients_name = models.CharField(max_length=100, blank=False, null=False)
     testimonial = RichTextField(blank=False, null=False, max_length=500)
     customers_rating = models.CharField(max_length=1, blank=True, null=True)
-    card_background_color = ColorField(format='hexa', blank=True, null=True, default='#FFFFFF')
-    card_border = models.TextField(choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
-    card_border_color = ColorField(format='hexa', blank=True, null=True, default='#FFFFFF')
-    card_font_color = ColorField(format='hexa', blank=True, null=True, default='#000000')
-    star_rating_color = ColorField(format='hexa', blank=True, null=True, default='#FFFF00')
 
     class Meta:
-            verbose_name_plural = '  Testimonials Page'
+        verbose_name_plural = ' Add Testimonial'
 
     def __str__(self):
         return self.recipients_name

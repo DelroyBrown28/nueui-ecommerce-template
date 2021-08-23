@@ -13,26 +13,27 @@
         <div class="gtco-testimonials">
             <div class="owl-carousel owl-carousel1 owl-theme">
 
-                {% for x in testimonials_customisation %}
-
+                {% for x in add_testimonial %}
+                
                 <div>
-                    <div class="{% if x.do_not_display %}
-                    do-not-display {% else %} card text-center py-5 {% endif %}" style="background-color: {{ x.card_background_color }} !important;
-                        border: 2px solid {{ x.card_border_color }} !important;">
+                    {% for y in testimonials_customisation %}
+                    <div class="{% if y.do_not_display %}
+                    do-not-display {% else %} card text-center py-5 {% endif %}" style="background-color: {{ y.card_background_color }} !important;
+                        border: 2px solid {{ y.card_border_color }} !important;">
 
                         <div class="card-body">
                             <h5 class="{% if y.do_not_display %}
                             do-not-display {% else %} name-header {% endif %}"
-                                style="color: {{ x.card_font_color }} !important;">{{ x.recipients_name }} <br />
+                                style="color: {{ y.card_font_color }} !important;">{{ x.recipients_name }} <br />
                             </h5>
                             <p class="{% if y.do_not_display %}
                             do-not-display {% else %} card-text my-5 {% endif %}">
                                 <em class="{% if y.do_not_display %}
                                 do-not-display {% else %} em {% endif %}"
-                                    style="color: {{ x.card_font_color }} !important;">{{ x.testimonial|safe }}</em>
+                                    style="color: {{ y.card_font_color }} !important;">{{ x.testimonial|safe }}</em>
                             </p>
                             <div class="container mt-5">
-                                <div class="col-md-12" style="color: {{ x.star_rating_color }} !important;">
+                                <div class="col-md-12" style="color: {{ y.star_rating_color }} !important;">
 
                                     {% if x.customers_rating == '1' %}
                                     <i class="fas fa-star mx-2" style="font-size:25px;"></i>
@@ -78,6 +79,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
 
                 {% empty %}
@@ -96,7 +98,7 @@
     </div>
 
     {% if submitted %}
-    <div class="row">
+    <div class="row flexed mt-5 h-100">
         <div class="col-md-12 text-center">
             <h3>THANKS FOR SHARING WITH US</h3>
             <p>CHECK OUT WHAT OTHER PRODUCTS WE HAVE IN STORE</p>
@@ -114,29 +116,41 @@
     </div>
 
     <div class="testimonial-form-wrap col-md-12 flexed">
-        <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="p-5 col-md-6">
+
+        {% for x in testimonials_customisation %}
+        <form action="/testimonials/" method="POST" enctype="multipart/form-data" class="{% if x.do_not_display %}
+        do-not-display {% else %} p-5 col-md-6 testimonial-form {% endif %}">
             {% csrf_token %}
-           
 
-            <p> <input type="text" name="name" class="form-control col-md-12" placeholder="Name" maxlength="100"
-                    required="" id="id_name"></p>
-            <p> <input type="text" name="email" class="form-control col-md-12" placeholder="Email" maxlength="100"
-                    id="id_email"></p>
-            <p> <textarea name="your_thoughts" cols="40" rows="10" class="form-control col-md-12"
-                    placeholder="Your Thoughts?" maxlength="1000" required="" id="id_your_thoughts"
-                    spellcheck="false"></textarea>
-                <grammarly-extension data-grammarly-shadow-root="true"
-                    style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;" class="cGcvT">
-                </grammarly-extension>
-                <grammarly-extension data-grammarly-shadow-root="true"
-                    style="mix-blend-mode: darken; position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: auto;"
-                    class="cGcvT"></grammarly-extension>
+            <p>
+                <input type="text" name="name" class="{% if x.do_not_display %}
+                do-not-display {% else %} form-control col-md-12 {% endif %}"
+                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Name"
+                    maxlength="100" required="" id="id_name">
             </p>
-            <p> <input type="number" name="rating" class="form-control col-md-3 rating-field"
-                    placeholder="Rate us out of 5" maxlength="1" id="id_rating"></p>
-
-            <input class="testimonial-form-submit-btn text-center" type="submit" value="Submit">
+            <p>
+                <input type="text" name="email" class="{% if x.do_not_display %}
+                do-not-display {% else %} form-control col-md-12 {% endif %}"
+                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Email"
+                    maxlength="100" id="id_email">
+            </p>
+            <p>
+                <textarea name="your_thoughts" cols="40" rows="10" class="{% if x.do_not_display %}
+                do-not-display {% else %} form-control col-md-12 {% endif %}"
+                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Your Thoughts?"
+                    maxlength="1000" required="" id="id_your_thoughts" spellcheck="false"></textarea>
+            </p>
+            <p>
+                <input type="number" name="rating" class="{% if x.do_not_display %}
+                do-not-display {% else %} form-control col-md-3 rating-field {% endif %}"
+                    style="border: 1px solid {{ x.form_field_border_color }} !important;" placeholder="Rate us out of 5"
+                    maxlength="1" id="id_rating">
+            </p>
+            <input class="{% if x.do_not_display %}
+            do-not-display {% else %} testimonial-form-submit-btn text-center p-0 {% endif %}"
+                style="border: 1px solid {{ x.form_field_border_color }} !important;" type="submit" value="Submit">
         </form>
+        {% endfor %}
     </div>
     {% endif %}
 

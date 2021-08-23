@@ -4,7 +4,8 @@ from page_customisations.views import (HeaderCustomisation,
                                        ProductsPageCustomisation,
                                        GlobalSiteStyling,
                                        FooterCustomisation,
-                                       TestimonialsPageCustomisation)
+                                       TestimonialsPageCustomisation,
+                                       AddTestimonial)
 
 
 def global_styles_processor(request):
@@ -58,6 +59,12 @@ def footer_customisation_processor(request):
 def testimonials_customisation_processor(request):
     return {
         'testimonials_customisation': TestimonialsPageCustomisation.objects.all(),
+
+    }
+
+def add_testimonial_processor(request):
+    return {
+        'add_testimonial': AddTestimonial.objects.all(),
 
     }
 
