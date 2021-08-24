@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = env('DEBUG')
+DEBUG = os.envron.get('DEBUG')
 
 
 ALLOWED_HOSTS = ['nueui-basictemplate.herokuapp.com', 'localhost', '*']
