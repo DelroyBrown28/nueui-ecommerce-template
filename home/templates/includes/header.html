@@ -40,8 +40,9 @@
                                 border: 1px solid {{ x.search_icon_color }};">
                             <span class="icon">
                                 <i class="{% if x.do_not_display %}
-                                do-not-display {% else %} fas fa-search {% endif %}"
-                                    style="color: {{ x.search_icon_color }};"></i>
+                                do-not-display {% else %} feathericon {% endif %}"
+                                    style="color: {{ x.search_icon_color }} !important;" data-feather="search">
+                                </i>
                                 {% endfor %}
                             </span>
                         </button>
@@ -63,10 +64,12 @@
                             {% else %}
                             {% for y in global_styles %}
                             <div>
+
                                 <i class="{% if y.do_not_display %}
-                                do-not-display {% else %} fas fa-users fa-lg {% endif %}"
-                                    style="color: {{ y.all_icon_colors }};">
+                                do-not-display {% else %} feathericon {% endif %}"
+                                    style="color: {{ y.all_icon_colors }} !important;" data-feather="book-open">
                                 </i>
+
                             </div>
                             <p class="{% if y.do_not_display %}
                             do-not-display {% else %} my-0 {% endif %}"
@@ -102,14 +105,13 @@
                             {% for y in global_styles %}
                             <div>
                                 <i class="{% if y.do_not_display %}
-                                do-not-display {% else %} fas fa-user fa-lg {% endif %}"
-                                    style="color: {{ y.all_icon_colors }};">
+                                do-not-display {% else %} feathericon {% endif %}"
+                                    style="color: {{ y.all_icon_colors }} !important;" data-feather="user">
                                 </i>
                             </div>
                             <p class="{% if y.do_not_display %}
                             do-not-display {% else %} my-0 {% endif %}"
-                                style="color: {{ y.base_font_color }} !important;">My
-                                Account
+                                style="color: {{ y.base_font_color }} !important;">My Account
                             </p>
                             {% endfor %}
                         </div>
@@ -133,7 +135,7 @@
                         <a href="{% url 'add_product' %}" class="{% if y.do_not_display %}
                         do-not-display {% else %} dropdown-item {% endif %}"
                             style="color: {{ y.dropdown_menu_text_color }} !important">Product Management</a>
-                            {% endif %}
+                        {% endif %}
                         {% if user.is_authenticated %}
                         <a href="{% url 'profile' %}" class="{% if y.do_not_display %}
                         do-not-display {% else %} dropdown-item {% endif %}"
@@ -141,7 +143,7 @@
                         <a href="{% url 'account_logout' %}" class="{% if y.do_not_display %}
                             do-not-display {% else %} dropdown-item {% endif %}"
                             style="color: {{ y.dropdown_menu_text_color }} !important">Logout</a>
-                        
+
                         {% else %}
                         <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
                         <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
@@ -156,10 +158,10 @@
                         <div class="text-center">
                             {% for y in global_styles %}
                             <div>
-                                <!-- <img src="{{ new.shopping_bag_icon_color }}" class="shopping-bag-icon"> -->
                                 <i class="{% if y.do_not_display %}
-                                do-not-display {% else %} fas fa-shopping-bag fa-lg {% endif %}"
-                                    style="color: {{ y.all_icon_colors }};"></i>
+                                do-not-display {% else %} feathericon {% endif %}"
+                                    style="color: {{ y.all_icon_colors }} !important;" data-feather="shopping-bag">
+                                </i>
 
                             </div>
                             <p class="{% if y.do_not_display %}

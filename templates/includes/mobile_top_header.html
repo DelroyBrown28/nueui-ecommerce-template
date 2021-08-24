@@ -6,15 +6,17 @@
         <div class="text-center">
             <div>
                 {% for y in global_styles %}
-                <i class="{% if y.do_not_display %}
-                do-not-display {% else %} fas fa-search fa-lg {% endif %}"
-                    style="color: {{ y.all_icon_colors }}!important;">
+                {% for x in header_customisation %}
+                <i class="{% if y.do_not_display or x.do_not_display %}
+                                do-not-display {% else %} feathericon {% endif %}"
+                    style="color: {{ y.all_icon_colors }} !important;" data-feather="search">
                 </i>
             </div>
             <p class="{% if x.do_not_display %}
             do-not-display {% else %} my-0 {% endif %}" style="color: {{ y.base_font_color }} !important;">
                 Search
             </p>
+            {% endfor %}
             {% endfor %}
         </div>
     </a>
@@ -49,9 +51,10 @@
             {% for y in global_styles %}
             {% if request.get_full_path == '/about/' %}
             {% else %}
-            <div <i class="{% if x.do_not_display or y.do_not_display %}
-                do-not-display {% else %} fas fa-users fa-lg {% endif %}"
-                style="color: {{ y.all_icon_colors }}!important;">
+            <div>
+                <i class="{% if y.do_not_display or x.do_not_display %}
+                do-not-display {% else %} feathericon {% endif %}" style="color: {{ y.all_icon_colors }} !important;"
+                    data-feather="book-open">
                 </i>
             </div>
             <p class="{% if x.do_not_display or y.do_not_display %}
@@ -86,9 +89,10 @@
         <div class="text-center">
             {% for x in header_customisation %}
             {% for y in global_styles %}
-            <div <i class="{% if y.do_not_display or x.do_not_display %}
-                do-not-display {% else %} fas fa-user fa-lg {% endif %}"
-                style="color: {{ y.all_icon_colors }}!important;">
+            <div>
+                <i class="{% if y.do_not_display %}
+                                do-not-display {% else %} feathericon {% endif %}"
+                    style="color: {{ y.all_icon_colors }} !important;" data-feather="user">
                 </i>
             </div>
             <p class="{% if y.do_not_display %}
@@ -134,3 +138,8 @@
     {% endfor %}
     {% endfor %}
 </li>
+
+<script>
+    // Feathericons
+    feather.replace()
+</script>

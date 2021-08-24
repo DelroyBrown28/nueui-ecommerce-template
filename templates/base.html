@@ -9,7 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     {% endblock %}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 
 
     <title>Nue Store {% block extra_title %}{% endblock extra_title %}</title>
@@ -19,6 +25,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.0/js/bootstrap.bundle.js"
         integrity="sha512-zW3wEBCLSIQ6/8E5HhS2x6gq2DSMr/oNVB6O4GtdwE0Nc2/w11di3IfMilwF8OFyg12t4rJ5TegUa7k/hnrTVg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.js"
+        integrity="sha512-oFCsbxZP/K+0EjvkyIHBvC3ft8LZnO+8kljz0RiJN8ffUCeX0LF1G0WlvU3jMJVaoKBrC+I2ohi4BCpKq2ZgXw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"
@@ -86,7 +95,8 @@
             $('.dropdown-toggle').dropdown();
         });
 
-
+        // Feathericons
+        feather.replace()
 
         // Hide Header on on scroll down
         var didScroll;
