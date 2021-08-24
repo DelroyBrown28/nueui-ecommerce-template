@@ -101,10 +101,10 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
             <div class="products detail-container mb-5 mt-md-5">
 
                 {% for y in global_styles %}
-                <p class="{% if y.do_not_display %}
+                <h3 class="{% if y.do_not_display %}
                 do-not-display {% else %} mb-0 {% endif %}" style="color: {{ y.base_font_color }};">
                     {{ product.name }}
-                </p>
+                </h3>
                 <p class="{% if y.do_not_display %}
                 do-not-display {% else %} lead mb-0 text-left font-weight-bold {% endif %}"
                     style="color: {{ y.base_font_color }};">
@@ -123,6 +123,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                         {{ product.category.category_name }}
                     </a>
                 </p>
+                <hr>
+
                   
                 {% if free_delivery_delta > 0 %}
 
