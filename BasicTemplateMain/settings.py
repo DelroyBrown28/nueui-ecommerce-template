@@ -8,10 +8,9 @@ environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get(
-    'SECRET_KEY', 'VvaiPndWPNY9forzEEu4ldJKPZe5zZs4oxIY8iKAxmLvn8C9BW1w6t0a3IFs')
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = True
+DEBUG = env('DEBUG')
 
 
 ALLOWED_HOSTS = ['nueui-basictemplate.herokuapp.com', 'localhost', '*']
