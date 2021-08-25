@@ -34,6 +34,8 @@ class ProductAdmin(admin.ModelAdmin):
     )
     ordering = ('name',)
 
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'category_name',
