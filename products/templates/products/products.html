@@ -62,10 +62,6 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                             <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>
                                 Price
                                 (high to low)</option>
-                            <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>
-                                Rating (low to high)</option>
-                            <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>
-                                Rating (high to low)</option>
                             <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name
                                 (A-Z)</option>
                             <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>
@@ -201,7 +197,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                 <div class="col">
                                     <p class="lead mb-0 text-left font-weight-bold"
                                         style="font-weight: 300 !important; color: {{ x.product_card_font_color }}">
-                                        £<span>{{ product.price }}
+                                        £<span>{{ product.price.size_price }}
                                         </span>
                                     </p>
                                     {% if product.category %}
@@ -215,16 +211,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                         </a>
                                     </p>
                                     {% endif %}
-                                    {% if product.rating %}
-                                    <small class="text-muted"
-                                        style="color: {{ x.product_card_font_color }}B3 !important;"><i
-                                            class="fas fa-star mr-1"
-                                            style="color: {{ x.product_card_icon_color }};"></i>{{ product.rating }}
-                                        /
-                                        5</small>
-                                    {% else %}
-                                    <small class="text-muted">No Rating</small>
-                                    {% endif %}
+                             
                                     {% if request.user.is_superuser %}
                                     <small class="ml-3">
                                         <a href="{% url 'edit_product' product.id %}">Edit</a> |
