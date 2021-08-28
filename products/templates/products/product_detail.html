@@ -198,6 +198,15 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                         </div>
 
                         {% endif %}
+                        {% with product.price as ps  %}
+                        {% if ps %}
+                        
+                        <select class="form-control rounded-0 w-50" name="product_size" id="id_product_size">
+                                <option value="{{ product.price.size_label }}">£{{ product.price.size_price }}</option>
+                                <option value="{{ product.price.size_label_2 }}">£{{ product.price.size_price_2 }}</option>
+                            </select>
+                        {% endif %}
+                        {% endwith %}
 
                         <div class="col-12">
                             {% for y in global_styles %}
