@@ -1,3 +1,4 @@
+from easy_thumbnails.conf import Settings as thumbnail_settings
 import os
 import dj_database_url
 import environ
@@ -32,6 +33,8 @@ INSTALLED_APPS = [
     'colorfield',
     'django_social_share',
     'phonenumber_field',
+    'easy_thumbnails',
+    'image_cropping',
 
     # Allauth Stuff
     'allauth',
@@ -52,6 +55,10 @@ INSTALLED_APPS = [
     'storages',
 
 ]
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
 
 SITE_ID = 1
 

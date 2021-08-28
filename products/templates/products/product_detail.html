@@ -108,7 +108,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 <p class="{% if y.do_not_display %}
                 do-not-display {% else %} lead mb-0 text-left font-weight-bold {% endif %}"
                     style="color: {{ y.base_font_color }};">
-                    £{{ product.price }}
+                    £{{ product.price.size_price }}
                 </p>
                 {% endfor global_styles %}
                 {% if product.category %}

@@ -1,17 +1,10 @@
 {% load i18n static %}
 
-<style>
-    .dim {
-        /* For Internet Explorer */
-        box-shadow: 0 0 0 1000px rgba(0, 0, 0, .3);
 
-        /* For other browsers */
-        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .3);
-    }
-</style>
 
-<header class="container-fluid fixed-top">
-    {% for x in header_customisation %}
+{% for x in header_customisation %}
+<header class="{% if x.do_not_display or y.do_not_display %}
+do-not-display {% else %} container-fluid fixed-top {% endif %}">
     <div id="topnav" class="{% if x.do_not_display %}
     do-not-display {% else %} row pt-lg-2 d-none d-lg-flex {% endif %}"
         style="background-color: {{ x.header_background_color }} !important;">
@@ -102,13 +95,15 @@
                     <a class="text-black nav-link dropdown-toggle" href="#" id="user-options" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
-                            {% for y in global_styles %}
                             <div>
+                            {% for y in global_styles %}
                                 <i class="{% if y.do_not_display %}
                                 do-not-display {% else %} feathericon {% endif %}"
                                     style="color: {{ y.all_icon_colors }} !important;" data-feather="user">
                                 </i>
+                            {% endfor %}
                             </div>
+                            {% for y in global_styles %}
                             <p class="{% if y.do_not_display %}
                             do-not-display {% else %} my-0 {% endif %}"
                                 style="color: {{ y.base_font_color }} !important;">My Account
@@ -116,8 +111,8 @@
                             {% endfor %}
                         </div>
                     </a>
-                    {% for y in global_styles %}
 
+                    {% for y in global_styles %}
                     <div class="{% if y.do_not_display %}
                     do-not-display {% else %} dropdown-menu border-0 {% endif %}"
                         style="background-color: {{ y.dropdown_menu_background_color }} !important;"
@@ -151,6 +146,7 @@
                     </div>
                     {% endfor %}
                 </li>
+                
                 <li class="list-inline-item">
                     {% for x in header_customisation %}
                     <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} {% if x.do_not_display %}
@@ -183,7 +179,6 @@
 
         </div>
     </div>
-    {% endfor %}
 
     {% for x in header_customisation %}
     <div class="{% if x.do_not_display %}
@@ -206,11 +201,12 @@
     {% endfor %}
 
     {% for x in header_customisation %}
+    {% for y in global_styles %}
 
-    <div class="{% if x.do_not_display %}
+    <div class="{% if x.do_not_display or y.do_not_display %}
      do-not-display {% else %} row text-center flexed small-banner-wrap {% endif %}" data-aos="fade-in"
         data-aos-delay="1000" style="background-color: {{ x.small_banner_background_color }};">
-        <a href="{{ x.banner_button_url_link_1 }}" target="_blank" class="{% if x.do_not_display %}
+        <a href="{{ x.banner_button_url_link_1 }}" target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
         do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" style="background-color: {{ x.banner_button_background_color }} !important;
             color: {{ x.banner_button_label_color }} !important;
             border: 2px solid {{ x.button_border_color }} !important;">
@@ -218,13 +214,13 @@
         </a>
         <div class="col free-delivery-wrap">
             <!-- <h5 class="free-delivery-text my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h5> -->
-            <h5 class="{% if x.do_not_display %}
-            do-not-display {% else %} small-banner-text my-1 {% endif %}"
+            <h5 class="{% if x.do_not_display or y.do_not_display  %}
+            do-not-display {% else %} small-banner-text my-1 py-2 {% endif %}"
                 style="color: {{ x.small_banner_text_color }};">
                 {{ x.small_banner_text|safe }}
             </h5>
         </div>
-        <a href="{{ x.banner_button_url_link_2 }}" target="_blank" class="{% if x.do_not_display %}
+        <a href="{{ x.banner_button_url_link_2 }}" target="_blank" class="{% if x.do_not_display or y.do_not_display %}
         do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" style="background-color: {{ x.banner_button_background_color }} !important;
             color: {{ x.banner_button_label_color }} !important;
             border: 2px solid {{ x.button_border_color }} !important;">
@@ -234,4 +230,6 @@
     </div>
 
     {% endfor %}
+    {% endfor %}
 </header>
+{% endfor %}
