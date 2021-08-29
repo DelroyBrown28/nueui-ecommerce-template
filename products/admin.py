@@ -1,5 +1,4 @@
 from django.contrib import admin
-from BasicTemplateMain.admin import superadmin
 
 from .models import Product, Category
 
@@ -14,13 +13,15 @@ class ProductAdmin(admin.ModelAdmin):
                 'alternative_image_2',)
 
         }),
-        ('Other', {
+        ('Product Information', {
             "fields": (
                 'name',
                 'category',
                 'price',
                 'description',
-                'has_sizes',)
+                'has_sizes',
+                'in_stock',
+                'is_active',)
         }),
     )
     search_fields = [
@@ -31,6 +32,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = (
         'name',
         'category',
+    )
+    readonly_fields = (
+        'created',
+        'updated',
+        'created_by',
     )
     ordering = ('name',)
 

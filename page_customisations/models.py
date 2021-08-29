@@ -179,6 +179,9 @@ class HeaderCustomisation(models.Model):
     button_border = models.TextField(
         choices=ADD_BUTTON_BORDER, null=True, blank=True, default='no-border')
     button_border_color = ColorField(format='hexa', default='#000000')
+    edit_banner_buttons = models.CharField(
+        max_length=120, null=True, blank=True, default='/superadmin/page_customisations/headercustomisation/1/change/')
+    id_tag = models.CharField(max_length=55, blank=True, null=True, default='small_banner_id')
     mobile_banner_button_background_color = ColorField(
         format='hexa', default='#FFFFFF')
     mobile_banner_button_label_color = ColorField(
@@ -337,11 +340,14 @@ class TestimonialsPageCustomisation(models.Model):
         format='hexa', blank=True, null=True, default='#FFE231')
     view_testimonial_button_label = models.CharField(
         blank=False, null=False, max_length=55, default='', help_text='Button that drops you down to the Testimonials Form')
-    view_testimonial_button_label_color = ColorField(format='hexa', default='#000000')
-    view_testimonial_button_background_color = ColorField(format='hexa', default='#FFFFFF')
+    view_testimonial_button_label_color = ColorField(
+        format='hexa', default='#000000')
+    view_testimonial_button_background_color = ColorField(
+        format='hexa', default='#FFFFFF')
     view_testimonial_button_border = models.TextField(
         choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
-    view_testimonial_button_border_color = ColorField(format='hexa', default='#000000')
+    view_testimonial_button_border_color = ColorField(
+        format='hexa', default='#000000')
     icon_color = ColorField(format='hexa', default='#000000')
     form_title = models.CharField(
         blank=False, null=False, max_length=100, default='')

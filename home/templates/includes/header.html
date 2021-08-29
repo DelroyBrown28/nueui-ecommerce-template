@@ -9,7 +9,9 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
     do-not-display {% else %} row pt-lg-2 d-none d-lg-flex {% endif %}"
         style="background-color: {{ x.header_background_color }} !important;">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-            <a href="{% url 'home' %}" class="nav-link main-logo-link">
+            <a href="{% if user.is_superuser %} {{ x.edit_banner_buttons }} {% else %} {% url 'home' %} {% endif %}"
+                target="_blank" class="nav-link main-logo-link" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Edit">
                 <!-- <h2 class="logo-font text-black my-0"><strong>Nue</strong> Store</h2> -->
                 {% for x in header_customisation %}
                 {% if x.header_logo %}
@@ -96,12 +98,12 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
                         aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
                             <div>
-                            {% for y in global_styles %}
+                                {% for y in global_styles %}
                                 <i class="{% if y.do_not_display %}
                                 do-not-display {% else %} feathericon {% endif %}"
                                     style="color: {{ y.all_icon_colors }} !important;" data-feather="user">
                                 </i>
-                            {% endfor %}
+                                {% endfor %}
                             </div>
                             {% for y in global_styles %}
                             <p class="{% if y.do_not_display %}
@@ -146,7 +148,7 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
                     </div>
                     {% endfor %}
                 </li>
-                
+
                 <li class="list-inline-item">
                     {% for x in header_customisation %}
                     <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} {% if x.do_not_display %}
@@ -206,22 +208,37 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
     <div class="{% if x.do_not_display or y.do_not_display %}
      do-not-display {% else %} row text-center flexed small-banner-wrap {% endif %}" data-aos="fade-in"
         data-aos-delay="1000" style="background-color: {{ x.small_banner_background_color }};">
-        <a href="{{ x.banner_button_url_link_1 }}" target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
-        do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" style="background-color: {{ x.banner_button_background_color }} !important;
+        <a href="{% if user.is_superuser %} {{ x.edit_banner_buttons }} {% else %} {{ x.banner_button_url_link_1 }} {% endif %}"
+            target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
+        do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Edit" style="background-color: {{ x.banner_button_background_color }} !important;
             color: {{ x.banner_button_label_color }} !important;
             border: 2px solid {{ x.button_border_color }} !important;">
             {{ x.banner_button_label_1 }}
         </a>
         <div class="col free-delivery-wrap">
             <!-- <h5 class="free-delivery-text my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h5> -->
+            {% if user.is_superuser %}
+            <a href="{{ x.edit_banner_buttons }}" target="_blank">
+                <h5 class="{% if x.do_not_display or y.do_not_display  %}
+            do-not-display {% else %} small-banner-text my-1 py-2 {% endif %}"  data-bs-toggle="tooltip"
+            data-bs-placement="bottom" title="Edit"
+                    style="color: {{ x.small_banner_text_color }};">
+                    {{ x.small_banner_text|safe }}
+                </h5>
+            </a>
+            {% else %}
             <h5 class="{% if x.do_not_display or y.do_not_display  %}
             do-not-display {% else %} small-banner-text my-1 py-2 {% endif %}"
                 style="color: {{ x.small_banner_text_color }};">
                 {{ x.small_banner_text|safe }}
             </h5>
+            {% endif %}
         </div>
-        <a href="{{ x.banner_button_url_link_2 }}" target="_blank" class="{% if x.do_not_display or y.do_not_display %}
-        do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" style="background-color: {{ x.banner_button_background_color }} !important;
+        <a href="{% if user.is_superuser %} {{ x.edit_banner_buttons }} {% else %} {{ x.banner_button_url_link_2 }} {% endif %}"
+            target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
+        do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" data-bs-toggle="tooltip"
+            data-bs-placement="top" title="Edit" style="background-color: {{ x.banner_button_background_color }} !important;
             color: {{ x.banner_button_label_color }} !important;
             border: 2px solid {{ x.button_border_color }} !important;">
             {{ x.banner_button_label_2 }}
@@ -233,3 +250,12 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
     {% endfor %}
 </header>
 {% endfor %}
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+
+
+</script>

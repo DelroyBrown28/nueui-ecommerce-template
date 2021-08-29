@@ -64,6 +64,7 @@ class SizePriceAdmin(admin.ModelAdmin):
         'size_label',
     )
 
+
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name',
