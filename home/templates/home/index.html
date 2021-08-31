@@ -95,26 +95,25 @@
 
             {% if x.cta_card_1 %}
             <div class="{% if x.do_not_display or y.do_not_display %}
-                 do-not-display {% else %} mx-5 card cta-card card-img-top col-md-4 p-0 {% endif %}"
-                data-aos="fade-in">
-                <img src="{{x.cta_card_1.image.url}}" alt="...">
+                 do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
+                <img src="{{x.cta_card_1.image.url}}" class="card-img-top" alt="...">
 
                 <div class="card-body text-center cta-card-title">
 
                     <p class="{% if x.do_not_display or y.do_not_display %}
-                  do-not-display {% else %} cta-title {% endif %}" style="color: {{ x.cta_text_color }} !important;">
+                  do-not-display {% else %} cta-title {% endif %}"
+                        style="color: {{ x.contact_card_text_color }} !important;">
                         {{ x.cta_card_1.cta_text|safe }}
                     </p>
 
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
-                        do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
-
-                    <a href="products/?category={{ x.cta_card_1.button_url_choice }}"
-                        class="cta-btn-1 flexed {{ x.cta_card_1.add_button_border }}" target="_blank" style="color: {{ x.cta_card_1.button_label_color }} !important;
-                        background-color: {{ x.cta_card_1.button_background_color }} !important;
-                        border: 2px solid {{ x.cta_card_1.border_color }};">
-                        {{ x.cta_card_1.button_label }}
+               do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
+                    <a href="products/?category={{ x.cta_card_2.button_url_choice }}"
+                        class="cta-btn-1 flexed {{ x.cta_card_2.add_button_border }}" target="_blank" style="color: {{ x.cta_card_2.button_label_color }} !important;
+                    background-color: {{ x.cta_card_2.button_background_color }} !important;
+                    border: 2px solid {{ x.cta_card_1.border_color }};">
+                        {{ x.cta_card_2.button_label }}
                     </a>
 
                 </div>
