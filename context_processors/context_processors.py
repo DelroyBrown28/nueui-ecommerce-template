@@ -62,6 +62,7 @@ def testimonials_customisation_processor(request):
 
     }
 
+
 def add_testimonial_processor(request):
     return {
         'add_testimonial': AddTestimonial.objects.all(),

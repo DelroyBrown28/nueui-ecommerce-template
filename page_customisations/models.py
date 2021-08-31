@@ -1,3 +1,4 @@
+from enum import unique
 from django.db import models
 from django.db.models.fields import CharField, EmailField, TextField
 from django.db.models.fields.json import HasKeyLookup
@@ -181,7 +182,7 @@ class HeaderCustomisation(models.Model):
     button_border_color = ColorField(format='hexa', default='#000000')
     edit_banner_buttons = models.CharField(
         max_length=120, null=True, blank=True, default='/superadmin/page_customisations/headercustomisation/1/change/')
-    id_tag = models.CharField(max_length=55, blank=True, null=True, default='small_banner_id')
+    id_tag = models.AutoField(primary_key=True, unique=True)
     mobile_banner_button_background_color = ColorField(
         format='hexa', default='#FFFFFF')
     mobile_banner_button_label_color = ColorField(
@@ -218,18 +219,20 @@ class ProductsPageCustomisation(models.Model):
     )
     products_page_styling = models.CharField(
         blank=False, null=False, max_length=55, default="Default Product Page Styling")
-    category_tag_border_color = ColorField(format='hexa')
-    category_tag_text_color = ColorField(format='hexa')
-    product_card_background_color = ColorField(format='hexa')
+    category_tag_border_color = ColorField(format='hexa', default='#000000')
+    category_tag_text_color = ColorField(format='hexa', default='#000000')
+    product_card_background_color = ColorField(format='hexa', default='#FFFFFF00')
     add_card_border = models.TextField(choices=BORDER_SIZE_CHOICES,
                                        blank=False,
                                        null=False,
                                        default="no-border")
-    border_color = ColorField(format='hexa')
-    product_card_font_color = ColorField(format='hex')
-    product_card_icon_color = ColorField(format='hexa')
-    product_quantity_buttons = ColorField(
-        format='hexa', help_text="**Product Display Page")
+    border_color = ColorField(format='hexa', default='#000000')
+    product_card_font_color = ColorField(format='hex', default='#000000')
+    product_card_icon_color = ColorField(format='hexa', default='#000000')
+    product_quantity_button_background_color = ColorField(
+        format='hexa', default='#000000')
+    product_quantity_button_icon_color = ColorField(
+        format='hexa', default='#FFFFFF')
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='**Check this box to hide this specific styling.')

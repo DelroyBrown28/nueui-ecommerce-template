@@ -2,8 +2,9 @@
 
 <section class="footer-section">
     {% for x in footer_customisation %}
-    <div class="{% if x.do_not_display %}
-    do-not-display {% else %} mt-5 footer-container {% endif %}"
+    <div {% if user.is_superuser %} ondblclick="editFooter()" data-bs-toggle="tooltip" data-bs-placement="top"
+        title="Double click to edit Footer" {% endif %}  class="{% if x.do_not_display %}
+    do-not-display {% else %} mt-5 footer-container editable {% endif %}"
         style="background-color: {{ x.background_color }} !important; border-top: 1px solid {{ x.footer_top_border_color }} !important;">
         <footer class="container flexed py-5 my-3 pl-0">
             <div class="col">

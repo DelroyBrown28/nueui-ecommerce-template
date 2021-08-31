@@ -5,7 +5,7 @@
 {% block page_header %}
 {{ form.media }}
 
-  
+
 <div class=" container header-container">
     <div class="row">
         <div class="col">
@@ -38,19 +38,21 @@
     <section class="flexed top-homepage-section" data-aos="fade-in" data-aos-delay="1200">
         {% for x in home_page_customisation %}
         {% if x.image %}
-        <div class="{% if x.do_not_display %}
-    do-not-display {% else %} homepage-bg-image w-100 img-fluid {% endif %}" style="background: url({{x.image.url}});">
+        <div {% if user.is_superuser %} ondblclick="editHomepage()" data-bs-toggle="tooltip" data-bs-placement="left"
+        title="Double Click To Edit Home Page Styles" {% endif %}  class="{% if x.do_not_display %}
+    do-not-display {% else %} homepage-bg-image editable w-100 img-fluid {% endif %}" style="background: url({{x.image.url}});">
         </div>
         {% else %}
         <div class="{% if x.do_not_display %}
-    do-not-display {% else %} gradient-bg-image h-100 w-100 img-fluid {% endif %}">
+    do-not-display {% else %} gradient-bg-image editable h-100 w-100 img-fluid {% endif %}">
         </div>
         {% endif %}
         {% endfor %}
 
         <div class="container h-100" style="height: calc(100% - 162px) !important; margin-top: 100px !important;">
             <div class="row h-100">
-                <div class="col-12 col-md-12 my-auto">
+                <div {% if user.is_superuser %} ondblclick="editHomepage()" data-bs-toggle="tooltip" data-bs-placement="top"
+                title="Double click to edit home page contents" {% endif %}  class="col-12 editable col-md-12 my-auto" style="height: fit-content;">
 
                     {% for x in home_page_customisation %}
                     <h1 class="{% if x.do_not_display %}
@@ -84,14 +86,15 @@
     </section>
 
     <section class="products-homepage-section container">
-        <div class="row flexed">
+        <div {% if user.is_superuser %} ondblclick="editCTACards()" data-bs-toggle="tooltip" data-bs-placement="top"
+        title="Double click to edit CTA cards" {% endif %} class="row flexed editable">
 
             {% for x in home_page_customisation %}
 
             {% if x.cta_card_1 %}
             <div class="{% if x.do_not_display or y.do_not_display %}
-                 do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in" style="">
-                <img src="{{x.cta_card_1.image.url}}" class="card-img-top" alt="...">
+                 do-not-display {% else %} mx-5 card cta-card card-img-top col-md-4 p-0 {% endif %}" data-aos="fade-in" style="border: 1px solid red">
+                <img src="{{x.cta_card_1.image.url}}" alt="...">
 
                 <div class="card-body text-center cta-card-title">
 
@@ -151,26 +154,25 @@
 
     <section class=" cta-banner-section flexed" style="align-items:flex-end;">
 
-                        {% for x in home_page_customisation %}
-                        {% if x.cta_banner %}
-                        <div class="{% if x.do_not_display or y.do_not_display %}
+        {% for x in home_page_customisation %}
+        {% if x.cta_banner %}
+        <div class="{% if x.do_not_display or y.do_not_display %}
                         do-not-display {% else %} jumbotron jumbotron-fluid cta-banner {% endif %}"
-                            style="background-color: {{ x.cta_banner.banner_background_color }} !important;">
-                            <div class="container flexed" style="flex-flow: column;">
+            style="background-color: {{ x.cta_banner.banner_background_color }} !important;">
+            <div class="container flexed" style="flex-flow: column;">
 
-                                <h1 class="display-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
-                                <p class="lead">
-                                    <a href="{{ x.cta_banner.cta_button_url }}"
-                                        class="secondary-btn {{ x.cta_banner.add_button_border }}" target="_blank"
-                                        style="background-color: {{ x.cta_banner.button_background_color }} !important;
+                <h1 class="display-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
+                <p class="lead">
+                    <a href="{{ x.cta_banner.cta_button_url }}"
+                        class="secondary-btn {{ x.cta_banner.add_button_border }}" target="_blank" style="background-color: {{ x.cta_banner.button_background_color }} !important;
                                             color: {{ x.cta_banner.label_color }} !important;">
-                                        {{ x.cta_banner.cta_button_label }}
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
+                        {{ x.cta_banner.cta_button_label }}
+                    </a>
+                </p>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
     </section>
 
     {% include "includes/footer.html" %}

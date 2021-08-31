@@ -77,13 +77,15 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
-                                            {% for y in global_styles %}
+                                            {% for x in products_page_customisation %}
                                             <button
-                                                class="{% if y.do_not_display %}
+                                                class="{% if x.do_not_display %}
                                             do-not-display {% else %} decrement-qty btn btn-black rounded-0 {% endif %}"
-                                                style="background-color: {{ y.secondary_button_base_color }} !important;"
+                                                style="background-color: {{ x.product_quantity_button_background_color }} !important;"
                                                 data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
-                                                <span>
+                                                <span class="{% if x.do_not_display %}
+                                                do-not-display {% else %} icon {% endif %}"
+                                                    style="color: {{ x.product_quantity_button_icon_color }} !important;">
                                                     <i class="fas fa-minus fa-sm"></i>
                                                 </span>
                                             </button>
@@ -94,14 +96,16 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                             data-item_id="{{ item.item_id }}" id="id_qty_{{ item.item_id }}">
 
                                         <div class="input-group-append">
-                                            {% for y in global_styles %}
+                                            {% for x in products_page_customisation %}
 
                                             <button
-                                                class="{% if y.do_not_display %}
+                                                class="{% if x.do_not_display %}
                                             do-not-display {% else %} increment-qty btn btn-black rounded-0 {% endif %}"
-                                                style="background-color: {{ y.secondary_button_base_color }} !important;"
+                                                style="background-color: {{ x.product_quantity_button_background_color }} !important;"
                                                 data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
-                                                <span>
+                                                <span class="{% if x.do_not_display %}
+                                                do-not-display {% else %} icon {% endif %}"
+                                                    style="color: {{ x.product_quantity_button_icon_color }} !important;">
                                                     <i class="fas fa-plus fa-sm"></i>
                                                 </span>
                                             </button>
@@ -128,7 +132,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     <tr>
 
 
-                        {% for y in global_styles  %}
+                        {% for y in global_styles %}
                         <td colspan="5" class="{% if y.do_not_display %}
                         do-not-display {% else %} pt-5 text-right {% endif %}"
                             style="color: {{ y.base_font_color }} !important;">

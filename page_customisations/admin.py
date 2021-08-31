@@ -81,17 +81,12 @@ class HomePageCustomisationAdmin(admin.ModelAdmin):
                 'image',)
         }),
 
-        ('Main Text', {
+        ('Main Text & Button Styles', {
             'classes': ('fieldset_titles', 'collapse in',),
             'fields': (
                 'main_page_text',
                 'main_page_text_alignment',
-                'main_page_text_color'),
-
-        }),
-        ('Button Styles', {
-            'classes': ('fieldset_titles',),
-            'fields': (
+                'main_page_text_color',
                 'button_text',
                 'button_text_color',
                 'button_background_color',
@@ -262,7 +257,9 @@ class ProductsPageCustomisationAdmin(admin.ModelAdmin):
                 ('add_card_border',
                  'border_color'),
                 'product_card_font_color',
-                'product_card_icon_color',),
+                'product_card_icon_color',
+                'product_quantity_button_background_color',
+                'product_quantity_button_icon_color',)
 
         }),
         ('Tick this box to HIDE these styles', {

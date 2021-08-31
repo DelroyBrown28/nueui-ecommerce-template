@@ -52,6 +52,18 @@
 
 <body>
 
+{% if user.is_superuser %}
+<style>
+  
+    .editable:hover {
+        border: 2px dashed #48AA8B;
+        cursor: pointer;
+        
+    }
+</style>
+
+{% endif %}
+
 
     {% if messages %}
     <div class="message-container">
@@ -136,6 +148,28 @@
 
             lastScrollTop = st;
         }
+
+
+
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+
+
+        function editHeader() {
+            window.location.href  = '/superadmin/page_customisations/headercustomisation/1/change/';
+        }
+        function editHomepage() {
+            window.location.href  = '/superadmin/page_customisations/homepagecustomisation/1/change/#/tab/module_1/';
+        }
+        function editCTACards() {
+            window.location.href  = '/superadmin/page_customisations/ctacard/';
+        }
+        function editFooter() {
+            window.location.href  = '/superadmin/page_customisations/footercustomisation/1/change/';
+        }
+    
 
 
     </script>
