@@ -54,6 +54,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default='0')
     # price = models.ForeignKey(
     #     'SizePrice', on_delete=models.CASCADE, null=True, blank=True, related_name='price')
+    add_to_cta_banner = models.BooleanField(default=False)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)

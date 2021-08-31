@@ -15,13 +15,13 @@ class GlobalSiteStyling(models.Model):
         ('no-border', 'No Border'),
     )
     global_site_styles = models.CharField(
-        blank=False, null=False, max_length=20, help_text="Give these global styles a name...")
+        blank=False, null=False, max_length=25, default='Default Global Styles')
     base_background_color = ColorField(format='hex', default='#FFFFFF')
     base_font_color = ColorField(format='hex', default='#000000')
     all_icon_colors = ColorField(format='hex', default='#000000')
     primary_button_base_color = ColorField(format='hex', default='#000000')
-    primary_button_text_color = ColorField(format='hex', default='#000000')
-    secondary_button_base_color = ColorField(format='hex', default='#000000')
+    primary_button_text_color = ColorField(format='hex', default='#FFFFFF')
+    secondary_button_base_color = ColorField(format='hex', default='#FFFFFF')
     secondary_button_text_color = ColorField(format='hex', default='#000000')
     pop_up_background_color = ColorField(format='hex', default='#FFFFFF')
     pop_up_text_color = ColorField(format='hex', default='#000000')
@@ -56,12 +56,12 @@ class CTACard(models.Model):
         ('add-border', 'Add Border'),
         ('no-border', 'Remove Border'),
     )
+    cta_title = models.CharField(
+        blank=False, null=False, max_length=100, default="Default CTA Card Styling.")
     image = models.ImageField(null=False, blank=False,
                               upload_to='cta_card_images')
-    cta_title = models.CharField(
-        blank=False, null=False, max_length=100, default="Default")
-    cta_title_text_color = ColorField(format='hexa', default='#000000')
     cta_text = RichTextField()
+    cta_text_color = ColorField(format='hexa', default='#000000')
     button_url_choice = models.ForeignKey('products.Category', null=True, blank=True, related_name='button_url',
                                           on_delete=models.CASCADE, help_text="Connect to one of your categories")
     button_label = models.CharField(max_length=25, blank=False, null=False)
@@ -83,17 +83,21 @@ class CTABanner(models.Model):
         ('no-border', 'Remove Border'),
     )
     banner_title = models.CharField(
-        max_length=25, blank=False, null=False, default='default', help_text='Banner Name')
+        max_length=25, blank=False, null=False, default='Default Banner Styles')
+    banner_background_color = ColorField(format='hexa', default='#000000')
+    banner_image = models.ImageField(blank=True, null=True, upload_to='banner_images',
+                                     help_text='You can have a banner image or a banner image color.')
     cta_banner_title = RichTextField(default="")
     cta_button_label = models.CharField(
         max_length=25, null=False, blank=False, default="")
-    label_color = ColorField(format='hexa', default='#FFFFFF')
+    label_color = ColorField(format='hexa', default='#000000')
     add_button_border = models.TextField(
         choices=ADD_BUTTON_BORDER, blank=False, null=False, default='no-border')
     border_color = ColorField(format='hexa', default='#000000')
-    button_background_color = ColorField(format='hexa', default='#000000')
+    # TODO: Give option of internal URL or external URL
+    button_background_color = ColorField(format='hexa', default='#FFFFFF')
     cta_button_url = models.URLField(max_length=500, blank=True, null=True)
-    banner_background_color = ColorField(format='hexa', default='#000000')
+
 
     def __str__(self):
         return self.banner_title
@@ -111,7 +115,7 @@ class HomePageCustomisation(models.Model):
         ('text-align__center', 'Center'),
     }
     home_page_styling = models.CharField(
-        blank=False, null=False, max_length=35, default="Default")
+        blank=False, null=False, max_length=100, default="Default Home Page Styling")
     image = models.ImageField(null=True, blank=True,
                               upload_to='home_page_images')
     main_page_text = RichTextField()
@@ -125,11 +129,11 @@ class HomePageCustomisation(models.Model):
     main_page_button_alignment = models.TextField(
         choices=BUTTON_ALIGNMENT_CHOICES, blank=False, null=False, default='text-align__left')
     cta_card_1 = models.ForeignKey(
-        'CTACard', null=True, blank=True, related_name='cta_card_1', on_delete=models.CASCADE)
+        'CTACard', null=True, blank=True, related_name='cta_card_1', on_delete=models.CASCADE, help_text='Click the + button to create a new CTA card.')
     cta_card_2 = models.ForeignKey(
-        'CTACard', null=True, blank=True, related_name='cta_card_2', on_delete=models.CASCADE)
+        'CTACard', null=True, blank=True, related_name='cta_card_2', on_delete=models.CASCADE, help_text='Click the + button to create a new CTA card.')
     cta_banner = models.ForeignKey(
-        'CTABanner', null=True, blank=True, related_name='cta_banner', on_delete=models.CASCADE)
+        'CTABanner', null=True, blank=True, related_name='cta_banner', on_delete=models.CASCADE, help_text='Click the + button to create a new CTA banner.')
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='CHECK THIS BOX TO HIDE THIS SPECIFIC STYLING.')
@@ -158,7 +162,7 @@ class HeaderCustomisation(models.Model):
         ('no-border', 'Remove Border'),
     )
     header_styling = models.CharField(
-        blank=False, null=False, max_length=55, default="Default Styling")
+        blank=False, null=False, max_length=55, default="Default Header Styling")
     header_logo = models.ImageField(null=True, blank=True, upload_to='media')
     header_background_color = ColorField(format='hexa')
     search_icon_color = ColorField(format='hexa')
@@ -167,11 +171,11 @@ class HeaderCustomisation(models.Model):
     small_banner_background_color = ColorField(format='hexa')
     small_banner_text_color = ColorField(format='hexa')
     banner_button_label_1 = models.CharField(
-        default='', blank=False, null=False, max_length=25)
+        default='', blank=True, null=True, max_length=25)
     banner_button_url_link_1 = models.URLField(
         blank=True, null=True, max_length=250)
     banner_button_label_2 = models.CharField(
-        default='', blank=False, null=False, max_length=25)
+        default='', blank=True, null=True, max_length=25)
     banner_button_url_link_2 = models.URLField(
         blank=True, null=True, max_length=250)
     banner_button_background_color = ColorField(
@@ -221,7 +225,8 @@ class ProductsPageCustomisation(models.Model):
         blank=False, null=False, max_length=55, default="Default Product Page Styling")
     category_tag_border_color = ColorField(format='hexa', default='#000000')
     category_tag_text_color = ColorField(format='hexa', default='#000000')
-    product_card_background_color = ColorField(format='hexa', default='#FFFFFF00')
+    product_card_background_color = ColorField(
+        format='hexa', default='#FFFFFF00')
     add_card_border = models.TextField(choices=BORDER_SIZE_CHOICES,
                                        blank=False,
                                        null=False,
@@ -409,8 +414,8 @@ class AddTestimonial(models.Model):
 
 class FooterCustomisation(models.Model):
     styling_name = models.CharField(
-        blank=False, null=False, max_length=55, default="Default")
-    background_color = ColorField(format='hex', default='#333333')
+        blank=False, null=False, max_length=55, default="Default Footer Styles")
+    background_color = ColorField(format='hex', default='#000000')
     text_color = ColorField(format='hex', default='#FFFFFF')
     footer_logo = models.ImageField(
         null=True, blank=True, upload_to='footer_logo_images')
@@ -427,8 +432,9 @@ class FooterCustomisation(models.Model):
 
     social_media_icon_colors = ColorField(format='hex', default='FFFFFF')
     email = models.EmailField(
-        null=True, blank=True, help_text='Enter your email to display in the footer.')
-    contact_number = PhoneNumberField(null=True, blank=True)
+        null=True, blank=True, help_text='Enter your email to be displayed in the footer.')
+    contact_number = PhoneNumberField(
+        null=True, blank=True, help_text='Enter your contact number to be displayed in the footer.')
 
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,

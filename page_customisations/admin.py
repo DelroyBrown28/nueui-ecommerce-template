@@ -176,7 +176,7 @@ class GlobalSiteStylingAdmin(admin.ModelAdmin):
 
 class HeaderCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('Header Styling', {
             "fields": (
                 'header_styling',
                 'header_logo',
@@ -239,7 +239,7 @@ class HeaderCustomisationAdmin(admin.ModelAdmin):
 
 class ProductsPageCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('Products Page Styling', {
             "fields": (
                 'products_page_styling',)
         }),
@@ -280,7 +280,7 @@ class ProductsPageCustomisationAdmin(admin.ModelAdmin):
 
 class FooterCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('Footer Styles', {
             "fields": (
                 'styling_name',)
         }),
@@ -301,8 +301,8 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
         ('Contact Information', {
             'classes': ('fieldset_titles',),
             'fields': (
-                ('email',
-                 'contact_number',),)
+                'email',
+                'contact_number',),
 
         }),
         ('Social Media Links', {
@@ -402,16 +402,16 @@ class AddTestimonialAdmin(admin.ModelAdmin):
 
 class CTACardAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('CTA Card Styles', {
             "fields": (
-                'image',)
+                'cta_title',)
         }),
-        ('CTA Title & Text', {
+        ('CTA Text & Image', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'cta_title',
-                'cta_title_text_color',
-                'cta_text',)
+                'image',
+                'cta_text',
+                'cta_text_color',)
 
         }),
         ('CTA Button', {
@@ -433,10 +433,15 @@ class CTACardAdmin(admin.ModelAdmin):
 
 class CTABannerAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('Banner Name', {
             "fields": (
-                'banner_title',
+                'banner_title',)
+        }),
+        ('CTA Banner Title & Styling', {
+            'classes': ('fieldset_titles',),
+            'fields': (
                 'cta_banner_title',
+                'banner_image',
                 'banner_background_color',)
         }),
         ('CTA Banner Button', {

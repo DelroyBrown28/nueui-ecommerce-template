@@ -23,6 +23,7 @@ def products_page_customisation(request):
     }
     return render(request, 'products/products.html', context)
 
+
 def add_testimonial(request):
     """Customisation for products page"""
     add_testimonial = AddTestimonial.objects.all()

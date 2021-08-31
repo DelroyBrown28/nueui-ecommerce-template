@@ -21,7 +21,8 @@ class ProductAdmin(admin.ModelAdmin):
                 'description',
                 'has_sizes',
                 'in_stock',
-                'is_active',)
+                'is_active',
+                'add_to_cta_banner',)
         }),
     )
     search_fields = [
