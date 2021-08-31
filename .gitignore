@@ -9,6 +9,7 @@ __pycache__/
 DONTREADME.MD
 bootstrap.css
 materialize.css
+.slugignore
 
 # Distribution / packaging
 .Python
