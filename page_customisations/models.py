@@ -415,11 +415,13 @@ class AddTestimonial(models.Model):
 class FooterCustomisation(models.Model):
     styling_name = models.CharField(
         blank=False, null=False, max_length=55, default="Default Footer Styles")
-    background_color = ColorField(format='hex', default='#000000')
-    text_color = ColorField(format='hex', default='#FFFFFF')
+    background_color = ColorField(format='hexa', default='#000000')
     footer_logo = models.ImageField(
         null=True, blank=True, upload_to='footer_logo_images')
-    footer_top_border_color = ColorField(format='hex', default='#000000')
+    footer_top_border_color = ColorField(format='hexa', default='#000000')
+    footer_title_colors = ColorField(format='hexa', default='#000000')
+    footer_text_color = ColorField(format='hexa', default='#000000')
+    footer_icon_colors = ColorField(format='hexa', default='#FFFFFF')
 
     twitter_link = models.URLField(
         max_length=200, blank=True, null=True, default='https://twitter.com/')
@@ -430,7 +432,7 @@ class FooterCustomisation(models.Model):
     instagram_link = models.URLField(
         max_length=200, blank=True, null=True, default='https://instagram.com/')
 
-    social_media_icon_colors = ColorField(format='hex', default='FFFFFF')
+    social_media_icon_colors = ColorField(format='hexa', default='FFFFFF')
     email = models.EmailField(
         null=True, blank=True, help_text='Enter your email to be displayed in the footer.')
     contact_number = PhoneNumberField(

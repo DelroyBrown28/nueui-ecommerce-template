@@ -284,11 +284,13 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
             "fields": (
                 'styling_name',)
         }),
-        ('Background and text colors', {
+        ('Background/text & icon colors', {
             'classes': ('fieldset_titles',),
             'fields': (
-                ('background_color',
-                 'text_color'),
+                'background_color',
+                'footer_title_colors',
+                'footer_text_color',
+                'footer_icon_colors',
                 'footer_top_border_color'),
 
         }),

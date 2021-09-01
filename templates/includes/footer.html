@@ -4,101 +4,123 @@
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 </head>
 
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 footer-column">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <span class="footer-title">Product</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Product 1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Product 2</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Plans & Prices</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Frequently asked questions</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-4 footer-column">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <span class="footer-title">Company</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Job postings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">News and articles</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-4 footer-column">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <span class="footer-title">Contact & Support</span>
-          </li>
-          <li class="nav-item">
-            <span class="nav-link"><i class="fas fa-phone"></i>+47 45 80 80 80</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-comments"></i>Live chat</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-envelope"></i>Contact us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fas fa-star"></i>Give feedback</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+{% for x in footer_customisation %}
 
-    <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
-    
-    <div class="row text-center">
-      <div class="col-md-4 box">
-        <span class="copyright quick-links">Copyright &copy; Your Website <script>document.write(new Date().getFullYear())</script>
-        </span>
-      </div>
-      <div class="col-md-4 box">
-        <ul class="list-inline social-buttons">
-          <li class="list-inline-item">
-            <a href="#">
-            <i class="fab fa-twitter"></i>
-          </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-4 box">
-        <ul class="list-inline quick-links">
-          <li class="list-inline-item">
-            <a href="#">Privacy Policy</a>
-          </li>
-          <li class="list-inline-item">
-            <a href="#">Terms of Use</a>
-          </li>
-        </ul>
-      </div>
+
+
+<footer {% if user.is_superuser %} ondblclick="editFooter()" data-bs-toggle="tooltip" data-bs-placement="top"
+    title="Double click to edit Footer" {% endif %} class="{% if x.do_not_display %}
+do-not-display {% else %} ftr editable {% endif %}" style="background-color: {{ x.background_color }} !important;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-column">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+
+                        <span class="{% if x.do_not_display %}
+            do-not-display {% else %} footer-title {% endif %}"
+                            style="color: {{ x.footer_title_colors }} !important;">Product</span>
+                    </li>
+                    {% for c in categories_processor|slice:":5" %}
+
+                    <li class="nav-item">
+                        <a class="{% if x.do_not_display %}
+            do-not-display {% else %} nav-link {% endif %}" style="color: {{ x.footer_text_color }} !important;"
+                            href="#">{{ c.category_name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-md-4 footer-column">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <span class="{% if x.do_not_display %}
+            do-not-display {% else %} footer-title {% endif %}"
+                            style="color: {{ x.footer_title_colors }} !important;">Company</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="{% if x.do_not_display %}
+            do-not-display {% else %} nav-link {% endif %}" style="color: {{ x.footer_text_color }} !important;"
+                            href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="{% if x.do_not_display %}
+            do-not-display {% else %} nav-link {% endif %}" style="color: {{ x.footer_text_color }} !important;"
+                            href="#">Testimonials</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 footer-column">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <span class="{% if x.do_not_display %}
+            do-not-display {% else %} footer-title {% endif %}"
+                            style="color: {{ x.footer_title_colors }} !important;">Contact & Support</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="{% if x.do_not_display %}
+                        do-not-display {% else %} nav-link {% endif %}" style="color: {{ x.footer_text_color }} !important;" href="/testimonials/#testimonialForm">
+                        <i class="{% if x.do_not_display %}
+                        do-not-display {% else %} fas fa-envelope {% endif %}" style="color: {{ x.footer_icon_colors }} !important;"></i>
+                            Contact us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="{% if x.do_not_display %}
+                        do-not-display {% else %} nav-link {% endif %}" style="color: {{ x.footer_text_color }} !important;">
+                        <i class="{% if x.do_not_display %}
+                        do-not-display {% else %} fas fa-phone {% endif %}" style="color: {{ x.footer_icon_colors }} !important;"></i>{{ x.contact_number }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="{% if x.do_not_display %}
+                        do-not-display {% else %} nav-link {% endif %}" style="color: {{ x.footer_text_color }} !important;">
+                        <i class="{% if x.do_not_display %}
+                        do-not-display {% else %} fas fa-at {% endif %}" style="color: {{ x.footer_icon_colors }} !important;"></i>{{ x.email }}</span>
+                    </li>
+                
+                </ul>
+            </div>
+        </div>
+
+        <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+
+        <div class="row text-center">
+            <div class="col-md-4 box">
+                <span class="copyright quick-links">Copyright &copy; Your Website
+                    <script>document.write(new Date().getFullYear())</script>
+                </span>
+            </div>
+            <div class="col-md-4 box">
+                <ul class="list-inline social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 box">
+                <ul class="list-inline quick-links">
+                    <li class="list-inline-item">
+                        <a href="#">Privacy Policy</a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
 </footer>
+
+{% endfor %}

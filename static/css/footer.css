@@ -1,20 +1,15 @@
-a {
-    color: #6c757d;
-}
 
 a:hover {
-    color: #fec503;
     text-decoration: none;
 }
 
 ::selection {
-    background: #fec503;
     text-shadow: none;
 }
 
 footer {
     padding: 2rem 0;
-    background-color: #212529;
+    
 }
 
 .footer-column:not(:first-child) {
@@ -35,14 +30,14 @@ footer {
     padding: 0.1rem 0;
 }
 
-.footer-column .nav-item span.nav-link {
+/* .footer-column .nav-item span.nav-link {
     color: #6c757d;
-}
+} */
 
 .footer-column .nav-item span.footer-title {
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
+    /* color: #fff; */
     text-transform: uppercase;
 }
 
