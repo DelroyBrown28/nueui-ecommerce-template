@@ -11,6 +11,8 @@ bootstrap.css
 materialize.css
 .slugignore
 
+footer copy.html
+
 # Distribution / packaging
 .Python
 build/

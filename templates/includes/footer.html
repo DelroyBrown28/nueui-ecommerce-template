@@ -1,82 +1,104 @@
 {% load static %}
 
-<section class="footer-section">
-    {% for x in footer_customisation %}
-    <div {% if user.is_superuser %} ondblclick="editFooter()" data-bs-toggle="tooltip" data-bs-placement="top"
-        title="Double click to edit Footer" {% endif %}  class="{% if x.do_not_display %}
-    do-not-display {% else %} mt-5 footer-container editable {% endif %}"
-        style="background-color: {{ x.background_color }} !important; border-top: 1px solid {{ x.footer_top_border_color }} !important;">
-        <footer class="container flexed py-5 my-3 pl-0">
-            <div class="col">
-                <a href="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                    <img src="{% if x.footer_logo %} {{ x.footer_logo.url }} {% else %} {{ MEDIA_URL }}nueuiblack.png {% endif %}"
-                        alt="logo" style="height: 55px;">
-                </a>
-                <p class="{% if x.do_not_display %}
-                do-not-display {% else %} text-muted {% endif %}" style="color: {{ x.text_color }} !important;">©
-                    <script>document.write(new Date().getFullYear())</script>
-                </p>
-            </div>
+<head>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
 
-            <div class="col footer-link-boxes flexed">
-                <h5 class="{% if x.do_not_display %}
-                do-not-display {% else %} font {% endif %}"
-                    style="color: {{ x.text_color }} !important; font-weight: 600;">Quick Links</h5>
-                {% for c in categories_processor|slice:":5" %}
-                <ul class="nav col">
-                    <li class="nav-item mb-2">
-                        <a href="{% url 'products' %}?category={{ c.url_name }}" class="{% if x.do_not_display %}
-                        do-not-display {% else %} nav-link p-0 text-muted {% endif %}"
-                            style="color: {{ x.text_color }} !important;">
-                            {{ c.category_name }}</a>
-                    </li>
-                </ul>
-                {% endfor %}
-            </div>
-
-            <div class="col footer-link-boxes flexed">
-                <h5 class="{% if x.do_not_display %}
-                do-not-display {% else %} font {% endif %}"
-                    style="color: {{ x.text_color }} !important; font-weight: 600;">Contact</h5>
-                <ul class="nav col">
-                    <li class="{% if x.do_not_display %}
-                    do-not-display {% else %} nav-item mb-2 {% endif %}"
-                        style="color: {{ x.social_media_icon_colors }} !important;">
-                        {% if x.twitter_link %}
-                        <a class="mr-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                            href="{{ x.twitter_link }}" target="_blank" data-bs-toggle="tooltip" data-bs-placement="top"
-                            title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        {% endif %}
-                        {% if x.linkedin_link %}
-                        <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                            href="{{ x.linkedin_link }}" target="_blank" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        {% endif %}
-                        {% if x.facebook_link %}
-                        <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                            href="{{ x.facebook_link }}" target="_blank" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        {% endif %}
-                        {% if x.instagram_link %}
-                        <a class="mx-2" style="color: {{ x.social_media_icon_colors }} !important;"
-                            href="{{ x.instagram_link }}" target="_blank" data-bs-toggle="tooltip"
-                            data-bs-placement="top" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        {% endif %}
-                    </li>
-                </ul>
-                <p class="{% if x.do_not_display %}
-                do-not-display {% else %} text {% endif %}" style="color: {{ x.text_color }} !important;">
-                    Email: {{ x.email }}
-                </p>
-                <p class="{% if x.do_not_display %}
-                do-not-display {% else %} text {% endif %}" style="color: {{ x.text_color }} !important;">
-                    Phone: {{ x.contact_number }}
-                </p>
-            </div>
-
-        </footer>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Product</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Product 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Plans & Prices</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Frequently asked questions</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Company</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Job postings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News and articles</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 footer-column">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <span class="footer-title">Contact & Support</span>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link"><i class="fas fa-phone"></i>+47 45 80 80 80</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-comments"></i>Live chat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-envelope"></i>Contact us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-star"></i>Give feedback</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    {% endfor %}
-</section>
+
+    <div class="text-center"><i class="fas fa-ellipsis-h"></i></div>
+    
+    <div class="row text-center">
+      <div class="col-md-4 box">
+        <span class="copyright quick-links">Copyright &copy; Your Website <script>document.write(new Date().getFullYear())</script>
+        </span>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline social-buttons">
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-twitter"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4 box">
+        <ul class="list-inline quick-links">
+          <li class="list-inline-item">
+            <a href="#">Privacy Policy</a>
+          </li>
+          <li class="list-inline-item">
+            <a href="#">Terms of Use</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
