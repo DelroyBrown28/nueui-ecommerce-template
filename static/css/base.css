@@ -450,13 +450,6 @@ input::-webkit-inner-spin-button {
     border-radius: 0 !important;
 }
 
-.editFrame {
-    top: 0;
-    left: 0;
-    position: absolute;
-    padding: 25px;
-    z-index: 9999;
-}
 
 /* .main-form-wrap {
     justify-content: space-between;
@@ -991,6 +984,7 @@ body>div:nth-child(12)>em>div>p {
     cursor: pointer;
     opacity: 1;
     transition: opacity .8s ease;
+    z-index: 9999;
 }
 
 

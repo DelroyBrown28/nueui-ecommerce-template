@@ -38,37 +38,39 @@
     <section class="flexed top-homepage-section" data-aos="fade-in" data-aos-delay="1200">
         {% for x in home_page_customisation %}
         {% if x.image %}
-        <div {% if user.is_superuser %} ondblclick="editHomepage()" data-bs-toggle="tooltip" data-bs-placement="left"
-            title="Double Click To Edit Home Page Styles" {% endif %} class="{% if x.do_not_display %}
+        <div {% if user.is_superuser %} ondblclick="editHomepageImage()" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="Double click to edit home page background" {% endif %} class="{% if x.do_not_display %}
     do-not-display {% else %} homepage-bg-image editable w-100 img-fluid {% endif %}"
             style="background: url({{x.image.url}});">
         </div>
         {% else %}
-        <div class="{% if x.do_not_display %}
-    do-not-display {% else %} gradient-bg-image editable h-100 w-100 img-fluid {% endif %}">
+        <div {% if user.is_superuser %} ondblclick="editHomepageImage()" data-bs-toggle="tooltip"
+            data-bs-placement="left" title="Double click to edit home page background" {% endif %} class="{% if x.do_not_display %}
+    do-not-display {% else %} editable gradient-bg-image editable h-100 w-100 img-fluid {% endif %}">
         </div>
         {% endif %}
         {% endfor %}
 
         <div class="container h-100" style="height: calc(100% - 162px) !important; margin-top: 100px !important;">
             <div class="row h-100">
-                <div {% if user.is_superuser %} ondblclick="editHomepage()" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Double click to edit home page contents" {% endif %}
-                    class="col-12 editable col-md-12 my-auto" style="height: fit-content;">
+                <div class="col-12 col-md-12 my-auto" style="height: fit-content;">
 
                     {% for x in home_page_customisation %}
-                    <h1 class="{% if x.do_not_display %}
-                do-not-display {% else %} display-4 logo-font main-page-text {{ x.main_page_text_alignment }} {% endif %}"
-                        style="color: {{ x.main_page_text_color }};">
+                    <h1 {% if user.is_superuser %} ondblclick="editMainPageText()" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Double click to edit main page text" {% endif %}
+                        class="{% if x.do_not_display %}
+                do-not-display {% else %} display-4 logo-font main-page-text {{ x.main_page_text_alignment }} {% endif %}" style="color: {{ x.main_page_text_color }};">
                         {{ x.main_page_text|safe }}</h1>
                     {% endfor %}
 
                     {% for x in home_page_customisation %}
                     <div class="{% if x.do_not_display %}
-                do-not-display {% else %} my-5 {{ x.main_page_button_alignment }} {% endif %}">
+                do-not-display {% else %} editable my-5 {{ x.main_page_button_alignment }} {% endif %}">
                         <h4>
                             {% for x in home_page_customisation %}
-                            <a href="{% url 'products' %}" class="{% if x.do_not_display %}
+                            <a {% if user.is_superuser %} ondblclick="editMainPageText()" data-bs-toggle="tooltip"
+                                data-bs-placement="top" title="Double click to edit main page button styles" {% else %}
+                                href="{% url 'products' %}" {% endif %} class="{% if x.do_not_display %}
                         do-not-display {% else %} shop-now-button btn btn-lg rounded-0 text-uppercase py-3 {% endif %}"
                                 style="background-color: {{ x.button_background_color }};">
 
@@ -88,15 +90,16 @@
     </section>
 
     <section class="products-homepage-section container">
-        <div {% if user.is_superuser %} ondblclick="editCTACards()" data-bs-toggle="tooltip" data-bs-placement="top"
-            title="Double click to edit CTA cards" {% endif %} class="row flexed editable">
+        <div class="row flexed editable">
 
             {% for x in home_page_customisation %}
 
             {% if x.cta_card_1 %}
             <div class="{% if x.do_not_display or y.do_not_display %}
                  do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
-                <img src="{{x.cta_card_1.image.url}}" class="card-img-top" alt="...">
+                <img {% if user.is_superuser %} ondblclick="editCTACardImage()" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Double click to edit CTA card image" {% endif %}
+                    src="{{x.cta_card_1.image.url}}" class="card-img-top" alt="...">
 
                 <div class="card-body text-center cta-card-title">
 
@@ -109,11 +112,13 @@
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
                do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
-                    <a href="products/?category={{ x.cta_card_2.button_url_choice }}"
-                        class="cta-btn-1 flexed {{ x.cta_card_2.add_button_border }}" target="_blank" style="color: {{ x.cta_card_2.button_label_color }} !important;
-                    background-color: {{ x.cta_card_2.button_background_color }} !important;
+                    <a {% if user.is_superuser %} ondblclick="editCTACardButtons()" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Double click to edit CTA card buttons" {% else %}
+                        href="products/?category={{ x.cta_card_1.button_url_choice }}" {% endif %}
+                        class="cta-btn-1 flexed {{ x.cta_card_1.add_button_border }}" target="_blank" style="color: {{ x.cta_card_1.button_label_color }} !important;
+                    background-color: {{ x.cta_card_1.button_background_color }} !important;
                     border: 2px solid {{ x.cta_card_1.border_color }};">
-                        {{ x.cta_card_2.button_label }}
+                        {{ x.cta_card_1.button_label }}
                     </a>
 
                 </div>
@@ -123,7 +128,9 @@
             {% if x.cta_card_2 %}
             <div class="{% if x.do_not_display or y.do_not_display %}
                  do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
-                <img src="{{x.cta_card_2.image.url}}" class="card-img-top" alt="...">
+                <img {% if user.is_superuser %} ondblclick="editCTACardImage()" data-bs-toggle="tooltip"
+                    data-bs-placement="top" title="Double click to edit CTA card image" {% endif %}
+                    src="{{x.cta_card_2.image.url}}" class="card-img-top" alt="...">
 
                 <div class="card-body text-center cta-card-title">
 
@@ -136,7 +143,9 @@
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
                do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
-                    <a href="products/?category={{ x.cta_card_2.button_url_choice }}"
+                    <a {% if user.is_superuser %} ondblclick="editCTACardButtons()" data-bs-toggle="tooltip"
+                        data-bs-placement="top" title="Double click to edit CTA card buttons" {% else %}
+                        href="products/?category={{ x.cta_card_2.button_url_choice }}" {% endif %}
                         class="cta-btn-1 flexed {{ x.cta_card_2.add_button_border }}" target="_blank" style="color: {{ x.cta_card_2.button_label_color }} !important;
                     background-color: {{ x.cta_card_2.button_background_color }} !important;
                     border: 2px solid {{ x.cta_card_1.border_color }};">

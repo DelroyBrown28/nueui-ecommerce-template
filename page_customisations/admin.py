@@ -75,7 +75,7 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
 
 class HomePageCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        ('None', {
+        ('Home Page Styles', {
             "fields": (
                 'home_page_styling',
                 'image',)
@@ -124,7 +124,7 @@ class HomePageCustomisationAdmin(admin.ModelAdmin):
 
 class GlobalSiteStylingAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('Global Styles', {
             "fields": (
                 'global_site_styles',
                 'base_background_color',

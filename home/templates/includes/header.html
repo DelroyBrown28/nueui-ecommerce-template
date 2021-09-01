@@ -1,14 +1,14 @@
 {% load i18n static %}
 
 {% for x in header_customisation %}
-<header {% if user.is_superuser %} ondblclick="editHeader()" data-bs-toggle="tooltip" data-bs-placement="bottom"
-title="Double Click To Edit Header Styles" {% endif %} class="{% if x.do_not_display or y.do_not_display %}
-do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
+<header class="{% if x.do_not_display or y.do_not_display %}
+do-not-display {% else %} container-fluid fixed-top {% endif %}">
     <div id="topnav" class="{% if x.do_not_display %}
     do-not-display {% else %} row pt-lg-2 d-none d-lg-flex {% endif %}"
         style="background-color: {{ x.header_background_color }} !important;">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-            <a class="nav-link main-logo-link">
+            <a {% if user.is_superuser %} ondblclick="editHeaderLogo()" data-bs-toggle="tooltip"
+            data-bs-placement="bottom" title="Double click to change header logo" {% endif %} class="nav-link main-logo-link editable">
                 <!-- <h2 class="logo-font text-black my-0"><strong>Nue</strong> Store</h2> -->
                 {% for x in header_customisation %}
                 {% if x.header_logo %}
@@ -31,7 +31,8 @@ do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
                         do-not-display {% else %} form-control btn rounded-0 {% endif %}" type="submit" style="background-color: {{ x.search_icon_background_color }};
                                 border: 1px solid {{ x.search_icon_color }};">
                             <span class="icon">
-                                <i class="{% if x.do_not_display %}
+                                <i {% if user.is_superuser %} ondblclick="editSearchIcon()" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" title="Double click to edit search icon" {% endif %} class="{% if x.do_not_display %}
                                 do-not-display {% else %} feathericon {% endif %}"
                                     style="color: {{ x.search_icon_color }} !important;" data-feather="search">
                                 </i>
@@ -47,9 +48,10 @@ do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
 
             <ul class="list-inline list-unstyled text-center text-lg-right my-0" aria-labelledby="dropdownMenuLink">
-
-                <li class="list-inline-item">
-                    <a class="text-black nav-link" href="{% url 'about' %}">
+                
+                <li {% if user.is_superuser %} ondblclick="editIconAndTextColors()" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editable">
+                    <a class="text-black nav-link" {% if not user.is_superuser %} href="{% url 'about' %}" {% endif %}>
                         <div class="text-center">
 
                             {% if request.get_full_path == '/about/' %}
@@ -90,7 +92,8 @@ do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
                         {% endif %}
                     </div>
                 </li>
-                <li class="list-inline-item dropdown">
+                <li {% if user.is_superuser %} ondblclick="editIconAndTextColors()" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editable dropdown">
                     <a class="text-black nav-link dropdown-toggle" href="#" id="user-options" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
@@ -146,10 +149,11 @@ do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
                     {% endfor %}
                 </li>
 
-                <li class="list-inline-item">
+                <li {% if user.is_superuser %} ondblclick="editIconAndTextColors()" data-bs-toggle="tooltip"
+                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editable">
                     {% for x in header_customisation %}
                     <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} {% if x.do_not_display %}
-                    do-not-display {% else %} text-black nav-link {% endif %}" href="{% url 'view_bag' %}">
+                    do-not-display {% else %} text-black nav-link {% endif %}" {% if not user.is_superuser %} href="{% url 'view_bag' %}" {% endif %}>
                         <div class="text-center">
                             {% for y in global_styles %}
                             <div>
@@ -202,10 +206,12 @@ do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
     {% for x in header_customisation %}
     {% for y in global_styles %}
 
-    <div class="{% if x.do_not_display or y.do_not_display %}
-     do-not-display {% else %} row text-center flexed small-banner-wrap {% endif %}" data-aos="fade-in"
+    <div {% if user.is_superuser %} ondblclick="editSmallBanner()" data-bs-toggle="tooltip"
+    data-bs-placement="bottom" title="Double click to edit small banner" {% endif %}  class="{% if x.do_not_display or y.do_not_display %}
+     do-not-display {% else %} row text-center flexed editable small-banner-wrap {% endif %}" data-aos="fade-in"
         data-aos-delay="1000" style="background-color: {{ x.small_banner_background_color }};">
-        <a  href="{{ x.banner_button_url_link_1 }}" target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
+        <a {% if user.is_superuser %} ondblclick="editSmallBannerButtons()" data-bs-toggle="tooltip" data-bs-placement="bottom"
+        title="Double click to edit small banner buttons" {% else %} href="{{ x.banner_button_url_link_1 }}"  {% endif %} target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
         do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" style="background-color: {{ x.banner_button_background_color }} !important;
             color: {{ x.banner_button_label_color }} !important;
             border: 2px solid {{ x.button_border_color }} !important;">
@@ -213,15 +219,15 @@ do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
         </a>
         <div class="col free-delivery-wrap">
             <!-- <h5 class="free-delivery-text my-1">Free delivery on orders over £{{ free_delivery_threshold }}!</h5> -->
-                <h5 class="{% if x.do_not_display or y.do_not_display  %}
+            <h5 class="{% if x.do_not_display or y.do_not_display  %}
             do-not-display {% else %} small-banner-text my-1 py-2 {% endif %}"
-                    style="color: {{ x.small_banner_text_color }};">
-                    {{ x.small_banner_text|safe }}
-                </h5>
+                style="color: {{ x.small_banner_text_color }};">
+                {{ x.small_banner_text|safe }}
+            </h5>
 
         </div>
-        <a href="{{ x.banner_button_url_link_2 }}"
-            target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
+        <a {% if user.is_superuser %} ondblclick="editSmallBannerButtons()" data-bs-toggle="tooltip" data-bs-placement="bottom"
+        title="Double click to edit small banner buttons" {% else %} href="{{ x.banner_button_url_link_2 }}" {% endif %} target="_blank" class="{% if x.do_not_display or y.do_not_display  %}
         do-not-display {% else %} small-banner-btns flexed {{ x.button_border }} {% endif %}" style="background-color: {{ x.banner_button_background_color }} !important;
             color: {{ x.banner_button_label_color }} !important;
             border: 2px solid {{ x.button_border_color }} !important;">
@@ -236,7 +242,4 @@ do-not-display {% else %} editable container-fluid fixed-top {% endif %}">
 {% endfor %}
 
 
-
-<script>
-
-</script>
+{% include "includes/edit_functions.html" %}
