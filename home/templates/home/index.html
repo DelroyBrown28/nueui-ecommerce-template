@@ -168,7 +168,7 @@
                         do-not-display {% else %} jumbotron editable jumbotron-fluid cta-banner {% endif %}"
             style="background: url({{x.cta_banner.banner_image.url}}) !important; background-color: {{ x.cta_banner.banner_background_color }} !important;">
 
-            <h1 class="text-center cta-banner-title mb-5 p-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
+            <h1  class="text-center cta-banner-title mb-5 p-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
 
             <div class="container h-100 mt-5 flexed" style="flex-flow: row;">
                 {% for product in products_processor|slice:":3" %}

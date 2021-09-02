@@ -307,14 +307,15 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
                 'contact_number',),
 
         }),
-        ('Social Media Links', {
+        ('Social Media Links & Colors', {
             'classes': ('fieldset_titles',),
             'fields': (
                 ('twitter_link',
                  'linkedin_link'),
                 ('facebook_link',
                  'instagram_link'),
-                'social_media_icon_colors',),
+                'social_media_icon_colors',
+                'social_media_icon_background_color',),
 
         }),
     )
