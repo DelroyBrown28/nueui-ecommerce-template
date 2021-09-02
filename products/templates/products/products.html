@@ -98,131 +98,55 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                     {% for x in products_page_customisation %}
 
-                    <div class="{% if x.do_not_display %}
-                        do-not-display {% else %} card h-100 {{ x.add_card_border }} {% endif %}"
-                        style="border: 1px solid {{ x.border_color }}; background-color: {{ x.product_card_background_color }} !important">
+                    {% if product.main_product_image %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}"
+                            alt="{{ product.name }}">
+                    </a>
+                    {% else %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                    </a>
+                    {% endif %}
 
-                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    {% if product.main_product_image %}
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid p-0"
-                                            src="{{ product.main_product_image.url }}" alt="{{ product.name }}">
-                                    </a>
-                                    {% else %}
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
-                                            alt="{{ product.name }}">
-                                    </a>
-                                    {% endif %}
-                                </div>
-
-                                <div class="carousel-item">
-                                    {% if product.alternative_image_1 %}
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid p-0"
-                                            src="{{ product.alternative_image_1.url }}" alt="{{ product.name }}">
-                                    </a>
-                                    {% else %}
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid p-0" src="{{ MEDIA_URL }}noimage.png"
-                                            alt="{{ product.name }}">
-                                    </a>
-                                    {% endif %}
-                                </div>
-
-                                <div class="carousel-item">
-                                    {% if product.alternative_image_2 %}
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid p-0"
-                                            src="{{ product.alternative_image_2.url }}" alt="{{ product.name }}">
-                                    </a>
-                                    {% else %}
-                                    <a href="{% url 'product_detail' product.id %}">
-                                        <img class="card-img-top img-fluid p-0" src="{{ MEDIA_URL }}noimage.png"
-                                            alt="{{ product.name }}">
-                                    </a>
-                                    {% endif %}
-                                </div>
-
-                            </div>
-                            
-                            {% for y in global_styles %}
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                                data-slide="prev">
-                                <i class="{% if y.do_not_display %}
-                                do-not-display {% else %} fas fa-arrow-left {% endif %}"
-                                    style="color: {{ y.all_icon_colors }} !important"></i>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                                data-slide="next">
-                                <i class="{% if y.do_not_display %}
-                                do-not-display {% else %} fas fa-arrow-right {% endif %}"
-                                    style="color: {{ y.all_icon_colors }} !important"></i>
-                            </a>
-                            {% endfor %}
-                        </div>
-
-
-                        {% comment %} <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}"
-                                alt="{{ product.name }}">
-                        </a>
-                        {% else %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
-                                alt="{{ product.name }}">
-                        </a>
-                        {% endif %} {% endcomment %}
-
-                        {% for x in products_page_customisation %}
-                        <div class="card-body pb-0">
-                            <p class="{% if x.do_not_display %}
+                    {% for x in products_page_customisation %}
+                    <div class="card-body pb-0">
+                        <p class="{% if x.do_not_display %}
                                 do-not-display {% else %} mb-0 {% endif %}"
-                                style="color: {{ x.product_card_font_color }};">{{ product.name }}</p>
-                        </div>
-                        {% endfor %}
+                            style="color: {{ x.product_card_font_color }};">{{ product.name }}</p>
+                    </div>
+                    {% endfor %}
 
-
-                        <div class="{% if x.do_not_display %}
+                    <div class="{% if x.do_not_display %}
                             do-not-display {% else %} card-footer bg-white pt-0 border-0 text-left {% endif %}"
-                            style="background-color: {{ x.product_card_background_color }} !important;">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold"
-                                        style="font-weight: 300 !important; color: {{ x.product_card_font_color }}">
-                                        £<span>{{ product.price }}
-                                        </span>
-                                    </p>
-                                    {% if product.category %}
-                                    <p class="small mt-1 mb-0">
-                                        <a class="text-muted"
-                                            style="color: {{ x.product_card_font_color }}B3 !important;"
-                                            href="{% url 'products' %}?category={{ product.category.url_name }}">
-                                            <i class="fas fa-tag mr-1"
-                                                style="color: {{ x.product_card_icon_color }} !important;"></i>
-                                            {{ product.category.category_name }}
-                                        </a>
-                                    </p>
-                                    {% endif %}
-                             
-                                    {% if request.user.is_superuser %}
-                                    <small class="ml-3">
-                                        <a href="{% url 'edit_product' product.id %}">Edit</a> |
-                                        <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
-                                    </small>
-                                    {% endif %}
-                                </div>
+                        style="background-color: {{ x.product_card_background_color }} !important;">
+                        <div class="row">
+                            <div class="col">
+                                <p class="lead mb-0 text-left font-weight-bold"
+                                    style="font-weight: 300 !important; color: {{ x.product_card_font_color }}">
+                                    £<span>{{ product.price }}
+                                    </span>
+                                </p>
+                                {% if product.category %}
+                                <p class="small mt-1 mb-0">
+                                    <a class="text-muted" style="color: {{ x.product_card_font_color }}B3 !important;"
+                                        href="{% url 'products' %}?category={{ product.category.url_name }}">
+                                        <i class="fas fa-tag mr-1"
+                                            style="color: {{ x.product_card_icon_color }} !important;"></i>
+                                        {{ product.category.category_name }}
+                                    </a>
+                                </p>
+                                {% endif %}
+                         
+                                {% if request.user.is_superuser %}
+                                <small class="ml-3">
+                                    <a href="{% url 'edit_product' product.id %}">Edit</a> |
+                                    <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                </small>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
-
                     {% endfor %}
 
 
@@ -257,7 +181,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                             style="color: {{ y.base_font_color }} !important">NO PRODUCTS TO DISPLAY
                         </h1>
                         {% if user.is_superuser %}
-                        <p class="my-5" style="text-trans0:0 0u0p0p0e0r0c0a0s0e0;0"0>You can easily add your first product by
+                        <p class="my-5" style="text-trans0:0 0u0p0p0e0r0c0a0s0e0;0" 0>You can easily add your first
+                            product by
                             following the simple steps below.</p>
                         <div class="container">
                             <div class="row flexed">
