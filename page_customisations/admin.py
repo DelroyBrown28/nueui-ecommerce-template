@@ -72,6 +72,14 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
     )
 
+    # This will help you to disbale add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 class HomePageCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
@@ -120,6 +128,14 @@ class HomePageCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
 
     )
+
+    # This will help you to disbale add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class GlobalSiteStylingAdmin(admin.ModelAdmin):
@@ -172,6 +188,14 @@ class GlobalSiteStylingAdmin(admin.ModelAdmin):
         'do_not_display',
 
     )
+
+    # This will help you to disbale add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class HeaderCustomisationAdmin(admin.ModelAdmin):
@@ -236,6 +260,14 @@ class HeaderCustomisationAdmin(admin.ModelAdmin):
 
     )
 
+    # This will help you to disbale add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 class ProductsPageCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
@@ -276,6 +308,14 @@ class ProductsPageCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
 
     )
+
+    # This will help you to disbale add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class FooterCustomisationAdmin(admin.ModelAdmin):
@@ -327,6 +367,14 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
 
     )
+
+    # This will help you to disbale add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 class TestimonialsCustomisationAdmin(admin.ModelAdmin):
@@ -382,6 +430,14 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
 
     )
 
+    # This will help you to disbale add functionality
+    def has_add_permission(self, request):
+        return False
+
+    # This will help you to disable delete functionaliyt
+    def has_delete_permission(self, request, obj=None):
+        return False
+
 
 class AddTestimonialAdmin(admin.ModelAdmin):
     fieldsets = (
@@ -401,6 +457,8 @@ class AddTestimonialAdmin(admin.ModelAdmin):
         'recipients_name',
         'customers_rating',
     )
+
+    
 
 
 class CTACardAdmin(admin.ModelAdmin):
@@ -432,6 +490,8 @@ class CTACardAdmin(admin.ModelAdmin):
     list_display = (
         'cta_title',
     )
+
+
 
 
 class CTABannerAdmin(admin.ModelAdmin):

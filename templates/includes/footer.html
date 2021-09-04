@@ -26,7 +26,7 @@ do-not-display {% else %} ftr editable mt-5 {% endif %}" style="background-color
                     <li class="nav-item">
                         <a class="{% if x.do_not_display %}
             do-not-display {% else %} nav-link {% endif %}" style="color: {{ x.footer_text_color }} !important;"
-                            href="#">{{ c.category_name }}</a>
+                            href="{% url 'products' %}?category={{ c.url_name }}">{{ c.category_name }}</a>
                     </li>
                     {% endfor %}
                 </ul>
