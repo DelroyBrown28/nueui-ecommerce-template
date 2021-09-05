@@ -24,6 +24,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
         integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+        integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="{% static 'css/side_edit_box.css' %}">
+
     <script>
         AOS.init({
             once: false,
@@ -31,7 +36,29 @@
             duration: 1000,
         });
     </script>
+
 </head>
+
+
+
+<div id="sideEditBox" class="side-edit-box">
+
+
+</div>
+<div onclick="closeEditBox()" id="closeEditBox" class="close-edit-box">
+    <div class="inside-edit-close-box flexed"></div>
+
+    <p>
+        <i style="color: #48AA8B;" data-feather="x-square"></i>
+    </p>
+
+
+</div>
+
+<!-- 
+<iframe class="side-edit-box" src="/superadmin/page_customisations/headercustomisation/1/change/"
+    style="position: absolute; z-index: 9999 !important; top: 0px; right: -720px;" height="100%" width="700">Iframe Thing</iframe> -->
+
 
 <body class="home-body">
 
@@ -168,7 +195,7 @@
                         do-not-display {% else %} jumbotron editable jumbotron-fluid cta-banner {% endif %}"
             style="background: url({{x.cta_banner.banner_image.url}}) !important; background-color: {{ x.cta_banner.banner_background_color }} !important;">
 
-            <h1  class="text-center cta-banner-title mb-5 p-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
+            <h1 class="text-center cta-banner-title mb-5 p-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
 
             <div class="container h-100 mt-5 flexed" style="flex-flow: row;">
                 {% for product in products_processor|slice:":3" %}
@@ -192,7 +219,12 @@
     </section>
 
     {% include "includes/footer.html" %}
+
+
+
 </body>
+
+
 
 
 

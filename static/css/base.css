@@ -9,6 +9,7 @@ textarea {
 }
 
 
+
 .flexed {
     display: flex;
     align-items: center;
@@ -107,6 +108,7 @@ body {
     font-weight: 300;
     padding: 10px;
 }
+
 .footer-section {
     position: relative;
 }
@@ -446,7 +448,7 @@ input::-webkit-inner-spin-button {
 }
 
 .form-control {
-    
+
     border-radius: 0 !important;
 }
 
@@ -845,7 +847,7 @@ ABOUT PAGE
 
 
 .about-page-title {
-margin-top: 250px;
+    margin-top: 250px;
     text-transform: uppercase !important;
     font-size: 60px;
     font-weight: 600;

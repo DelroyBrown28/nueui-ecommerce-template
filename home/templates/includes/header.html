@@ -7,7 +7,7 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
     do-not-display {% else %} row pt-lg-2 d-none d-lg-flex {% endif %}"
         style="background-color: {{ x.header_background_color }} !important;">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-            <a {% if user.is_superuser %} ondblclick="editHeaderLogo()" data-bs-toggle="tooltip"
+            <a {% if user.is_superuser %} data-bs-toggle="tooltip"
             data-bs-placement="bottom" title="Double click to change header logo" {% endif %} class="nav-link main-logo-link editable">
                 <!-- <h2 class="logo-font text-black my-0"><strong>Nue</strong> Store</h2> -->
                 {% for x in header_customisation %}
@@ -31,9 +31,9 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
                         do-not-display {% else %} form-control btn rounded-0 {% endif %}" type="submit" style="background-color: {{ x.search_icon_background_color }};
                                 border: 1px solid {{ x.search_icon_color }};">
                             <span class="icon">
-                                <i {% if user.is_superuser %} ondblclick="editSearchIcon()" data-bs-toggle="tooltip"
+                                <i {% if user.is_superuser %} data-bs-toggle="tooltip"
                                 data-bs-placement="bottom" title="Double click to edit search icon" {% endif %} class="{% if x.do_not_display %}
-                                do-not-display {% else %} feathericon {% endif %}"
+                                do-not-display {% else %} feathericon edit-search {% endif %}"
                                     style="color: {{ x.search_icon_color }} !important;" data-feather="search">
                                 </i>
                                 {% endfor %}
@@ -50,7 +50,7 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
             <ul class="list-inline list-unstyled text-center text-lg-right my-0" aria-labelledby="dropdownMenuLink">
                 
                 <li {% if user.is_superuser %} ondblclick="editIconAndTextColors()" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editable">
+                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editIconAndTextColors editable">
                     <a class="text-black nav-link" {% if not user.is_superuser %} href="{% url 'about' %}" {% endif %}>
                         <div class="text-center">
 
@@ -93,7 +93,7 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
                     </div>
                 </li>
                 <li {% if user.is_superuser %} ondblclick="editIconAndTextColors()" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editable dropdown">
+                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editIconAndTextColors editable dropdown">
                     <a class="text-black nav-link dropdown-toggle" href="#" id="user-options" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
@@ -150,7 +150,7 @@ do-not-display {% else %} container-fluid fixed-top {% endif %}">
                 </li>
 
                 <li {% if user.is_superuser %} ondblclick="editIconAndTextColors()" data-bs-toggle="tooltip"
-                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editable">
+                data-bs-placement="bottom" title="Double click to edit icon colors & styles" {% endif %} class="list-inline-item editIconAndTextColors editable">
                     {% for x in header_customisation %}
                     <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} {% if x.do_not_display %}
                     do-not-display {% else %} text-black nav-link {% endif %}" {% if not user.is_superuser %} href="{% url 'view_bag' %}" {% endif %}>

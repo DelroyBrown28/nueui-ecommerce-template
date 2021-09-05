@@ -1,4 +1,38 @@
 <script>
+    $(document).ready(function () {
+
+        
+
+        // Edit header logo
+        $('.main-logo-link').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/headercustomisation/1/change" height="100%" width="700" ></iframe>')
+        })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        })
+
+        // Edit header icons
+        $('.editIconAndTextColors').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/globalsitestyling/1/change/#/tab/module_0/" height="100%" width="700" ></iframe>')
+        })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        })
+
+    })
+
+
+
     function editHeaderLogo() {
         window.location.href = '/superadmin/page_customisations/headercustomisation/1/change/';
     }
@@ -23,9 +57,9 @@
     function editSmallBannerButtons() {
         window.location.href = '/superadmin/page_customisations/headercustomisation/1/change/#/tab/module_3/';
     }
-    function editIconAndTextColors() {
+    {/* function editIconAndTextColors() {
         window.location.href = '/superadmin/page_customisations/globalsitestyling/1/change/#/tab/module_0/';
-    }
+    } */}
     function editMainPageText() {
         window.location.href = '/superadmin/page_customisations/homepagecustomisation/1/change/#/tab/module_1/';
     }
