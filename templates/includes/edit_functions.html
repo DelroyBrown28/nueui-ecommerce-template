@@ -14,7 +14,7 @@
             $('.close-edit-box').fadeOut()
             $('.side-edit-box').html('')
 
-        })
+        });
 
         // Edit header icons
         $('.editIconAndTextColors').dblclick(function () {
@@ -27,18 +27,68 @@
             $('.close-edit-box').fadeOut()
             $('.side-edit-box').html('')
 
+        });
+
+        // Edit small banner
+        $('.small-banner-wrap').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/headercustomisation/1/change/#/tab/module_2/" height="100%" width="700" ></iframe>')
         })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        });
+
+        // Edit home page bg image
+        $('.homepage-bg-image').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/homepagecustomisation/1/change/#/tab/module_0/" height="100%" width="700" ></iframe>')
+        })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        });
+
+        // Edit home page bg image
+        $('.main-page-text').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/homepagecustomisation/1/change/#/tab/module_1/" height="100%" width="700" ></iframe>')
+        })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        });
+
+        // Edit CTA card
+        $('.cta-card').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="http://127.0.0.1:8000/superadmin/page_customisations/ctacard/" height="100%" width="700" ></iframe>')
+        })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        });
+        
+     
 
     })
 
 
 
-    function editHeaderLogo() {
-        window.location.href = '/superadmin/page_customisations/headercustomisation/1/change/';
-    }
-    function editHomepageImage() {
-        window.location.href = '/superadmin/page_customisations/homepagecustomisation/1/change/#/tab/module_0/';
-    }
+
+
     function editCTACards() {
         window.location.href = '/superadmin/page_customisations/ctacard/';
     }
@@ -51,12 +101,7 @@
     function editSearchIcon() {
         window.location.href = '/superadmin/page_customisations/headercustomisation/1/change/#/tab/module_1/';
     }
-    function editSmallBanner() {
-        window.location.href = '/superadmin/page_customisations/headercustomisation/1/change/#/tab/module_2/';
-    }
-    function editSmallBannerButtons() {
-        window.location.href = '/superadmin/page_customisations/headercustomisation/1/change/#/tab/module_3/';
-    }
+
     {/* function editIconAndTextColors() {
         window.location.href = '/superadmin/page_customisations/globalsitestyling/1/change/#/tab/module_0/';
     } */}

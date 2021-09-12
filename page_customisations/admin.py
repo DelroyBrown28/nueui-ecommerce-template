@@ -458,8 +458,6 @@ class AddTestimonialAdmin(admin.ModelAdmin):
         'customers_rating',
     )
 
-    
-
 
 class CTACardAdmin(admin.ModelAdmin):
     fieldsets = (
@@ -492,8 +490,6 @@ class CTACardAdmin(admin.ModelAdmin):
     )
 
 
-
-
 class CTABannerAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Banner Name', {
@@ -506,6 +502,16 @@ class CTABannerAdmin(admin.ModelAdmin):
                 'cta_banner_title',
                 'banner_image',
                 'banner_background_color',)
+        }),
+        ('CTA Product Card Styles', {
+            'classes': ('fieldset_titles',),
+            'fields': (
+                'card_title_color',
+                'card_button_text',
+                'card_button_text_color',
+                'card_button_background_color',
+                'button_border',
+                'button_border_color',)
         }),
         ('CTA Banner Button', {
             'classes': ('fieldset_titles',),

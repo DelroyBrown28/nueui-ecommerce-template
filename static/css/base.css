@@ -984,6 +984,7 @@ body>div:nth-child(12)>em>div>p {
     text-decoration: none;
     color: #000;
     cursor: pointer;
+    z-index: 99999;
     opacity: 1;
     transition: opacity .8s ease;
     z-index: 9999;
@@ -995,6 +996,39 @@ body>div:nth-child(12)>em>div>p {
     /* margin-top: 150px !important; */
 
 
+}
+
+.cta-banner-card {
+    background-color: transparent !important;
+    border-radius: 0px;
+    border: none;
+}
+
+.cta_banner_card_text {
+    text-transform: uppercase;
+    color: white;
+    font-weight: 300;
+}
+
+.cta-banner-btn {
+    display: inline-block;
+    min-width: 184px;
+    min-height: 44px;
+    padding: 9px 14px;
+    margin: 12px 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 39px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    -webkit-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -moz-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -o-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    -ms-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+    transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
 }
 
 @media (max-width: 991px) {

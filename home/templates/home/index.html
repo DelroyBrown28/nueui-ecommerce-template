@@ -65,14 +65,14 @@
     <section class="flexed top-homepage-section" data-aos="fade-in" data-aos-delay="1200">
         {% for x in home_page_customisation %}
         {% if x.image %}
-        <div {% if user.is_superuser %} ondblclick="editHomepageImage()" data-bs-toggle="tooltip"
-            data-bs-placement="left" title="Double click to edit home page background" {% endif %} class="{% if x.do_not_display %}
+        <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="left"
+            title="Double click to edit home page background" {% endif %} class="{% if x.do_not_display %}
     do-not-display {% else %} homepage-bg-image editable w-100 img-fluid {% endif %}"
             style="background: url({{x.image.url}});">
         </div>
         {% else %}
-        <div {% if user.is_superuser %} ondblclick="editHomepageImage()" data-bs-toggle="tooltip"
-            data-bs-placement="left" title="Double click to edit home page background" {% endif %} class="{% if x.do_not_display %}
+        <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="left"
+            title="Double click to edit home page background" {% endif %} class="{% if x.do_not_display %}
     do-not-display {% else %} editable gradient-bg-image editable h-100 w-100 img-fluid {% endif %}">
         </div>
         {% endif %}
@@ -83,8 +83,8 @@
                 <div class="col-12 col-md-12 my-auto" style="height: fit-content;">
 
                     {% for x in home_page_customisation %}
-                    <h1 {% if user.is_superuser %} ondblclick="editMainPageText()" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Double click to edit main page text" {% endif %}
+                    <h1 {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Double click to edit contents" {% endif %}
                         class="{% if x.do_not_display %}
                 do-not-display {% else %} display-4 logo-font main-page-text {{ x.main_page_text_alignment }} {% endif %}" style="color: {{ x.main_page_text_color }};">
                         {{ x.main_page_text|safe }}</h1>
@@ -95,9 +95,7 @@
                 do-not-display {% else %} editable my-5 {{ x.main_page_button_alignment }} {% endif %}">
                         <h4>
                             {% for x in home_page_customisation %}
-                            <a {% if user.is_superuser %} ondblclick="editMainPageText()" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Double click to edit main page button styles" {% else %}
-                                href="{% url 'products' %}" {% endif %} class="{% if x.do_not_display %}
+                            <a href="{% url 'products' %}" class="{% if x.do_not_display %}
                         do-not-display {% else %} shop-now-button btn btn-lg rounded-0 text-uppercase py-3 {% endif %}"
                                 style="background-color: {{ x.button_background_color }};">
 
@@ -124,9 +122,9 @@
             {% if x.cta_card_1 %}
             <div class="{% if x.do_not_display or y.do_not_display %}
                  do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
-                <img {% if user.is_superuser %} ondblclick="editCTACardImage()" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Double click to edit CTA card image" {% endif %}
-                    src="{{x.cta_card_1.image.url}}" class="card-img-top" alt="...">
+                <img {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="top"
+                    title="Double click to edit CTA cards" {% endif %} src="{{x.cta_card_1.image.url}}"
+                    class="card-img-top" alt="...">
 
                 <div class="card-body text-center cta-card-title">
 
@@ -139,9 +137,7 @@
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
                do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
-                    <a {% if user.is_superuser %} ondblclick="editCTACardButtons()" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Double click to edit CTA card buttons" {% else %}
-                        href="products/?category={{ x.cta_card_1.button_url_choice }}" {% endif %}
+                    <a href="products/?category={{ x.cta_card_1.button_url_choice }}"
                         class="cta-btn-1 flexed {{ x.cta_card_1.add_button_border }}" target="_blank" style="color: {{ x.cta_card_1.button_label_color }} !important;
                     background-color: {{ x.cta_card_1.button_background_color }} !important;
                     border: 2px solid {{ x.cta_card_1.border_color }};">
@@ -156,7 +152,7 @@
             <div class="{% if x.do_not_display or y.do_not_display %}
                  do-not-display {% else %} mx-5 card cta-card col-md-4 p-0 {% endif %}" data-aos="fade-in">
                 <img {% if user.is_superuser %} ondblclick="editCTACardImage()" data-bs-toggle="tooltip"
-                    data-bs-placement="top" title="Double click to edit CTA card image" {% endif %}
+                    data-bs-placement="top" title="Double click to edit CTA cards" {% endif %}
                     src="{{x.cta_card_2.image.url}}" class="card-img-top" alt="...">
 
                 <div class="card-body text-center cta-card-title">
@@ -170,9 +166,7 @@
                 </div>
                 <div class="{% if x.do_not_display or y.do_not_display %}
                do-not-display {% else %} card-footer px-5 d-flex justify-content-center {% endif %}">
-                    <a {% if user.is_superuser %} ondblclick="editCTACardButtons()" data-bs-toggle="tooltip"
-                        data-bs-placement="top" title="Double click to edit CTA card buttons" {% else %}
-                        href="products/?category={{ x.cta_card_2.button_url_choice }}" {% endif %}
+                    <a href="products/?category={{ x.cta_card_2.button_url_choice }}"
                         class="cta-btn-1 flexed {{ x.cta_card_2.add_button_border }}" target="_blank" style="color: {{ x.cta_card_2.button_label_color }} !important;
                     background-color: {{ x.cta_card_2.button_background_color }} !important;
                     border: 2px solid {{ x.cta_card_1.border_color }};">
@@ -193,7 +187,7 @@
         <div {% if user.is_superuser %} ondblclick="editCTABanner()" data-bs-toggle="tooltip" data-bs-placement="bottom"
             title="Double click to edit Banner styles" {% endif %} class="{% if x.do_not_display or y.do_not_display %}
                         do-not-display {% else %} jumbotron editable jumbotron-fluid cta-banner {% endif %}"
-            style="background: url({{x.cta_banner.banner_image.url}}) !important; background-color: {{ x.cta_banner.banner_background_color }} !important;">
+            style="{% if banner_image %} background: url({{x.cta_banner.banner_image.url}}) !important; {% else %} background-color: {{ x.cta_banner.banner_background_color }} !important; {% endif %}">
 
             <h1 class="text-center cta-banner-title mb-5 p-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
 
@@ -202,12 +196,20 @@
                 {% if product.add_to_cta_banner == True %}
                 <div class="card cta-banner-card h-100 mx-5" style="width: 18rem;">
                     <img class="card-img-top" src="{{ product.main_product_image.url }}" alt="Card image cap">
-                    <!-- <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div> -->
+                    <div class="card-body cta-banner-cards">
+                        <h5 class="{% if x.do_not_display or y.do_not_display %}
+                        do-not-display {% else %} card-title text-center cta_banner_card_text {% endif %}"
+                            style="color: {{ x.cta_banner.card_title_color }} !important;">{{ product.name }}</h5>
+                        <p class="card-text text-center">
+                            <a href="{% url 'product_detail' product.id %}" class="{% if x.do_not_display or y.do_not_display %}
+                            do-not-display {% else %} {{ x.button_border }} cta-banner-btn {% endif %}"
+                                style="background-color: {{ x.cta_banner.card_button_background_color }} !important;
+                                border: 1px solid {{ x.cta_banner.button_border_color }} !important;
+                                color: {{ x.cta_banner.card_button_text_color }} !important;">
+                                {{ x.cta_banner.card_button_text }}
+                            </a>
+                        </p>
+                    </div>
                 </div>
                 {% endif %}
                 {% endfor %}

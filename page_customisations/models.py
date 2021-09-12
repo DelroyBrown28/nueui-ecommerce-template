@@ -96,6 +96,13 @@ class CTABanner(models.Model):
     border_color = ColorField(format='hexa', default='#000000')
     # TODO: Give option of internal URL or external URL
     button_background_color = ColorField(format='hexa', default='#FFFFFF')
+    card_title_color = ColorField(format='hexa', default='#000000')
+    card_button_text = models.CharField(blank=False, null=False, max_length=25, default='View Product')
+    card_button_background_color = ColorField(format='hexa', default='#000000')
+    card_button_text_color = ColorField(format='hexa', default='#000000')
+    button_border = models.TextField(
+        choices=ADD_BUTTON_BORDER, blank=False, null=False, default='no-border')
+    button_border_color = ColorField(format='hexa', default='#000000')
     cta_button_url = models.URLField(max_length=500, blank=True, null=True)
 
 
