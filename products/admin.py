@@ -34,6 +34,16 @@ class ProductAdmin(admin.ModelAdmin):
         'name',
         'category',
     )
+    list_display = (
+        'name',
+        'add_to_cta_banner',
+    )
+    list_display_links = (
+        'name',
+    )
+    list_editable = (
+        'add_to_cta_banner',
+    )
     readonly_fields = (
         'created',
         'updated',
