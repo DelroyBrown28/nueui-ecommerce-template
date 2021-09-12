@@ -8,7 +8,7 @@
 
 
 
-<footer {% if user.is_superuser %} ondblclick="editFooter()" data-bs-toggle="tooltip" data-bs-placement="top"
+<footer {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="top"
     title="Double click to edit Footer" {% endif %} class="{% if x.do_not_display %}
 do-not-display {% else %} ftr editable mt-5 {% endif %}" style="background-color: {{ x.background_color }} !important;">
     <div class="container">

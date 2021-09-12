@@ -72,7 +72,7 @@
         $('.cta-card').dblclick(function () {
             $('.side-edit-box').fadeIn()
             $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="http://127.0.0.1:8000/superadmin/page_customisations/ctacard/" height="100%" width="700" ></iframe>')
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/ctacard/" height="100%" width="700" ></iframe>')
         })
         $('.close-edit-box').click(function () {
             $('.side-edit-box').fadeOut()
@@ -80,10 +80,35 @@
             $('.side-edit-box').html('')
 
         });
-        
+
+        // Edit CTA banner
+        $('.cta-banner').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/ctabanner/1/change/#/tab/module_1/" height="100%" width="700" ></iframe>')
+        })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        });
+        // Edit footer
+        $('.ftr').dblclick(function () {
+            $('.side-edit-box').fadeIn()
+            $('.close-edit-box').fadeIn()
+            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/footercustomisation/1/change/#/tab/module_1/" height="100%" width="700" ></iframe>')
+        })
+        $('.close-edit-box').click(function () {
+            $('.side-edit-box').fadeOut()
+            $('.close-edit-box').fadeOut()
+            $('.side-edit-box').html('')
+
+        });
+      
      
 
-    })
+    });
 
 
 
@@ -95,9 +120,7 @@
     function editFooter() {
         window.location.href = '/superadmin/page_customisations/footercustomisation/1/change/';
     }
-    function editCTABanner() {
-        window.location.href = '/superadmin/page_customisations/ctabanner/1/change/#/tab/module_0/';
-    }
+    
     function editSearchIcon() {
         window.location.href = '/superadmin/page_customisations/headercustomisation/1/change/#/tab/module_1/';
     }

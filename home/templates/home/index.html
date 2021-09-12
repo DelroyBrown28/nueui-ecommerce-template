@@ -184,7 +184,7 @@
 
         {% for x in home_page_customisation %}
         {% if x.cta_banner %}
-        <div {% if user.is_superuser %} ondblclick="editCTABanner()" data-bs-toggle="tooltip" data-bs-placement="bottom"
+        <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="bottom"
             title="Double click to edit Banner styles" {% endif %} class="{% if x.do_not_display or y.do_not_display %}
                         do-not-display {% else %} jumbotron editable jumbotron-fluid cta-banner {% endif %}"
             style="{% if banner_image %} background: url({{x.cta_banner.banner_image.url}}) !important; {% else %} background-color: {{ x.cta_banner.banner_background_color }} !important; {% endif %}">
