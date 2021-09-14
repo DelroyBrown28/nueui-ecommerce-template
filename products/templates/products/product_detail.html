@@ -15,7 +15,12 @@
 
 {% block content %}
 
+<head>
+    <link rel="stylesheet" href="{% static 'css/side_edit_box.css' %}">
 
+</head>
+
+{% include 'includes/side_edit_box.html' %}
 
 
 {% for y in global_styles %}
@@ -24,14 +29,15 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 </div>
 {% endfor global_styles %}
 
-<div class="container-fluid mt-5 product-display-container">
-    <div class="row">
+<div class="container-fluid mt-5 editable product-display-container">
+    <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="bottom"
+    title="Double click to edit carousel images & product information." {% endif %} class="editable edit-info row">
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2 d-flex">
             <div class="image-container my-5">
 
 
 
-                <div id="carouselExampleIndicators" class="carousel slide">
+                <div id="carouselExampleIndicators" class="carousel slide editable">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -40,7 +46,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             {% if product.main_product_image %}
-                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                            <a>
                                 <img class="card-img-top img-fluid p-0" src="{{ product.main_product_image.url }}"
                                     alt="{{ product.name }}">
                             </a>
@@ -54,12 +60,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                         <div class="carousel-item">
                             {% if product.alternative_image_1 %}
-                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                            <a>
                                 <img class="card-img-top img-fluid p-0" src="{{ product.alternative_image_1.url }}"
                                     alt="{{ product.name }}">
                             </a>
                             {% else %}
-                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                            <a>
                                 <img class="card-img-top img-fluid p-0" src="{{ product.main_product_image.url }}"
                                     alt="{{ product.name }}">
                             </a>
@@ -68,12 +74,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                         <div class="carousel-item">
                             {% if product.alternative_image_2 %}
-                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                            <a>
                                 <img class="card-img-top img-fluid p-0" src="{{ product.alternative_image_2.url }}"
                                     alt="{{ product.name }}">
                             </a>
                             {% else %}
-                            <a href="{{ product.main_product_image.url }}" target="_blank">
+                            <a>
                                 <img class="card-img-top img-fluid p-0" src="{{ product.main_product_image.url }}"
                                     alt="{{ product.name }}">
                             </a>
@@ -97,7 +103,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
             </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4 edit-product-info">
             <div class="products detail-container mb-5 mt-md-5">
 
                 {% for y in global_styles %}
@@ -283,6 +289,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 </div>
 
 {% include "includes/footer.html" %}
+{% include "includes/edit_functions.html" %}
+
 
 
 <script>

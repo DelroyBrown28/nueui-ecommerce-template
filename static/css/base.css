@@ -81,6 +81,8 @@ body {
     width: 100%;
 }
 
+
+
 .products-homepage-section {
     margin-top: 65px;
     margin-bottom: 65px;
@@ -1029,6 +1031,10 @@ body>div:nth-child(12)>em>div>p {
     -o-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
     -ms-transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
     transition: background-color 0.4s, border-color 0.4s, color 0.4s ease-in-out;
+}
+
+.product-display-container {
+    z-index: 9999;
 }
 
 @media (max-width: 991px) {

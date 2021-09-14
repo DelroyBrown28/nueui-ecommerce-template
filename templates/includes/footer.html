@@ -8,9 +8,10 @@
 
 
 
-<footer {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="top"
-    title="Double click to edit Footer" {% endif %} class="{% if x.do_not_display %}
-do-not-display {% else %} ftr editable mt-5 {% endif %}" style="background-color: {{ x.background_color }} !important;">
+<footer {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="top" title="Double click to edit Footer"
+    {% endif %} class="{% if x.do_not_display %}
+do-not-display {% else %} ftr editable mt-5 {% endif %}"
+    style="background-color: {{ x.background_color }} !important;">
     <div class="container">
         <div class="row">
             <div class="col-md-4 footer-column">
@@ -102,9 +103,11 @@ do-not-display {% else %} ftr editable mt-5 {% endif %}" style="background-color
                     <li class="list-inline-item">
                         <a class="{% if x.do_not_display %}
                         do-not-display {% else %} social-media-icon {% endif %}"
-                        style="background-color: {{ x.social_media_icon_background_color }} !important;" href="{{ x.twitter_link }}">
+                            style="background-color: {{ x.social_media_icon_background_color }} !important;"
+                            href="{{ x.twitter_link }}">
                             <i class="{% if x.do_not_display %}
-                            do-not-display {% else %} fab fa-twitter {% endif %}" style="color: {{ x.social_media_icon_colors }} !important;"></i>
+                            do-not-display {% else %} fab fa-twitter {% endif %}"
+                                style="color: {{ x.social_media_icon_colors }} !important;"></i>
                         </a>
                     </li>
                     {% endif %}
@@ -112,9 +115,11 @@ do-not-display {% else %} ftr editable mt-5 {% endif %}" style="background-color
                     <li class="list-inline-item">
                         <a class="{% if x.do_not_display %}
                         do-not-display {% else %} social-media-icon {% endif %}"
-                        style="background-color: {{ x.social_media_icon_background_color }} !important;" href="{{ x.instagram_link }}">
+                            style="background-color: {{ x.social_media_icon_background_color }} !important;"
+                            href="{{ x.instagram_link }}">
                             <i class="{% if x.do_not_display %}
-                            do-not-display {% else %} fab fa-twitter {% endif %}" style="color: {{ x.social_media_icon_colors }} !important;"></i>
+                            do-not-display {% else %} fab fa-instagram {% endif %}"
+                                style="color: {{ x.social_media_icon_colors }} !important;"></i>
                         </a>
                     </li>
                     {% endif %}
@@ -122,9 +127,11 @@ do-not-display {% else %} ftr editable mt-5 {% endif %}" style="background-color
                     <li class="list-inline-item">
                         <a class="{% if x.do_not_display %}
                         do-not-display {% else %} social-media-icon {% endif %}"
-                        style="background-color: {{ x.social_media_icon_background_color }} !important;" href="{{ x.linkedin_link }}">
+                            style="background-color: {{ x.social_media_icon_background_color }} !important;"
+                            href="{{ x.linkedin_link }}">
                             <i class="{% if x.do_not_display %}
-                            do-not-display {% else %} fab fa-twitter {% endif %}" style="color: {{ x.social_media_icon_colors }} !important;"></i>
+                            do-not-display {% else %} fab fa-linkedin {% endif %}"
+                                style="color: {{ x.social_media_icon_colors }} !important;"></i>
                         </a>
                     </li>
                     {% endif %}
@@ -132,24 +139,28 @@ do-not-display {% else %} ftr editable mt-5 {% endif %}" style="background-color
                     <li class="list-inline-item">
                         <a class="{% if x.do_not_display %}
                         do-not-display {% else %} social-media-icon {% endif %}"
-                        style="background-color: {{ x.social_media_icon_background_color }} !important;" href="{{ x.facebook_link }}">
+                            style="background-color: {{ x.social_media_icon_background_color }} !important;"
+                            href="{{ x.facebook_link }}">
                             <i class="{% if x.do_not_display %}
-                            do-not-display {% else %} fab fa-twitter {% endif %}" style="color: {{ x.social_media_icon_colors }} !important;"></i>
+                            do-not-display {% else %} fab fa-facebook {% endif %}"
+                                style="color: {{ x.social_media_icon_colors }} !important;"></i>
                         </a>
                     </li>
                     {% endif %}
-         
+
                 </ul>
             </div>
             <div class="col-md-4 box">
                 <ul class="list-inline quick-links">
                     <li class="list-inline-item">
                         <a class="{% if x.do_not_display %}
-                        do-not-display {% else %} list-link {% endif %}" style="color: {{ x.footer_title_colors }} !important;" href="#">Privacy Policy</a>
+                        do-not-display {% else %} list-link {% endif %}"
+                            style="color: {{ x.footer_title_colors }} !important;" href="#">Privacy Policy</a>
                     </li>
                     <li class="list-inline-item">
                         <a class="{% if x.do_not_display %}
-                        do-not-display {% else %} list-link {% endif %}" style="color: {{ x.footer_title_colors }} !important;" href="#">Terms of Use</a>
+                        do-not-display {% else %} list-link {% endif %}"
+                            style="color: {{ x.footer_title_colors }} !important;" href="#">Terms of Use</a>
                     </li>
                 </ul>
             </div>

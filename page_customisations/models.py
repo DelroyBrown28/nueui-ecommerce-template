@@ -224,9 +224,9 @@ class HeaderCustomisation(models.Model):
 
 
 class ProductsPageCustomisation(models.Model):
-    BORDER_SIZE_CHOICES = (
-        ('add-border', 'Add Border'),
-        ('no-border', 'No Border'),
+    ADD_PRODUCT_CARD_BORDER = (
+        ('add-product-card-border', 'Add Border'),
+        ('no-border-product-card', 'No Border'),
     )
     products_page_styling = models.CharField(
         blank=False, null=False, max_length=55, default="Default Product Page Styling")
@@ -234,7 +234,7 @@ class ProductsPageCustomisation(models.Model):
     category_tag_text_color = ColorField(format='hexa', default='#000000')
     product_card_background_color = ColorField(
         format='hexa', default='#FFFFFF00')
-    add_card_border = models.TextField(choices=BORDER_SIZE_CHOICES,
+    add_card_border = models.TextField(choices=ADD_PRODUCT_CARD_BORDER,
                                        blank=False,
                                        null=False,
                                        default="no-border")

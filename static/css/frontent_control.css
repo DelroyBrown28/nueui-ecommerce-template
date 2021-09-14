@@ -11,6 +11,16 @@ ADD BORDER CLASSES
     padding: 10px;
 }
 
+.add-product-card-border {
+    border: 1px solid;
+    border-radius: 0px !important;
+    margin: 0px 2px !important;
+}
+
+.no-border-product-card {
+    border: none !important;
+
+}
 .no-border {
     border: none !important;
 

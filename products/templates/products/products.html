@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load i18n static %}
+
 
 
 {% block page_header %}
@@ -13,6 +14,15 @@
 
 
 {% block content %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/side_edit_box.css' %}">
+
+</head>
+
+{% include 'includes/side_edit_box.html' %}
+
+
 {% for y in global_styles %}
 <div class="{% if y.do_not_display %}
 do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.base_background_color }} !important;">
@@ -94,23 +104,27 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
             {% endif %}
             <div class="row mb-5">
                 {% for product in products %}
-                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                {% for x in products_page_customisation %}
+                <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Double click to edit Product Cards" {% endif %}
+                    class="col-sm-6 col-md-6 col-lg-4 col-xl-3 editable product-cards {{ x.add_card_border }}"
+                    style="border: 1px solid {{ x.border_color }};">
 
-                    {% for x in products_page_customisation %}
 
                     {% if product.main_product_image %}
-                    <a href="{% url 'product_detail' product.id %}">
+                    <a {% if user.is_superuser %} {% else %} href="{% url 'product_detail' product.id %}" {% endif %}
+                        class="product-cards-image">
                         <img class="card-img-top img-fluid" src="{{ product.main_product_image.url }}"
                             alt="{{ product.name }}">
                     </a>
                     {% else %}
-                    <a href="{% url 'product_detail' product.id %}">
+                    <a href="{% url 'product_detail' product.id %}" class="product-cards">
                         <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
                     </a>
                     {% endif %}
 
                     {% for x in products_page_customisation %}
-                    <div class="card-body pb-0">
+                    <div class="card-body pb-0" style="background-color: {{ x.product_card_background_color }} !important;">
                         <p class="{% if x.do_not_display %}
                                 do-not-display {% else %} mb-0 {% endif %}"
                             style="color: {{ x.product_card_font_color }};">{{ product.name }}</p>
@@ -137,7 +151,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                                     </a>
                                 </p>
                                 {% endif %}
-                         
+
                                 {% if request.user.is_superuser %}
                                 <small class="ml-3">
                                     <a href="{% url 'edit_product' product.id %}">Edit</a> |
@@ -226,7 +240,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
 
 {% include "includes/footer.html" %}
-
+{% include "includes/edit_functions.html" %}
 
 {% endblock content %}
 {% block postloadjs %}
