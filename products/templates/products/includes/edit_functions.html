@@ -1,112 +1,7 @@
 <script>
     $(document).ready(function () {
 
-        
-
-        // Edit header logo
-        $('.main-logo-link').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/headercustomisation/1/change" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-
-        // Edit header icons
-        $('.editIconAndTextColors').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/globalsitestyling/1/change/#/tab/module_0/" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-
-        // Edit small banner
-        $('.small-banner-wrap').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/headercustomisation/1/change/#/tab/module_2/" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-
-        // Edit home page bg image
-        $('.homepage-bg-image').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/homepagecustomisation/1/change/#/tab/module_0/" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-
-        // Edit home page bg image
-        $('.main-page-text').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/homepagecustomisation/1/change/#/tab/module_1/" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-
-        // Edit CTA card
-        $('.cta-card').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/ctacard/" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-
-        // Edit CTA banner
-        $('.cta-banner').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/ctabanner/1/change/#/tab/module_1/" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-        
-        // Edit footer
-        $('.ftr').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
-            $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/footercustomisation/1/change/#/tab/module_1/" height="100%" width="700" ></iframe>')
-        })
-        $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
-            $('.side-edit-box').html('')
-
-        });
-        
+                
         // Edit Product Cards
         $('.product-cards').dblclick(function () {
             $('.side-edit-box, .close-edit-box').fadeIn()
@@ -120,21 +15,14 @@
         
          // Edit Product info
         $('.edit-info').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
+            $('.side-edit-box, .close-edit-box').fadeIn()
             $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/admin/products/product/{{product.id}}/change/#/tab/module_1/" height="100%" width="700" ></iframe>')
         })
         $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
+            $('.side-edit-box, .close-edit-box').fadeOut()
             $('.side-edit-box').html('')
 
         });
-
-        
-      
-     
-
     });
 
 
