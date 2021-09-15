@@ -16,7 +16,7 @@ from BasicTemplateMain.admin import superadmin
 # Superuser admin models
 class AboutPageCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('About Page Styles', {
             "fields": (
                 'styling_name',)
         }),
@@ -46,18 +46,12 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
                 'contact_card_background_color',
                 'contact_card_text_color',
                 ('contact_card_border',
-                 'border_color',),)
-
-        }),
-        ('Social Media Links', {
-            'classes': ('fieldset_titles',),
-            'fields': (
-                ('twitter_link',
+                 'border_color',),
+                 ('twitter_link',
                  'linkedin_link'),
-                ('facebook_link',
-                 'instagram_link'),),
+                 ('facebook_link',
+                 'instagram_link'),)
         }),
-
         ('Tick this box to HIDE these styles', {
             'classes': ('fieldset_titles',),
             'fields': (
@@ -72,11 +66,11 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
     )
 
-    # This will help you to disbale add functionality
+    # disbale add functionality
     def has_add_permission(self, request):
         return False
 
-    # This will help you to disable delete functionaliyt
+    # disable delete functionaliyt
     def has_delete_permission(self, request, obj=None):
         return False
 
@@ -379,7 +373,7 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
 
 class TestimonialsCustomisationAdmin(admin.ModelAdmin):
     fieldsets = (
-        (None, {
+        ('Testimonials Page Styling', {
             "fields": (
                 'style_name',)
         }),

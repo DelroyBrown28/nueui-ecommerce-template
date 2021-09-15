@@ -2,7 +2,8 @@
     z-index: 99999;
     height: 100%;
     position: fixed;
-    top: 0px;
+    /* top: 0px; */
+    bottom: 52px;
     right: 0px !important;
 }
 
@@ -12,27 +13,26 @@
     padding: 2px 0px 0px 2px;
 }
 
-.feather-x-square {
-    height: 35px;
-    width: 35px;
+.feather-x {
+    height: 55px;
+    width: 55px;
+    cursor: pointer;
 }
 
 .close-edit-box {
     display: none;
-    width: 700px;
+    width: 100vw;
     height: 51px;
     position: fixed;
     top: 0px;
     right: 0px;
     z-index: 99999 !important;
-    background-color: #ECF2F6;
-    border-left: 2px solid #48AA8B;
 
 }
 
 .inside-edit-close-box {
     position: absolute;
-    width: 700px;
+    width: 100vw;
     height: 51px;
 }
 
@@ -44,7 +44,10 @@
 
 .edit-frame {
     border: none;
-    border-left: 2px solid #48AA8B;
+    padding-left: 65%;
+    backdrop-filter: blur(15px);
+    width: 100vw;
+    height: calc(100% + 52px);
     box-shadow:
         0 2.9px 7.8px rgba(0, 0, 0, 0.011),
         0 6.2px 17.2px rgba(0, 0, 0, 0.016),

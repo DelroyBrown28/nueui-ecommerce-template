@@ -109,13 +109,11 @@
         
         // Edit Product Cards
         $('.product-cards').dblclick(function () {
-            $('.side-edit-box').fadeIn()
-            $('.close-edit-box').fadeIn()
+            $('.side-edit-box, .close-edit-box').fadeIn()
             $('.side-edit-box').fadeIn(1000).html('<iframe class="edit-frame" src="/superadmin/page_customisations/productspagecustomisation/1/change/#/tab/module_2/" height="100%" width="700" ></iframe>')
         })
         $('.close-edit-box').click(function () {
-            $('.side-edit-box').fadeOut()
-            $('.close-edit-box').fadeOut()
+            $('.side-edit-box, .close-edit-box').fadeOut()
             $('.side-edit-box').html('')
 
         });
@@ -132,6 +130,8 @@
             $('.side-edit-box').html('')
 
         });
+
+        
       
      
 

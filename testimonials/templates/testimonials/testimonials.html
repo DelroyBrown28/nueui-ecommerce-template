@@ -3,6 +3,13 @@
 
 {% block content %}
 
+<head>
+    <link rel="stylesheet" href="{% static 'css/side_edit_box.css' %}">
+
+</head>
+
+{% include 'testimonials/includes/side_edit_box.html' %}
+
 
 
 <body class="testimonials-body">
@@ -21,9 +28,11 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
                 <div>
                     {% for y in testimonials_customisation %}
-                    <div class="{% if y.do_not_display %}
-                    do-not-display {% else %} card text-center py-5 {% endif %}" style="background-color: {{ y.card_background_color }} !important;
-                        border: 2px solid {{ y.card_border_color }} !important;">
+                    <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Double click to testimonial cards" {% endif %}
+                        class="{% if y.do_not_display %}
+                    do-not-display {% else %} editable edit-testimonial-cards card text-center py-5 {{ y.card_border }} {% endif %}" style="background-color: {{ y.card_background_color }} !important;
+                        border: 2px solid {{ y.card_border_color }};">
 
                         <div class="card-body">
                             <h5 class="{% if y.do_not_display %}
@@ -119,13 +128,15 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
         {% for x in testimonials_customisation %}
         <div class="col-md-12 text-center">
             <a href="#testimonialForm" id="testimonialForm" type="button" class="{% if x.do_not_display %}
-            do-not-display {% else %} testimonial-form-btn {{ x.view_testimonial_button_border }} {% endif %}"
-                style="background-color: {{ x.view_testimonial_button_background_color }} !important;
+            do-not-display {% else %} testimonial-form-btn {{ x.view_testimonial_button_border }} {% endif %}" style="background-color: {{ x.view_testimonial_button_background_color }} !important;
                 color: {{ x.view_testimonial_button_label_color }} !important;
                 border-color: {{ x.view_testimonial_button_border_color }} !important;">
                 <small> <i class="{% if x.do_not_display %}
-                    do-not-display {% else %} fas fa-arrow-down {% endif %}" style="color: {{ x.icon_color }} !important;"></i> {{ x.view_testimonial_button_label }} <i class="{% if x.do_not_display %}
-                    do-not-display {% else %} fas fa-arrow-down {% endif %}" style="color: {{ x.icon_color }} !important;"></i></small>
+                    do-not-display {% else %} fas fa-arrow-down {% endif %}"
+                        style="color: {{ x.icon_color }} !important;"></i> {{ x.view_testimonial_button_label }} <i
+                        class="{% if x.do_not_display %}
+                    do-not-display {% else %} fas fa-arrow-down {% endif %}"
+                        style="color: {{ x.icon_color }} !important;"></i></small>
             </a>
         </div>
         {% endfor %}
@@ -187,6 +198,8 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
 
     {% include "includes/footer.html" %}
+    {% include "testimonials/includes/testimonial_edit_functions.html" %}
+
 </body>
 
 <script>
