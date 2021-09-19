@@ -66,13 +66,13 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
         'do_not_display',
     )
 
-    # disbale add functionality
-    def has_add_permission(self, request):
-        return False
+    # # disbale add functionality
+    # def has_add_permission(self, request):
+    #     return False
 
-    # disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # # disable delete functionaliyt
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 class HomePageCustomisationAdmin(admin.ModelAdmin):
@@ -123,13 +123,13 @@ class HomePageCustomisationAdmin(admin.ModelAdmin):
 
     )
 
-    # This will help you to disbale add functionality
-    def has_add_permission(self, request):
-        return False
+    # # This will help you to disbale add functionality
+    # def has_add_permission(self, request):
+    #     return False
 
-    # This will help you to disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # # This will help you to disable delete functionaliyt
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 class GlobalSiteStylingAdmin(admin.ModelAdmin):
@@ -183,13 +183,13 @@ class GlobalSiteStylingAdmin(admin.ModelAdmin):
 
     )
 
-    # This will help you to disbale add functionality
-    def has_add_permission(self, request):
-        return False
+    # # This will help you to disbale add functionality
+    # def has_add_permission(self, request):
+    #     return False
 
-    # This will help you to disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # # This will help you to disable delete functionaliyt
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 class HeaderCustomisationAdmin(admin.ModelAdmin):
@@ -254,13 +254,13 @@ class HeaderCustomisationAdmin(admin.ModelAdmin):
 
     )
 
-    # This will help you to disbale add functionality
-    def has_add_permission(self, request):
-        return False
+    # # This will help you to disbale add functionality
+    # def has_add_permission(self, request):
+    #     return False
 
-    # This will help you to disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # # This will help you to disable delete functionaliyt
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 class ProductsPageCustomisationAdmin(admin.ModelAdmin):
@@ -303,13 +303,13 @@ class ProductsPageCustomisationAdmin(admin.ModelAdmin):
 
     )
 
-    # This will help you to disbale add functionality
-    def has_add_permission(self, request):
-        return False
+    # # This will help you to disbale add functionality
+    # def has_add_permission(self, request):
+    #     return False
 
-    # This will help you to disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # # This will help you to disable delete functionaliyt
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 class FooterCustomisationAdmin(admin.ModelAdmin):
@@ -362,13 +362,13 @@ class FooterCustomisationAdmin(admin.ModelAdmin):
 
     )
 
-    # This will help you to disbale add functionality
-    def has_add_permission(self, request):
-        return False
+    # # This will help you to disbale add functionality
+    # def has_add_permission(self, request):
+    #     return False
 
-    # This will help you to disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # # This will help you to disable delete functionaliyt
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 class TestimonialsCustomisationAdmin(admin.ModelAdmin):
@@ -429,9 +429,9 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
     )
 
     
-    # This will help you to disable delete functionaliyt
-    def has_delete_permission(self, request, obj=None):
-        return False
+    # # This will help you to disable delete functionaliyt
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 class AddTestimonialAdmin(admin.ModelAdmin):
