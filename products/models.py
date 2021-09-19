@@ -19,20 +19,20 @@ class Category(models.Model):
         return self.category_name
 
 
-class SizePrice(models.Model):
-    size_label = models.CharField(
-        max_length=15, blank=True, null=True, default='', help_text='xs, s, m, l, xl')
-    size_price = models.DecimalField(max_digits=10, decimal_places=2)
-    size_label_2 = models.CharField(
-        max_length=15, blank=True, null=True, default='', help_text='xs, s, m, l, xl')
-    size_price_2 = models.DecimalField(
-        max_digits=10, decimal_places=2, default='2')
+# class SizePrice(models.Model):
+#     size_label = models.CharField(
+#         max_length=15, blank=True, null=True, default='', help_text='xs, s, m, l, xl')
+#     size_price = models.DecimalField(max_digits=10, decimal_places=2)
+#     size_label_2 = models.CharField(
+#         max_length=15, blank=True, null=True, default='', help_text='xs, s, m, l, xl')
+#     size_price_2 = models.DecimalField(
+#         max_digits=10, decimal_places=2, default='2')
 
-    def get_size_price(self):
-        return self.size_price
+#     def get_size_price(self):
+#         return self.size_price
 
-    def __str__(self):
-        return self.size_label
+#     def __str__(self):
+#         return self.size_label
 
 
 class Product(models.Model):
