@@ -12,7 +12,6 @@ def categories(request):
         'dropdown_categories': Category.objects.all()
     }
 
-
 def all_products(request):
     """Shows and displays all products."""
     products = Product.objects.all()
