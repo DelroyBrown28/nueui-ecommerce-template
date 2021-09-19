@@ -5,7 +5,6 @@ from django.contrib.auth.models import User, Group
 from allauth.socialaccount.models import SocialToken, SocialAccount, SocialApp
 from checkout.models import Order, OrderLineItem
 from testimonials.models import Testimonial
-from products.models import SizePrice
 from BasicTemplateMain.admin import superadmin
 
 
@@ -59,10 +58,10 @@ class OrderAdmin(admin.ModelAdmin):
     ordering = ('-date',)
 
 
-class SizePriceAdmin(admin.ModelAdmin):
-    list_display = (
-        'size_label',
-    )
+# class SizePriceAdmin(admin.ModelAdmin):
+#     list_display = (
+#         'size_label',
+#     )
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -135,7 +134,7 @@ class CustomerTestimonialsAdmin(admin.ModelAdmin):
 
 # admin.site.unregister(User)
 admin.site.register(Testimonial, CustomerTestimonialsAdmin)
-admin.site.register(SizePrice, SizePriceAdmin)
+# admin.site.register(SizePrice, SizePriceAdmin)
 admin.site.unregister(Group)
 admin.site.unregister(Site)
 admin.site.unregister(SocialToken)
