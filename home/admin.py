@@ -115,7 +115,8 @@ class CustomerTestimonialsAdmin(admin.ModelAdmin):
         ('Date Received', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'date_received',),
+                'date_received',
+                'push_to_testimonial_page'),
 
         }),
     )
@@ -127,7 +128,6 @@ class CustomerTestimonialsAdmin(admin.ModelAdmin):
         'name',
         'email',
         'date_received',
-        'your_thoughts',
         'rating',
 
     )

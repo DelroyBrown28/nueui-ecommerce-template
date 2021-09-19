@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from testimonials.models import Testimonial
 from .models import (AddTestimonial, HeaderCustomisation,
                      ProductsPageCustomisation,
                      GlobalSiteStyling,
@@ -31,6 +32,14 @@ def add_testimonial(request):
         'add_testimonial': add_testimonial,
     }
     return render(request, 'products/products.html', context)
+
+def push_testimonial(request):
+    """Customisation for products page"""
+    push_testimonial = Testimonial.objects.all()
+    context = {
+        'push_testimonial': push_testimonial,
+    }
+    return render(request, 'testimonials/testimonials.html', context)
 
 
 def footer_customisation(request):

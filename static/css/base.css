@@ -384,12 +384,41 @@ TESTIMONIALS PAGE
 
 .testimonial-form-wrap {
     margin-top: 150px;
-    flex-flow: row;
+    flex-flow: column;
+    height: 100%;
+}
+
+.testimonial-form {
+    height: 100%;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
+.testimonial-form p input {
+    width: 100%;
+}
+
+
+.testimonial-form-inputs {
+    margin: 35px 0px;
+}
+
+.testimonial-form-inputs input {
+    height: 50px;
+    border: none;
+}
+.testimonial-form-inputs textarea {
+    border: none;
 }
 
 .testimonial-form-blurb {
     font-size: 20px;
     font-weight: 300;
+}
+
+.testimonial-form-blurb p {
+    margin: 0;
+    font-size: 25px;
 }
 
 .testimonial-form-submit-btn {
@@ -968,6 +997,7 @@ body>div:nth-child(12)>em>div>p {
     margin: 0;
 
 }
+
 
 .small-banner-wrap {
     padding: 0rem calc(1rem + 32px);

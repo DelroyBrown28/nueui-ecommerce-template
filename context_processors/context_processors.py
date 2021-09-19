@@ -1,5 +1,6 @@
 from page_customisations.models import ProductsPageCustomisation, CTACard, CTABanner
 from products.models import Category, Product
+from testimonials.models import Testimonial
 from page_customisations.views import (HeaderCustomisation,
                                        ProductsPageCustomisation,
                                        GlobalSiteStyling,
@@ -59,6 +60,12 @@ def footer_customisation_processor(request):
 def testimonials_customisation_processor(request):
     return {
         'testimonials_customisation': TestimonialsPageCustomisation.objects.all(),
+
+    }
+
+def testimonials_push(request):
+    return {
+        'testimonials_push': Testimonial.objects.all(),
 
     }
 

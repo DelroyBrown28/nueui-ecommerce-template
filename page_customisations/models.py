@@ -364,15 +364,22 @@ class TestimonialsPageCustomisation(models.Model):
     view_testimonial_button_border_color = ColorField(
         format='hexa', default='#000000')
     icon_color = ColorField(format='hexa', default='#000000')
-    form_title = models.CharField(
-        blank=False, null=False, max_length=100, default='')
+    form_title = RichTextField(blank=True, null=True, max_length=300, default='', field_settings={'bold': False})
     testimonial_form_blurb = RichTextField(
         blank=True, null=True, max_length=250, default='')
     form_background_color = ColorField(
         format='hexa', blank=True, null=True,  default='#FFFFFF')
     form_font_color = ColorField(
         format='hexa', blank=True, null=True,  default='#00000')
+    form_field_border = models.TextField(
+        choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
     form_field_border_color = ColorField(
+        format='hexa', blank=True, null=True, default='#000000')
+    form_field_background_color = ColorField(
+        format='hexa', blank=True, null=True, default='#FFFFFF')
+    form_field_placeholder_color = ColorField(
+        format='hexa', blank=True, null=True, default='#000000')
+    form_field_text_color = ColorField(
         format='hexa', blank=True, null=True, default='#000000')
     submit_button_border_color = ColorField(
         format='hexa', blank=True, null=True,  default='#000000')
