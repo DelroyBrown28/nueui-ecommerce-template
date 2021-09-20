@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
@@ -18,7 +19,7 @@ import json
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
         stripe.PaymentIntent.modify(pid, metadata={
             'bag' : json.dumps(request.session.get('bag', {})),
             'save_info' : request.POST.get('save_info'),
@@ -31,8 +32,8 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 def checkout(request):
-    stripe_public_key = settings.STRIPE_PUBLIC_KEY
-    stripe_secret_key = settings.STRIPE_SECRET_KEY
+    stripe_public_key = os.environ.get('STRIPE_PUBLIC_KEY')
+    stripe_secret_key = os.environ.get('STRIPE_SECRET_KEY')
     
     if request.method == 'POST':
         bag = request.session.get('bag', {})
@@ -173,21 +174,21 @@ def checkout_success(request, order_number):
         'order': order,
     }
     
-    def _send_confirmation_email(self, order):
-        """Sends the user a confirmation email."""
-    cust_email = order.email
+    # def _send_confirmation_email(self, order):
+    #     """Sends the user a confirmation email."""
+    # cust_email = order.email
     
-    subject = render_to_string(
-        'checkout/confirmation_emails/confirmation_email_subject.txt',
-        {'order' : order})
-    body = render_to_string(
-        'checkout/confirmation_emails/confirmation_email_body.html',
-        {'order' : order, 'contact_email' : settings.DEFAULT_FROM_EMAIL})
-    send_mail(
-        subject,
-        body,
-        settings.DEFAULT_FROM_EMAIL,
-        [cust_email],
-    )
+    # subject = render_to_string(
+    #     'checkout/confirmation_emails/confirmation_email_subject.txt',
+    #     {'order' : order})
+    # body = render_to_string(
+    #     'checkout/confirmation_emails/confirmation_email_body.html',
+    #     {'order' : order, 'contact_email' : settings.DEFAULT_FROM_EMAIL})
+    # send_mail(
+    #     subject,
+    #     body,
+    #     settings.DEFAULT_FROM_EMAIL,
+    #     [cust_email],
+    # )
 
     return render(request, template, context)
