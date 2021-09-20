@@ -1,1 +1,1 @@
-web: gunicorn BasicTemplateMain.wsgi --log-file -
+web: gunicorn BasicTemplateMain.wsgi --timeout 10 --log-file -
