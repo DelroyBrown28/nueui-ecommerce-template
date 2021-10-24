@@ -32,7 +32,7 @@ do-not-display {% else %} p-0 {% endif %}" style="color: {{ y.base_font_color }}
   {% for y in global_styles  %}
   <a class="{% if y.do_not_display %}
   do-not-display {% else %} btn basic-btn-style rounded-0 {% endif %}"
-    style="background-color: {{ y.primary_button_base_color }}; color: {{ y.primary_button_text_color }}"
+    style="background-color: {{ y.action_button_color }}; color: {{ y.primary_button_text_color }}"
     href="{% url 'account_login' %}">Back to Login
   </a>
   <button type="submit" class="{% if y.do_not_display %}

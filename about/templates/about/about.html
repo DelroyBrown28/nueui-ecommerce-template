@@ -28,12 +28,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 data-bs-placement="bottom" title="Double click to edit title & blurb" {% endif %} class="about-page-title-section editable">
     <h1 class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} about-page-title text-center {% endif %}" style="color: {{y.base_font_color}};">
-    {{ x.about_section_title }}
+    {{ x.about_page_title }}
 </h1>
 <div class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} d-flex justify-content-center about-blurb-wrap {% endif %}"
     style="color: {{y.base_font_color}};">
-    <p class="about-page-blurb text-center my-5"><em>"{{ x.about_section_blurb }}"</em></p>
+    <p class="about-page-blurb text-center my-5"><em>"{{ x.about_page_blurb }}"</em></p>
 </div>
 
 <div class="container flexed">
@@ -59,14 +59,14 @@ do-not-display {% else %} container {% endif %}">
 <div {% if user.is_superuser %} data-bs-toggle="tooltip"
 data-bs-placement="bottom" title="Double click to edit content" {% endif %} class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} container my-5 editable edit-content {% endif %}" style="color: {{y.base_font_color}};">
-    <div  class="about-page-content">{{ x.about_section_content|safe }}</div>
+    <div  class="about-page-content">{{ x.about_page_content|safe }}</div>
 
     <div class="d-flex justify-content-between my-5">
         <div class="card left-image" style="width: 45rem;">
-            <img src="{{ x.about_section_left_image.url }}" class="card-img-top" alt="...">
+            <img src="{{ x.about_page_left_image.url }}" class="card-img-top" alt="...">
         </div>
         <div class="card right-image" style="width: 45rem;">
-            <img src="{{ x.about_section_right_image.url }}" class="card-img-top" alt="...">
+            <img src="{{ x.about_page_right_image.url }}" class="card-img-top" alt="...">
         </div>
     </div>
 </div>

@@ -1037,8 +1037,12 @@ body>div:nth-child(12)>em>div>p {
 
 .cta_banner_card_text {
     text-transform: uppercase;
-    color: white;
     font-weight: 300;
+}
+
+body > section.cta-banner-section.flexed > div > div > p:nth-child(3) {
+    font-size: 1.25rem;
+  font-weight: 300;
 }
 
 .cta-banner-btn {

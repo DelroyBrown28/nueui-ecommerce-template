@@ -11,23 +11,29 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class GlobalSiteStyling(models.Model):
     SITE_BORDERS = (
-        ('add-border', 'Add Border'),
-        ('no-border', 'No Border'),
+        ('action-button-border', 'Add Border'),
+        ('no-border-action-button-border', 'No Border'),
     )
     global_site_styles = models.CharField(
         blank=False, null=False, max_length=25, default='Default Global Styles')
     base_background_color = ColorField(format='hex', default='#FFFFFF')
-    base_font_color = ColorField(format='hex', default='#000000')
-    all_icon_colors = ColorField(format='hex', default='#000000')
-    primary_button_base_color = ColorField(format='hex', default='#000000')
-    primary_button_text_color = ColorField(format='hex', default='#FFFFFF')
-    secondary_button_base_color = ColorField(format='hex', default='#FFFFFF')
-    secondary_button_text_color = ColorField(format='hex', default='#000000')
-    pop_up_background_color = ColorField(format='hex', default='#FFFFFF')
-    pop_up_text_color = ColorField(format='hex', default='#000000')
+    base_font_color = ColorField(format='hexa', default='#000000')
+    all_icon_colors = ColorField(format='hexa', default='#000000')
+    action_button_color = ColorField(format='hexa', default='#000000')
+    action_button_border = models.TextField(
+        choices=SITE_BORDERS, blank=False, null=False, default='no-border-action-button-border')
+    action_button_border_color = ColorField(format='hexa', default='#000000')
+    action_button_text_color = ColorField(format='hexa', default='#000000')
+    secondary_button_color = ColorField(format='hexa', default='#FFFFFF')
+    secondary_button_text_color = ColorField(format='hexa', default='#000000')
+    secondary_button_border = models.TextField(
+        choices=SITE_BORDERS, blank=False, null=False, default='no-border-action-button-border')
+    secondary_button_border_color = ColorField(format='hexa', default='#000000')
+    pop_up_background_color = ColorField(format='hexa', default='#FFFFFF')
+    pop_up_text_color = ColorField(format='hexa', default='#000000')
     dropdown_menu_background_color = ColorField(
-        format='hex', default='#FFFFFF')
-    dropdown_menu_text_color = ColorField(format='hex', default='#000000')
+        format='hexa', default='#FFFFFF')
+    dropdown_menu_text_color = ColorField(format='hexa', default='#000000')
 
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
@@ -77,7 +83,7 @@ class CTACard(models.Model):
         return self.cta_title
 
 
-class CTABanner(models.Model):
+class ProductBanner(models.Model):
     ADD_BUTTON_BORDER = (
         ('add-border', 'Add Border'),
         ('no-border', 'Remove Border'),
@@ -87,7 +93,8 @@ class CTABanner(models.Model):
     banner_background_color = ColorField(format='hexa', default='#000000')
     banner_image = models.ImageField(blank=True, null=True, upload_to='banner_images',
                                      help_text='You can have a banner image or a banner image color.')
-    cta_banner_title = RichTextField(default="")
+    product_banner_title = RichTextField(default="")
+    product_banner_blurb = RichTextField(default="")
     cta_button_label = models.CharField(
         max_length=25, null=False, blank=False, default="")
     label_color = ColorField(format='hexa', default='#000000')
@@ -96,10 +103,10 @@ class CTABanner(models.Model):
     border_color = ColorField(format='hexa', default='#000000')
     # TODO: Give option of internal URL or external URL
     button_background_color = ColorField(format='hexa', default='#FFFFFF')
-    card_title_color = ColorField(format='hexa', default='#000000')
-    card_button_text = models.CharField(blank=False, null=False, max_length=25, default='View Product')
+    product_card_title_color = ColorField(format='hexa', default='#000000')
+    product_card_button_text = models.CharField(blank=False, null=False, max_length=25, default='View Product')
     card_button_background_color = ColorField(format='hexa', default='#000000')
-    card_button_text_color = ColorField(format='hexa', default='#000000')
+    product_card_button_text_color = ColorField(format='hexa', default='#000000')
     button_border = models.TextField(
         choices=ADD_BUTTON_BORDER, blank=False, null=False, default='no-border')
     button_border_color = ColorField(format='hexa', default='#000000')
@@ -139,8 +146,8 @@ class HomePageCustomisation(models.Model):
         'CTACard', null=True, blank=True, related_name='cta_card_1', on_delete=models.CASCADE, help_text='Click the + button to create a new CTA card.')
     cta_card_2 = models.ForeignKey(
         'CTACard', null=True, blank=True, related_name='cta_card_2', on_delete=models.CASCADE, help_text='Click the + button to create a new CTA card.')
-    cta_banner = models.ForeignKey(
-        'CTABanner', null=True, blank=True, related_name='cta_banner', on_delete=models.CASCADE, help_text='Click the + button to create a new CTA banner.')
+    product_banner = models.ForeignKey(
+        'ProductBanner', null=True, blank=True, related_name='cta_banner', on_delete=models.CASCADE, help_text='Click the + button to create a new CTA banner.')
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
                                          help_text='CHECK THIS BOX TO HIDE THIS SPECIFIC STYLING.')
@@ -275,16 +282,14 @@ class AboutPageCustomisation(models.Model):
     )
     styling_name = models.CharField(
         blank=False, null=False, max_length=55, default="Default")
-    about_section_title = models.CharField(
+    about_page_title = models.CharField(
         max_length=100, blank=False, null=False)
-    about_section_blurb = models.TextField(
-        max_length=250, blank=False, null=False, default='Short blurb')
-    about_section_content = RichTextField()
-    about_section_left_image = models.ImageField(
+    about_page_blurb = RichTextField()
+    about_page_content = RichTextField()
+    about_page_left_image = models.ImageField(
         null=True, blank=True, upload_to='about_page_images')
-    about_section_right_image = models.ImageField(
+    about_page_right_image = models.ImageField(
         null=True, blank=True, upload_to='about_page_images')
-
     contact_section_title = models.CharField(
         max_length=100, blank=False, null=False)
     contact_section_blurb = models.TextField(

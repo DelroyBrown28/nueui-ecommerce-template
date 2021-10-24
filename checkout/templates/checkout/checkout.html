@@ -660,15 +660,15 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     {% for y in global_styles  %}
                     <a href="{% url 'view_bag' %}" class="{% if y.do_not_display %}
                     do-not-display {% else %} btn btn-outline-black rounded-0 {% endif %}"
-                        style="background-color: {{ y.primary_button_base_color }}; !important">
+                        style="background-color: {{ y.secondary_button_color }} !important;">
                         <span class="icon">
                             <i class="{% if y.do_not_display %}
                             do-not-display {% else %} fas fa-chevron-left {% endif %}"
-                                style="color: {{ y.primary_button_text_color }};"></i>
+                                style="color: {{ y.secondary_button_text_color }};"></i>
                         </span>
                         <span class="{% if y.do_not_display %}
                         do-not-display {% else %} font-weight-bold {% endif %}"
-                            style="color: {{ y.primary_button_text_color }};">
+                            style="color: {{ y.secondary_button_text_color }};">
                             Adjust Bag
                         </span>
                     </a>
@@ -678,16 +678,16 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     {% for y in global_styles  %}
                     <button id="submit-button" class="{% if y.do_not_display %}
                     do-not-display {% else %} btn btn-black rounded-0 {% endif %}"
-                        style="background-color: {{ y.secondary_button_base_color }}; !important">
+                        style="background-color: {{ y.action_button_color }}; !important">
                         <span class="{% if y.do_not_display %}
                         do-not-display {% else %} font-weight-bold {% endif %}"
-                            style="color: {{ y.secondary_button_text_color }}; !important">Complete
+                            style="color: {{ y.action_button_text_color }}; !important">Complete
                             Order
                         </span>
                         <span class="icon">
                             <i class="{% if y.do_not_display %}
                             do-not-display {% else %} fas fa-lock {% endif %}"
-                                style="color: {{ y.secondary_button_text_color }}; !important">
+                                style="color: {{ y.action_button_text_color }}; !important">
                             </i>
                         </span>
                     </button>

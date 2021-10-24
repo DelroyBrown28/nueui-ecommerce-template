@@ -20,7 +20,7 @@
 
 </head>
 
-{% include 'includes/side_edit_box.html' %}
+{% include 'products/includes/side_edit_box.html' %}
 
 
 {% for y in global_styles %}
@@ -102,12 +102,11 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 </div>
             </div>
             {% endif %}
-            <div class="row mb-5">
+            <div class="row mb-5 edit-product-cards" {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="bottom"
+                    title="Double click to edit Product Cards" {% endif %}>
                 {% for product in products %}
                 {% for x in products_page_customisation %}
-                <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="bottom"
-                    title="Double click to edit Product Cards" {% endif %}
-                    class="col-sm-6 col-md-6 col-lg-4 col-xl-3 editable product-cards {{ x.add_card_border }}"
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 editable product-cards {{ x.add_card_border }}"
                     style="border: 1px solid {{ x.border_color }};">
 
 
@@ -240,7 +239,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
 
 
 {% include "includes/footer.html" %}
-{% include "includes/edit_functions.html" %}
+{% include "products/includes/edit_functions.html" %}
 
 {% endblock content %}
 {% block postloadjs %}

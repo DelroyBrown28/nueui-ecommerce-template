@@ -9,7 +9,7 @@ from page_customisations.models import (HomePageCustomisation,
                                         TestimonialsPageCustomisation,
                                         AddTestimonial,
                                         CTACard,
-                                        CTABanner)
+                                        ProductBanner)
 from BasicTemplateMain.admin import superadmin
 
 
@@ -23,11 +23,11 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
         ('About Section', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'about_section_title',
-                'about_section_blurb',
-                'about_section_content',
-                'about_section_left_image',
-                'about_section_right_image'),
+                'about_page_title',
+                'about_page_blurb',
+                'about_page_content',
+                'about_page_left_image',
+                'about_page_right_image'),
 
         }),
         ('Contact Section', {
@@ -47,9 +47,9 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
                 'contact_card_text_color',
                 ('contact_card_border',
                  'border_color',),
-                 ('twitter_link',
+                ('twitter_link',
                  'linkedin_link'),
-                 ('facebook_link',
+                ('facebook_link',
                  'instagram_link'),)
         }),
         ('Tick this box to HIDE these styles', {
@@ -105,7 +105,7 @@ class HomePageCustomisationAdmin(admin.ModelAdmin):
         ('Choose/Create your Call To Action Banner', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'cta_banner',),
+                'product_banner',),
         }),
 
         ('Tick this box to HIDE these styles', {
@@ -141,18 +141,22 @@ class GlobalSiteStylingAdmin(admin.ModelAdmin):
                 'base_font_color',
                 'all_icon_colors',)
         }),
-        ('Primary Button Styles', {
+        ('Action Button Styles', {
             'classes': ('fieldset_titles',),
             'fields': (
-                ('primary_button_base_color',
-                 'primary_button_text_color'),)
+                'action_button_color',
+                ('action_button_border',
+                 'action_button_border_color'),
+                'action_button_text_color'),
 
         }),
         ('Secondary Button Styles', {
             'classes': ('fieldset_titles',),
             'fields': (
-                ('secondary_button_base_color',
-                 'secondary_button_text_color'),)
+                ('secondary_button_color',
+                 'secondary_button_text_color'),
+                 ('secondary_button_border',
+                 'secondary_button_border_color'),)
 
         }),
         ('Pop up box styles', {
@@ -428,7 +432,6 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
 
     )
 
-    
     # # This will help you to disable delete functionaliyt
     # def has_delete_permission(self, request, obj=None):
     #     return False
@@ -485,7 +488,7 @@ class CTACardAdmin(admin.ModelAdmin):
     )
 
 
-class CTABannerAdmin(admin.ModelAdmin):
+class ProductBannerAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Banner Name', {
             "fields": (
@@ -494,16 +497,17 @@ class CTABannerAdmin(admin.ModelAdmin):
         ('CTA Banner Title & Styling', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'cta_banner_title',
+                'product_banner_title',
+                'product_banner_blurb',
                 'banner_image',
                 'banner_background_color',)
         }),
         ('CTA Product Card Styles', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'card_title_color',
-                'card_button_text',
-                'card_button_text_color',
+                'product_card_title_color',
+                'product_card_button_text',
+                'product_card_button_text_color',
                 'card_button_background_color',
                 'button_border',
                 'button_border_color',)
@@ -530,7 +534,7 @@ class CTABannerAdmin(admin.ModelAdmin):
 superadmin.register() to register for superuser admin
 """
 
-superadmin.register(CTABanner, CTABannerAdmin)
+superadmin.register(ProductBanner, ProductBannerAdmin)
 superadmin.register(CTACard, CTACardAdmin)
 superadmin.register(HomePageCustomisation, HomePageCustomisationAdmin)
 superadmin.register(AddTestimonial, AddTestimonialAdmin)

@@ -166,38 +166,47 @@
     <section class="cta-banner-section flexed" style="align-items:flex-end;">
 
         {% for x in home_page_customisation %}
-        {% if x.cta_banner %}
-        <div {% if user.is_superuser %} data-bs-toggle="tooltip" data-bs-placement="bottom"
-            title="Double click to edit Banner styles" {% endif %} class="{% if x.do_not_display or y.do_not_display %}
-                        do-not-display {% else %} jumbotron editable jumbotron-fluid cta-banner {% endif %}"
-            style="{% if banner_image %} background: url({{x.cta_banner.banner_image.url}}) !important; {% else %} background-color: {{ x.cta_banner.banner_background_color }} !important; {% endif %}">
+        {% if x.product_banner %}
 
-            <h1 class="text-center cta-banner-title mb-5 p-5">{{ x.cta_banner.cta_banner_title|safe }}</h1>
 
-            <div class="container h-100 mt-5 flexed" style="flex-flow: row;">
-                {% for product in products_processor|slice:":3" %}
-                {% if product.add_to_cta_banner == True %}
-                <div class="card cta-banner-card h-100 mx-5" style="width: 18rem;">
-                    <img class="card-img-top" src="{{ product.main_product_image.url }}" alt="Card image cap">
-                    <div class="card-body cta-banner-cards">
-                        <h5 class="{% if x.do_not_display or y.do_not_display %}
-                        do-not-display {% else %} card-title text-center cta_banner_card_text {% endif %}"
-                            style="color: {{ x.cta_banner.card_title_color }} !important;">{{ product.name }}</h5>
-                        <p class="card-text text-center">
-                            <a href="{% url 'product_detail' product.id %}" class="{% if x.do_not_display or y.do_not_display %}
-                            do-not-display {% else %} {{ x.button_border }} cta-banner-btn {% endif %}"
-                                style="background-color: {{ x.cta_banner.card_button_background_color }} !important;
-                                border: 1px solid {{ x.cta_banner.button_border_color }} !important;
-                                color: {{ x.cta_banner.card_button_text_color }} !important;">
-                                {{ x.cta_banner.card_button_text }}
-                            </a>
-                        </p>
+        <div class="jumbotron jumbotron-fluid w-100 text-center"
+            style="background-color: {{ x.product_banner.banner_background_color}} !important;">
+            <div class="container">
+                <h1 class="display-4 mb-3">{{ x.product_banner.product_banner_title|safe }}</h1>
+
+                <p class="lead product-banner-blurb">{{ x.product_banner.product_banner_blurb|safe }}</p>
+
+                <div class="container flexed">
+                    {% for product in products_processor|slice:":3" %}
+                    {% if product.add_to_cta_banner == True %}
+                    <div class="card cta-banner-card h-100 mt-5 mx-5" style="width: 18rem;">
+                        <img class="card-img-top" src="{{ product.main_product_image.url }}" alt="{{ product.name }">
+                        <div class="card-body cta-banner-cards">
+                            <h5 class="{% if x.do_not_display or y.do_not_display %}
+                            do-not-display {% else %} card-title text-center cta_banner_card_text {% endif %}"
+                                style="color: {{ x.product_banner.product_card_title_color }} !important;">
+                                {{ product.name }}
+                            </h5>
+                            <p class="card-text text-center">
+                                <a href="{% url 'product_detail' product.id %}"
+                                    class="{% if x.do_not_display or y.do_not_display %}
+                                do-not-display {% else %} {{ x.product_banner.add_button_border }} cta-banner-btn {% endif %}" style="background-color: {{ x.cta_banner.card_button_background_color }} !important;
+                                    border: 1px solid {{ x.product_banner.button_border_color }} !important;
+                                    color: {{ x.product_banner.product_card_button_text_color }} !important;">
+                                    {{ x.product_banner.product_card_button_text }}
+                                </a>
+                            </p>
+                        </div>
                     </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
-                {% endif %}
-                {% endfor %}
+
             </div>
         </div>
+
+
+
         {% endif %}
         {% endfor %}
 

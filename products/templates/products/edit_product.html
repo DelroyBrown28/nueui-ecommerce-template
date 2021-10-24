@@ -44,7 +44,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 <div class="text-right">
                     <a class="{% if y.do_not_display %}
                     do-not-display {% else %} btn btn-outline-black rounded-0 {% endif %}"
-                        style="background-color: {{ y.primary_button_base_color }} !important; color: {{ y.primary_button_text_color }} !important;"
+                        style="background-color: {{ y.action_button_color }} !important; color: {{ y.primary_button_text_color }} !important;"
                         href="{% url 'products' %}">Cancel</a>
                     <button class="{% if y.do_not_display %}
                     do-not-display {% else %} btn btn-black rounded-0 {% endif %}"

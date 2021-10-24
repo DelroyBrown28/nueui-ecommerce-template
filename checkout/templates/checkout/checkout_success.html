@@ -226,7 +226,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
             {% if from_profile %}
             <a href="{% url 'profile' %}" class="{% if y.do_not_display %}
             do-not-display {% else %} btn btn-black rounded-0 my-2 {% endif %}"
-                style="background-color: {{ y.secondary_button_base_color }} !important; color: {{ y.secondary_button_text_color }};">
+                style="background-color: {{ y.secondary_button_color }} !important; color: {{ y.secondary_button_text_color }};">
                 <span class="icon">
                     <i class="fas fa-angle-left"></i>
                 </span>
@@ -234,8 +234,9 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
             </a>
             {% else %}
             <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="{% if y.do_not_display %}
-            do-not-display {% else %} btn btn-black rounded-0 my-2 {% endif %}"
-                style="background-color: {{ y.secondary_button_base_color }} !important; color: {{ y.secondary_button_text_color }};">
+            do-not-display {% else %} btn {{ y.action_button_border }} rounded-0 my-2 {% endif %}"
+                style="background-color: {{ y.action_button_color }} !important; color: {{ y.action_button_text_color }};
+                border: 1px solid {{ y.action_button_border_color }}">
                 <span class="icon mr-2">
                     <i class="fas fa-gifts"></i>
                 </span>

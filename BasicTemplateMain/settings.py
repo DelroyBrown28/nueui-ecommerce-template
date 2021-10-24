@@ -143,7 +143,7 @@ TEMPLATES = [
                 'context_processors.context_processors.products_processor',
                 'context_processors.context_processors.header_customisation_processor',
                 'context_processors.context_processors.cta_processor',
-                'context_processors.context_processors.cta_banner_processor',
+                'context_processors.context_processors.product_banner_processor',
                 'context_processors.context_processors.testimonials_customisation_processor',
                 'context_processors.context_processors.testimonials_push',
                 'context_processors.context_processors.footer_customisation_processor',
