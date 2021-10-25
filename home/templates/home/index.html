@@ -170,11 +170,11 @@
 
 
         <div class="jumbotron jumbotron-fluid w-100 text-center"
-            style="background-color: {{ x.product_banner.banner_background_color}} !important;">
+            style="{% if banner_image %} background: url({{x.product_banner.banner_image.url}}); {% else %} background-color: {{ x.product_banner.banner_background_color }}; {% endif %}">
             <div class="container">
                 <h1 class="display-4 mb-3">{{ x.product_banner.product_banner_title|safe }}</h1>
-
-                <p class="lead product-banner-blurb">{{ x.product_banner.product_banner_blurb|safe }}</p>
+                <hr>
+                <em class="product-banner-blurb flexed">{{ x.product_banner.product_banner_blurb|safe }}</em>
 
                 <div class="container flexed">
                     {% for product in products_processor|slice:":3" %}

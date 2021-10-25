@@ -116,12 +116,12 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
         {% for x in testimonials_customisation %}
         <div class="col-md-12 text-center">
             <a href="#testimonialForm" id="testimonialForm" type="button" class="{% if x.do_not_display %}
-            do-not-display {% else %} testimonial-form-btn {{ x.view_testimonial_button_border }} {% endif %}" style="background-color: {{ x.view_testimonial_button_background_color }} !important;
-                color: {{ x.view_testimonial_button_label_color }} !important;
-                border-color: {{ x.view_testimonial_button_border_color }} !important;">
+            do-not-display {% else %} testimonial-form-btn {{ x.drop_to_form_border }} {% endif %}" style="background-color: {{ x.drop_to_form_background_color }} !important;
+                color: {{ x.drop_to_form_label_color }} !important;
+                border-color: {{ x.drop_to_form_border_color }} !important;">
                 <small> <i class="{% if x.do_not_display %}
                     do-not-display {% else %} fas fa-arrow-down {% endif %}"
-                        style="color: {{ x.icon_color }} !important;"></i> {{ x.view_testimonial_button_label }} <i
+                        style="color: {{ x.icon_color }} !important;"></i> {{ x.drop_to_form_label }} <i
                         class="{% if x.do_not_display %}
                     do-not-display {% else %} fas fa-arrow-down {% endif %}"
                         style="color: {{ x.icon_color }} !important;"></i></small>
@@ -130,7 +130,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
         {% endfor %}
     </div>
 
-    <div class="container-fluid p-0" style="height: 100vh;">
+    <div class="container-fluid p-0">
         {% for x in testimonials_customisation %}
         <div class="{% if x.do_not_display %}
             do-not-display {% else %} testimonial-form-wrap flexed col-md-12 {% endif %}"
@@ -145,7 +145,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                     {{ x.form_title|safe }}
                 </h1>
                 <div class="{% if x.do_not_display %}
-            do-not-display {% else %} text-center testimonial-form-blurb {% endif %}"
+            do-not-display {% else %} flexed my-5 {% endif %}"
                     style="color: {{ x.form_font_color }} !important;">
                     {{ x.testimonial_form_blurb|safe }}
                 </div>
@@ -153,7 +153,7 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 <p class="testimonial-form-inputs">
                     <input type="text" name="name"
                         class="{% if x.do_not_display %}
-                        do-not-display {% else %} form-control col-md-12 input-name {{x.form_field_border}} {% endif %}" style="border-bottom: 2px solid {{ x.form_field_border_color }};
+                        do-not-display {% else %} form-control col-md-12 input-name {{x.form_field_borders}} {% endif %}" style="border-bottom: 2px solid {{ x.form_field_border_color }};
                         background-color: {{x.form_field_background_color}} !important;
                         color: {{x.form_field_text_color}};" placeholder="Name" maxlength="100" required=""
                         id="id_name">
@@ -162,22 +162,27 @@ do-not-display {% else %} overlay {% endif %}" style="background-color: {{ y.bas
                 <p class="testimonial-form-inputs">
                     <input type="text" name="email"
                         class="{% if x.do_not_display %}
-                        do-not-display {% else %} input-email form-control col-md-12 {{x.form_field_border}} {% endif %}" style="border-bottom: 2px solid {{ x.form_field_border_color }};
+                        do-not-display {% else %} input-email form-control col-md-12 {{x.form_field_borders}} {% endif %}" style="border-bottom: 2px solid {{ x.form_field_border_color }};
                         background-color: {{x.form_field_background_color}} !important;
                         color: {{x.form_field_text_color}};" placeholder="Email" maxlength="100" id="id_email">
                 </p>
                 <p class="testimonial-form-inputs">
                     <textarea name="your_thoughts" resize="false" cols="40" rows="10"
                         class="{% if x.do_not_display %}
-                        do-not-display {% else %} input-thoughts form-control col-md-12 {{x.form_field_border}} {% endif %}" style="border: 2px solid {{ x.form_field_border_color }};
+                        do-not-display {% else %} input-thoughts form-control col-md-12 {{x.form_field_borders}} {% endif %}" style="border: 2px solid {{ x.form_field_border_color }};
                         background-color: {{x.form_field_background_color}} !important;
                         color: {{x.form_field_text_color}};" placeholder="Your Thoughts?" maxlength="1000" required=""
-                        id="id_your_thoughts" spellcheck="false"></textarea>
+                        id="id_your_thoughts" spellcheck="false">
+                        </textarea>
                 </p>
                 <p class="testimonial-form-inputs">
+
+            
+
+
                     <input type="number" name="rating"
                         class="{% if x.do_not_display %}
-                        do-not-display {% else %} input-rating form-control col-md-1 rating-field {{x.form_field_border}} {% endif %}" style="border-bottom: 2px solid {{ x.form_field_border_color }};
+                        do-not-display {% else %} input-rating form-control col-md-1 rating-field {{x.form_field_borders}} {% endif %}" style="border-bottom: 2px solid {{ x.form_field_border_color }};
                         background-color: {{x.form_field_background_color}} !important;
                         color: {{x.form_field_text_color}} !important;" placeholder="Rate us out of 5" maxlength="1"
                         id="id_rating">

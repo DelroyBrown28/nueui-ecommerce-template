@@ -285,15 +285,14 @@ class AboutPageCustomisation(models.Model):
     about_page_title = models.CharField(
         max_length=100, blank=False, null=False)
     about_page_blurb = RichTextField()
-    about_page_content = RichTextField()
+    story_of_your_brand = RichTextField()
     about_page_left_image = models.ImageField(
         null=True, blank=True, upload_to='about_page_images')
     about_page_right_image = models.ImageField(
         null=True, blank=True, upload_to='about_page_images')
     contact_section_title = models.CharField(
         max_length=100, blank=False, null=False)
-    contact_section_blurb = models.TextField(
-        max_length=250, blank=False, null=False, default='Short blurb')
+    contact_section_blurb = RichTextField(default='')
     contact_card_title = models.CharField(
         max_length=100, blank=False, null=False, default='Business Name')
     contact_card_info = RichTextField()
@@ -308,13 +307,13 @@ class AboutPageCustomisation(models.Model):
     border_color = ColorField(format='hexa')
 
     twitter_link = models.URLField(
-        max_length=200, null=True, blank=True, default='https://twitter.com/')
+        max_length=200, null=True, blank=True, default='')
     linkedin_link = models.URLField(
-        max_length=200, null=True, blank=True, default='https://linkedin.com/')
+        max_length=200, null=True, blank=True, default='/')
     facebook_link = models.URLField(
-        max_length=200, null=True, blank=True, default='https://facebook.com/')
+        max_length=200, null=True, blank=True, default='')
     instagram_link = models.URLField(
-        max_length=200, null=True, blank=True, default='https://instagram.com/')
+        max_length=200, null=True, blank=True, default='')
 
     do_not_display = models.BooleanField(verbose_name='Do not display',
                                          default=False,
@@ -340,10 +339,15 @@ class AboutPageCustomisation(models.Model):
 
 class TestimonialsPageCustomisation(models.Model):
     """
-    This model is to ADD testimonials to the page
+    This model is to custmoise the testimonial page
     """
     TESTIMONIAL_CARD_BORDER = (
         ('add-border', 'Add Border'),
+        ('no-border', 'No Border'),
+    )
+    TESTIMONIAL_FORM_FIELD_BORDERS = (
+        ('bottom-border', 'Bottom Border'),
+        ('full-border', 'Full Border'),
         ('no-border', 'No Border'),
     )
     style_name = models.CharField(
@@ -358,15 +362,15 @@ class TestimonialsPageCustomisation(models.Model):
         format='hexa', blank=True, null=True, default='#000000')
     star_rating_color = ColorField(
         format='hexa', blank=True, null=True, default='#FFE231')
-    view_testimonial_button_label = models.CharField(
+    drop_to_form_label = models.CharField(
         blank=False, null=False, max_length=55, default='', help_text='Button that drops you down to the Testimonials Form')
-    view_testimonial_button_label_color = ColorField(
+    drop_to_form_label_color = ColorField(
         format='hexa', default='#000000')
-    view_testimonial_button_background_color = ColorField(
+    drop_to_form_background_color = ColorField(
         format='hexa', default='#FFFFFF')
-    view_testimonial_button_border = models.TextField(
+    drop_to_form_border = models.TextField(
         choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
-    view_testimonial_button_border_color = ColorField(
+    drop_to_form_border_color = ColorField(
         format='hexa', default='#000000')
     icon_color = ColorField(format='hexa', default='#000000')
     form_title = RichTextField(blank=True, null=True, max_length=300, default='', field_settings={'bold': False})
@@ -376,8 +380,8 @@ class TestimonialsPageCustomisation(models.Model):
         format='hexa', blank=True, null=True,  default='#FFFFFF')
     form_font_color = ColorField(
         format='hexa', blank=True, null=True,  default='#00000')
-    form_field_border = models.TextField(
-        choices=TESTIMONIAL_CARD_BORDER, blank=True, null=True, default='no-border')
+    form_field_borders = models.TextField(
+        choices=TESTIMONIAL_FORM_FIELD_BORDERS, blank=True, null=True, default='no-border')
     form_field_border_color = ColorField(
         format='hexa', blank=True, null=True, default='#000000')
     form_field_background_color = ColorField(

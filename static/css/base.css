@@ -140,6 +140,12 @@ body {
     box-shadow: none;
 }
 
+.product-banner-blurb p {
+    font-size: 30px;
+    font-weight: 300;
+    width: 55% !important;
+}
+
 .cta-card-title p {
     margin: 0 !important;
     font-size: 1.3rem;
@@ -388,6 +394,14 @@ TESTIMONIALS PAGE
     height: 100%;
 }
 
+body>div.container-fluid.p-0>div>form>div>p {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
+    width: 40%;
+}
+
 .testimonial-form {
     height: 100%;
     flex-flow: column;
@@ -407,6 +421,7 @@ TESTIMONIALS PAGE
     height: 50px;
     border: none;
 }
+
 .testimonial-form-inputs textarea {
     border: none;
 }
@@ -884,6 +899,22 @@ ABOUT PAGE
     margin-bottom: 0;
 }
 
+body>section.about-page-title-section.editable>div.d-flex.justify-content-center.about-blurb-wrap>p>em {
+    width: 55% !important;
+    line-height: 1.5;
+    font-family: 'Lato', sans-serif;
+    color: #000000FF;
+    font-size: 30px;
+    font-weight: 300;
+    box-sizing: border-box;
+    text-align: center !important;
+}
+
+.about-page-quotes {
+    font-size: 55px;
+    font-weight: bolder;
+}
+
 .about-page-blurb {
     font-size: 30px;
     font-weight: 300;
@@ -921,7 +952,7 @@ body>div:nth-child(12)>em>div>p {
 
 .contact-section-blurb {
     font-size: 30px;
-    font-weight: 400;
+    font-weight: 300;
     text-align: center;
     width: 40%;
 }
@@ -1040,9 +1071,9 @@ body>div:nth-child(12)>em>div>p {
     font-weight: 300;
 }
 
-body > section.cta-banner-section.flexed > div > div > p:nth-child(3) {
+body>section.cta-banner-section.flexed>div>div>p:nth-child(3) {
     font-size: 1.25rem;
-  font-weight: 300;
+    font-weight: 300;
 }
 
 .cta-banner-btn {

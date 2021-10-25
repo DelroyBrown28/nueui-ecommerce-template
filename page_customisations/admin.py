@@ -25,7 +25,7 @@ class AboutPageCustomisationAdmin(admin.ModelAdmin):
             'fields': (
                 'about_page_title',
                 'about_page_blurb',
-                'about_page_content',
+                'story_of_your_brand',
                 'about_page_left_image',
                 'about_page_right_image'),
 
@@ -395,11 +395,11 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
         ('Dropdown button', {
             'classes': ('fieldset_titles',),
             'fields': (
-                'view_testimonial_button_label',
-                'view_testimonial_button_label_color',
-                'view_testimonial_button_background_color',
-                'view_testimonial_button_border',
-                'view_testimonial_button_border_color',
+                'drop_to_form_label',
+                'drop_to_form_label_color',
+                'drop_to_form_background_color',
+                'drop_to_form_border',
+                'drop_to_form_border_color',
                 'icon_color',
             ),
         }),
@@ -410,7 +410,7 @@ class TestimonialsCustomisationAdmin(admin.ModelAdmin):
                 'testimonial_form_blurb',
                 'form_background_color',
                 'form_font_color',
-                'form_field_border',
+                'form_field_borders',
                 'form_field_border_color',
                 'form_field_background_color',
                 'form_field_placeholder_color',

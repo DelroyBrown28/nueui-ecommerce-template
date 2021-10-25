@@ -30,20 +30,21 @@ data-bs-placement="bottom" title="Double click to edit title & blurb" {% endif %
 do-not-display {% else %} about-page-title text-center {% endif %}" style="color: {{y.base_font_color}};">
     {{ x.about_page_title }}
 </h1>
+
 <div class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} d-flex justify-content-center about-blurb-wrap {% endif %}"
     style="color: {{y.base_font_color}};">
-    <p class="about-page-blurb text-center my-5"><em>"{{ x.about_page_blurb }}"</em></p>
+  <em class="text-center about-page-blurb flexed mt-5" style="flex-flow: row;">{{ x.about_page_blurb|safe }}</em>
 </div>
 
 <div class="container flexed">
     <div class="{% if x.do_not_display or y.do_not_display %}
-do-not-display {% else %} text-center mr-3 mb-5 {% endif %}" style="color: {{ y.all_icon_colors }};">
+do-not-display {% else %} text-center mr-3 my-5 {% endif %}" style="color: {{ y.all_icon_colors }};">
         <a style="color: inherit;" href="#getInTouch" data-bs-toggle="tooltip" data-bs-placement="top"
             title="Get In Touch"><i class="fas fa-phone-alt"></i></a>
     </div>
     <div class="{% if x.do_not_display or y.do_not_display %}
-do-not-display {% else %} text-center ml-3 mb-5 {% endif %}" style="color: {{ y.all_icon_colors }};">
+do-not-display {% else %} text-center ml-3 my-5 {% endif %}" style="color: {{ y.all_icon_colors }};">
         <a style="color: inherit;" href="{% url 'testimonials' %}" data-bs-toggle="tooltip" data-bs-placement="top"
             title="Testimonials"><i class="fas fa-comments"></i></a>
     </div>
@@ -59,7 +60,7 @@ do-not-display {% else %} container {% endif %}">
 <div {% if user.is_superuser %} data-bs-toggle="tooltip"
 data-bs-placement="bottom" title="Double click to edit content" {% endif %} class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} container my-5 editable edit-content {% endif %}" style="color: {{y.base_font_color}};">
-    <div  class="about-page-content">{{ x.about_page_content|safe }}</div>
+    <div  class="about-page-content">{{ x.story_of_your_brand|safe }}</div>
 
     <div class="d-flex justify-content-between my-5">
         <div class="card left-image" style="width: 45rem;">
@@ -85,7 +86,7 @@ do-not-display {% else %} contact-section-title text-center {% endif %}" style="
 <div class="{% if x.do_not_display or y.do_not_display %}
 do-not-display {% else %} d-flex justify-content-center about-blurb-wrap {% endif %}"
     style="color: {{y.base_font_color}};">
-    <p class="about-page-blurb text-center my-5"><em>"{{ x.contact_section_blurb|safe }}"</em></p>
+    <em class="contact-section-blurb my-5">{{ x.contact_section_blurb|safe }}</em>
 </div>
 
 </section>

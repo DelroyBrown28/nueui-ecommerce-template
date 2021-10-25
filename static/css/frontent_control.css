@@ -42,6 +42,14 @@ ADD BORDER CLASSES
     border-radius: 0px !important;
 }
 
+.bottom-border {
+    border-bottom: 1px solid;
+}
+
+.full-border {
+    border: 1px solid !important;
+}
+
 
 
 /* 
